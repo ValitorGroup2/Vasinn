@@ -10,5 +10,10 @@
 
     <string name="action_example">Example action</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Stillingar</string>
+    <string name="username_hint">Notendanafn</string>
+    <string name="password_hint">Lykilorð</string>
+    <string name="label_login">Innskráning</string>
+    <string name="btn_login_text">Innskrá</string>
+    <string name="logo_name">logo</string>
 </resources>
