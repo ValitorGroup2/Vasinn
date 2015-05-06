@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import gens.com.vasinn.repos.objects.Transaction;
+
 /**
  * Created by Gudjon on 6.5.2015.
  */

@@ -1,4 +1,4 @@
-package gens.com.vasinn.repos;
+package gens.com.vasinn.repos.objects;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by Gudjon on 6.5.2015.
  */
-public class Transaction {
+public class Transaction extends Object {
 
 
     private Date date;
@@ -39,5 +39,19 @@ public class Transaction {
     public String getDateTimeString() {
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy hh:mm");
         return df.format(this.date);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Transaction my  = this;
+        Transaction his = (Transaction) obj;
+
+        if (my.amount == his.amount  &&
+            my.date.equals(his.date) &&
+            my.id == his.id          &&
+            my.userName.equals(his.userName))
+            return true;
+        else
+            return false;
     }
 }
