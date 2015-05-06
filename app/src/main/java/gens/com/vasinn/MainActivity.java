@@ -22,6 +22,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.emvnfccard.provider.Provider;
@@ -105,6 +107,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
         // init NfcUtils
         mNfcUtils = new NFCUtils(this);
+
+
 
         if (getIntent().getAction() == NfcAdapter.ACTION_TECH_DISCOVERED) {
             onNewIntent(getIntent());
@@ -238,6 +242,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     @Override
     protected void onResume() {
+
         mNfcUtils.enableDispatch();
 
         // Check NFC enable
@@ -264,6 +269,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
             alertbox.setCancelable(false);
             mAlertDialog = alertbox.show();
         }
+
+
         super.onResume();
     }
 
@@ -442,6 +449,12 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     @Override
     public void onStart(){
         super.onStart();
+
+        TextView tvUpphaed = (TextView)findViewById(R.id.tViewUpphaed);
+        tvUpphaed.setText("10010 kr.");
+
+
+
     }
 
     /**

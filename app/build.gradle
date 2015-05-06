@@ -24,7 +24,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile 'com.github.devnied.emvnfccard:library:2.1.1'
+    compile 'com.android.support:appcompat-v7:22.1.1'
 }
