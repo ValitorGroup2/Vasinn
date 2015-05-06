@@ -1,57 +1,57 @@
 package gens.com.vasinn;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.IsoDep;
-import android.provider.Settings;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
-//com/github/devnied/emvnfccard/utils/SimpleAsyncTask.java
 
-
-import com.emvnfccard.provider.Provider;
+import com.github.devnied.emvnfccard.exception.CommunicationException;
 import com.github.devnied.emvnfccard.fragment.IRefreshable;
 import com.github.devnied.emvnfccard.model.EmvCard;
 import com.github.devnied.emvnfccard.parser.EmvParser;
+import com.github.devnied.emvnfccard.parser.IProvider;
 import com.github.devnied.emvnfccard.utils.AtrUtils;
 import com.github.devnied.emvnfccard.utils.NFCUtils;
 import com.github.devnied.emvnfccard.utils.SimpleAsyncTask;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-
 import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
+
+import com.emvnfccard.provider.Provider;
 
 import fr.devnied.bitlib.BytesUtils;
 
 
-public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
+public class ReadCardActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    private NFCUtils mNfcUtils;
+    private Provider mProvider = new Provider();
+    private EmvCard mReadCard;
+    private byte[] lastAts;
+
+    /**
+     * Reference for refreshable content
+     */
+    private WeakReference<IRefreshable> mRefreshableContent;
+
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -62,26 +62,11 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
-        /*Implementing copy paste*/
-
-    private NFCUtils mNfcUtils;
-    private Provider mProvider = new Provider();
-
-    private EmvCard mReadCard;
-
-    private WeakReference<IRefreshable> mRefreshableContent;
-    private byte[] lastAts;
-    private ProgressDialog mDialog;
-    private AlertDialog mAlertDialog;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_read_card);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -95,17 +80,17 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         // init NfcUtils
         mNfcUtils = new NFCUtils(this);
 
-
-        if (getIntent().getAction() == NfcAdapter.ACTION_TECH_DISCOVERED) {
-            onNewIntent(getIntent());
-        }
-
-        // Read card on launch
-        /*if (getIntent().getAction() == NfcAdapter.ACTION_TECH_DISCOVERED) {
-            onNewIntent(getIntent());
-            Intent intent = new Intent(this, ReadCardActivity.class);
-            startActivity(intent);
+        /*IProvider prov = new YourProvider();
+// Create parser (true for contactless false otherwise)
+        EmvParser parser = new EmvParser(prov, true);
+// Read card
+        try {
+            EmvCard card = parser.readEmvCard();
+            Toast.makeText(getApplicationContext(), "Card AID:"+card.getAid(), Toast.LENGTH_LONG).show();
+        } catch (CommunicationException e) {
+            e.printStackTrace();
         }*/
+
 
 
     }
@@ -147,7 +132,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
             // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.main, menu);
+            getMenuInflater().inflate(R.menu.read_card, menu);
             restoreActionBar();
             return true;
         }
@@ -197,69 +182,16 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_read_card, container, false);
             return rootView;
         }
 
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
+            ((ReadCardActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @Override
-    protected void onResume() {
-        mNfcUtils.enableDispatch();
-
-        // Check NFC enable
-        if (!NFCUtils.isNfcEnable(getApplicationContext())) {
-            backToHomeScreen();
-
-            AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
-            alertbox.setTitle(getString(R.string.msg_info));
-            alertbox.setMessage(getString(R.string.msg_nfc_disable));
-            alertbox.setPositiveButton(getString(R.string.msg_activate_nfc), new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(final DialogInterface dialog, final int which) {
-                    Intent intent = null;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        intent = new Intent(Settings.ACTION_NFC_SETTINGS);
-                    } else {
-                        intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
-                    }
-                    dialog.dismiss();
-                    startActivity(intent);
-                }
-            });
-            alertbox.setCancelable(false);
-            mAlertDialog = alertbox.show();
-        }
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mNfcUtils.disableDispatch();
     }
 
     @Override
@@ -270,34 +202,65 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
             new SimpleAsyncTask() {
 
-                /**
-                 * Tag comm
-                 */
+
+                // Tag comm
+
                 private IsoDep mTagcomm;
 
-                /**
-                 * Emv Card
-                 */
+
+                // Emv Card
+
                 private EmvCard mCard;
 
-                /**
-                 * Boolean to indicate exception
-                 */
+
+                // Boolean to indicate exception
+
                 private boolean mException;
 
                 @Override
                 protected void onPreExecute() {
                     super.onPreExecute();
 
-                    backToHomeScreen();
+                    // backToHomeScreen();
                     mProvider.getLog().setLength(0);
                     // Show dialog
-                    if (mDialog == null) {
-                        mDialog = ProgressDialog.show(MainActivity.this, getString(R.string.card_reading),
+                    Toast.makeText(getApplicationContext(), getString(R.string.card_reading), Toast.LENGTH_LONG).show();
+                    /*if (mDialog == null) {
+                        mDialog = ProgressDialog.show(HomeActivity.this, getString(R.string.card_reading),
                                 getString(R.string.card_reading_desc), true, false);
                     } else {
                         mDialog.show();
+                    }*/
+                }
+
+                /**
+                 * Get ATS from isoDep
+                 *
+                 * @param pIso
+                 *            isodep
+                 * @return ATS byte array
+                 */
+                private byte[] getAts(final IsoDep pIso) {
+                    byte[] ret = null;
+                    if (pIso.isConnected()) {
+                        // Extract ATS from NFC-A
+                        ret = pIso.getHistoricalBytes();
+                        if (ret == null) {
+                            // Extract ATS from NFC-B
+                            ret = pIso.getHiLayerResponse();
+                        }
                     }
+                    return ret;
+                }
+
+                /**
+                 * Method used to get description from ATS
+                 *
+                 * @param pAts
+                 *            ATS byte
+                 */
+                public Collection<String> extractAtsDescription(final byte[] pAts) {
+                    return AtrUtils.getDescriptionFromAts(BytesUtils.bytesToString(pAts));
                 }
 
                 @Override
@@ -305,6 +268,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
                     mTagcomm = IsoDep.get(mTag);
                     if (mTagcomm == null) {
+                        //CroutonUtils.display(HomeActivity.this, getText(R.string.error_communication_nfc), CoutonColor.BLACK);
 
                         Toast.makeText(getApplicationContext(), getString(R.string.error_communication_nfc), Toast.LENGTH_LONG).show();
                         return;
@@ -333,55 +297,39 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                     }
                 }
 
+                private void refreshContent() {
+                    if (mRefreshableContent != null && mRefreshableContent.get() != null) {
+                        mRefreshableContent.get().update();
+                    }
+                }
+
                 @Override
                 protected void onPostExecute(final Object result) {
                     // close dialog
-                    if (mDialog != null) {
+                    /*if (mDialog != null) {
                         mDialog.cancel();
-                    }
+                    }*/
                     String temp = "";
                     if (!mException) {
                         if (mCard != null) {
                             if (StringUtils.isNotBlank(mCard.getCardNumber())) {
                                 temp += getText(R.string.card_read);
-
-                                temp += "\nCard Aid:" + mCard.getAid();
-                                temp += "\nProvider:" + mCard.getType();
-                                if (mCard.getExpireDate()!= null) {
-                                    DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-                                    temp += "\nExpires: " + df.format(mCard.getExpireDate());
-                                }
-                                temp += "\nPin tries left: " + mCard.getLeftPinTry();
-
+                                //CroutonUtils.display(HomeActivity.this, getText(R.string.card_read), CoutonColor.GREEN);
                                 mReadCard = mCard;
                             } else if (mCard.isNfcLocked()) {
                                 temp += getText(R.string.nfc_locked);
+                                //CroutonUtils.display(HomeActivity.this, getText(R.string.nfc_locked), CoutonColor.ORANGE);
                             }
                         } else {
                             temp +=getText(R.string.error_card_unknown);
-
+                            //CroutonUtils.display(HomeActivity.this, getText(R.string.error_card_unknown), CoutonColor.BLACK);
                         }
                     } else {
                         temp +=getText(R.string.error_communication_nfc);
+                        //CroutonUtils.display(HomeActivity.this, getResources().getText(R.string.error_communication_nfc), CoutonColor.BLACK);
                     }
 
-
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-                    builder.setTitle("Lestur korts");
-                    builder.setMessage(temp);
-
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Do nothing but close the dialog
-                            dialog.dismiss();
-                        }
-                    });
-
-                    AlertDialog alert = builder.create();
-                    alert.show();
-
+                    Toast.makeText(getApplicationContext(), "Garg: " +temp , Toast.LENGTH_LONG).show();
                     refreshContent();
                 }
 
@@ -390,79 +338,13 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     }
 
-    public void backToHomeScreen() {
-        // Select first menu
-       /* mDrawerListView.performItemClick(mDrawerListView, 0, mDrawerListView.getItemIdAtPosition(0));
-        // Close Drawer
-        mDrawerLayout.closeDrawer(mDrawerListView);*/
-
-        //todo: Hvað skal gera hér?
-    }
-
-
     /**
-     * Get ATS from isoDep
+     * Get the last ATS
      *
-     * @param pIso
-     *            isodep
-     * @return ATS byte array
+     * @return the last card ATS
      */
-    private byte[] getAts(final IsoDep pIso) {
-        byte[] ret = null;
-        if (pIso.isConnected()) {
-            // Extract ATS from NFC-A
-            ret = pIso.getHistoricalBytes();
-            if (ret == null) {
-                // Extract ATS from NFC-B
-                ret = pIso.getHiLayerResponse();
-            }
-        }
-        return ret;
-    }
-
-    /**
-     * Method used to get description from ATS
-     *
-     * @param pAts
-     *            ATS byte
-     */
-    public Collection<String> extractAtsDescription(final byte[] pAts) {
-        return AtrUtils.getDescriptionFromAts(BytesUtils.bytesToString(pAts));
-    }
-    private void refreshContent() {
-        if (mRefreshableContent != null && mRefreshableContent.get() != null) {
-            mRefreshableContent.get().update();
-        }
-    }
-
-
-   /* @Override
-    public StringBuffer getLog() {
-        return mProvider.getLog();
-    }
-
-    @Override
-    public EmvCard getCard() {
-        return mReadCard;
-    }
-
-    @Override
-    public void setRefreshableContent(final IRefreshable pRefreshable) {
-        mRefreshableContent = new WeakReference<IRefreshable>(pRefreshable);
-    }*/
-
-    /**
-     * Method used to clear data
-     */
-    public void clear() {
-        mReadCard = null;
-        mProvider.getLog().setLength(0);
-        IRefreshable content = mRefreshableContent.get();
-        if (content != null) {
-            content.update();
-        }
-    }
     public byte[] getLastAts() {
         return lastAts;
     }
+
 }
