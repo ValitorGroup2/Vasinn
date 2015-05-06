@@ -40,8 +40,12 @@ import java.lang.ref.WeakReference;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.List;
 
 import fr.devnied.bitlib.BytesUtils;
+import gens.com.vasinn.controllers.TransactionController;
+import gens.com.vasinn.controllers.UserController;
+import gens.com.vasinn.repos.objects.Transaction;
 
 //com/github/devnied/emvnfccard/utils/SimpleAsyncTask.java
 
@@ -71,13 +75,24 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     private AlertDialog mAlertDialog;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        VasiApplication vasi = ((VasiApplication) this.getApplication());
+        TransactionController transCon = vasi.getTransactionController();
+        UserController userCon = vasi.getUserController();
+
+        List<Transaction> range = transCon.getRange(0, 3);
+        String stuff = "";
+        for(int i = 0; i < range.size(); i++)
+        {
+            stuff += "\nid:"      + range.get(i).getId();
+            stuff += "\nTími:"    + range.get(i).getDateTimeString();
+            stuff += "\nUpphæð:"  + range.get(i).getAmount();
+            stuff += "\nNotandi:" + range.get(i).getUserName();
+        }
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -90,7 +105,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
         // init NfcUtils
         mNfcUtils = new NFCUtils(this);
-
 
         if (getIntent().getAction() == NfcAdapter.ACTION_TECH_DISCOVERED) {
             onNewIntent(getIntent());
@@ -236,6 +250,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     @Override
     protected void onResume() {
+        Toast.makeText(getApplicationContext(), "onResume keyrðist", Toast.LENGTH_LONG).show();
         mNfcUtils.enableDispatch();
 
         // Check NFC enable
@@ -267,6 +282,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     @Override
     protected void onPause() {
+        Toast.makeText(getApplicationContext(), "onPause keyrðist", Toast.LENGTH_LONG).show();
         super.onPause();
         mNfcUtils.disableDispatch();
     }
@@ -444,6 +460,11 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         }
     }
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        Toast.makeText(getApplicationContext(), "onStart keyrðist", Toast.LENGTH_LONG).show();
+    }
 
    /* @Override
     public StringBuffer getLog() {
