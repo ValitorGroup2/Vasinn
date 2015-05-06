@@ -19,9 +19,6 @@ public class UserRepo {
         users.add(new User("karl",    "123"));
         users.add(new User("trausti", "123"));
         users.add(new User("gretar",  "123"));
-
-        // TODO DELETE THIS SHIT BEFORE THE SÝNING s
-        users.add(new User("", ""));
     }
 
     public List<User> getUsers() {

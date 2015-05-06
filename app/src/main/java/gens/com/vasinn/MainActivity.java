@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.IsoDep;
@@ -104,6 +105,27 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
+    }
+
+    public void logout(View view) {
+        // select your mode to be either private or public.
+        int mode = Activity.MODE_PRIVATE;
+
+        // get the sharedPreference of your context.
+        SharedPreferences mySharedPreferences;
+        mySharedPreferences = getSharedPreferences("vasinnPreference", mode);
+
+        // retrieve an editor to modify the shared preferences
+        SharedPreferences.Editor editor = mySharedPreferences.edit();
+
+        // now store your primitive type values. In this case it is true, 1f and Hello! World
+        editor.putString("myUsername", "");
+
+        //save the changes that you made
+        editor.commit();
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     public void onSectionAttached(int number) {
