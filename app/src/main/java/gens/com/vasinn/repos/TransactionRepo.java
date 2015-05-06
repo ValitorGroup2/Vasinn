@@ -12,7 +12,6 @@ import gens.com.vasinn.repos.objects.Transaction;
 public class TransactionRepo {
     private List<Transaction> transactions = new ArrayList<Transaction>();
 
-
     public TransactionRepo() {
                                                     //yyy mm  dd  hh  mm ss
         transactions.add(new Transaction( 1, new Date(2015, 5,  6, 17, 15,  0),   1540, "gudjon" ));
@@ -29,10 +28,32 @@ public class TransactionRepo {
         transactions.add(new Transaction(12, new Date(2015, 4,  1, 16, 38,  1),   1254, "aegir" ));
     }
 
+    public int size(){
+
+       return transactions.size();
+    }
+
+    public Transaction get(int index){
+
+        return transactions.get(index);
+    }
+
+    public Transaction findById(int id){
+
+        if (id < 0)
+            return null;
+        for(int i = 0; i < transactions.size(); i++) {
+            if (transactions.get(i).getId() == id)
+                return transactions.get(i);
+        }
+        return null;
+    }
+
     public void add(Transaction addMe)
     {
         int id = transactions.size() + 1;
-        transactions.add(addMe);
+
+        transactions.add(new Transaction(id, addMe.getDate(), addMe.getAmount(), addMe.getUserName()));
     }
 
     /*  from og to are (til og með)
@@ -43,7 +64,7 @@ public class TransactionRepo {
         if (from < 0 || to > transactions.size() - 1)
             throw new IndexOutOfBoundsException("Transaction Range is out of bounds");
 
-        List<Transaction> retTrans = new ArrayList<Transaction>(from - (to  + 1));
+        List<Transaction> retTrans = new ArrayList<Transaction>();
 
         for(int i = from; i < to + 1; i++) {
             retTrans.add(transactions.get(i));
@@ -51,5 +72,4 @@ public class TransactionRepo {
 
         return retTrans;
     }
-
 }
