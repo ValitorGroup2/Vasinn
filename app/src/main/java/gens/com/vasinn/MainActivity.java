@@ -8,27 +8,20 @@ import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.IsoDep;
-import android.provider.Settings;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.provider.Settings;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
-//com/github/devnied/emvnfccard/utils/SimpleAsyncTask.java
-
 
 import com.emvnfccard.provider.Provider;
 import com.github.devnied.emvnfccard.fragment.IRefreshable;
@@ -48,6 +41,8 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 
 import fr.devnied.bitlib.BytesUtils;
+
+//com/github/devnied/emvnfccard/utils/SimpleAsyncTask.java
 
 
 public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
@@ -99,14 +94,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         if (getIntent().getAction() == NfcAdapter.ACTION_TECH_DISCOVERED) {
             onNewIntent(getIntent());
         }
-
-        // Read card on launch
-        /*if (getIntent().getAction() == NfcAdapter.ACTION_TECH_DISCOVERED) {
-            onNewIntent(getIntent());
-            Intent intent = new Intent(this, ReadCardActivity.class);
-            startActivity(intent);
-        }*/
-
 
     }
 
