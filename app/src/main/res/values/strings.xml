@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Vasinn</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section1">Posi</string>
+    <string name="title_section2">Söluyfirlit</string>
+    <string name="title_section3">Útskrá</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
@@ -20,6 +20,7 @@
     <string name="card_reading_desc">reading...</string>
 
     <string name="action_settings">Stillingar</string>
+    <string name="action_logout">Útskrá</string>
     <string name="username_hint">Notendanafn</string>
     <string name="password_hint">Lykilorð</string>
     <string name="label_login">Innskráning</string>

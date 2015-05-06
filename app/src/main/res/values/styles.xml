@@ -5,4 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="LoginTheme">
+        <item name="android:background">#cccccc</item>
+    </style>
+
 </resources>

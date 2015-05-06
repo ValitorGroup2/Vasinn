@@ -121,7 +121,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                 .commit();
     }
 
-    public void logout(View view) {
+    public void logout() {
         // select your mode to be either private or public.
         int mode = Activity.MODE_PRIVATE;
 
@@ -151,7 +151,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                 mTitle = getString(R.string.title_section2);
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                // Logout the user
+                logout();
                 break;
         }
     }
@@ -184,9 +185,11 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id)
+        {
+            case R.id.action_logout:
+                logout();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -233,24 +236,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     protected void onResume() {
-        Toast.makeText(getApplicationContext(), "onResume keyrðist", Toast.LENGTH_LONG).show();
         mNfcUtils.enableDispatch();
 
         // Check NFC enable
@@ -282,7 +269,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     @Override
     protected void onPause() {
-        Toast.makeText(getApplicationContext(), "onPause keyrðist", Toast.LENGTH_LONG).show();
         super.onPause();
         mNfcUtils.disableDispatch();
     }
@@ -294,12 +280,10 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         if (mTag != null) {
 
             new SimpleAsyncTask() {
-
                 /**
                  * Tag comm
                  */
                 private IsoDep mTagcomm;
-
                 /**
                  * Emv Card
                  */
@@ -349,7 +333,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                         if (mCard != null) {
                             mCard.setAtrDescription(extractAtsDescription(lastAts));
                         }
-
                     } catch (IOException e) {
                         mException = true;
                     } finally {
@@ -390,8 +373,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                         temp +=getText(R.string.error_communication_nfc);
                     }
 
-
-
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
                     builder.setTitle("Lestur korts");
@@ -409,10 +390,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
                     refreshContent();
                 }
-
             }.execute();
         }
-
     }
 
     public void backToHomeScreen() {
@@ -463,23 +442,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     @Override
     public void onStart(){
         super.onStart();
-        Toast.makeText(getApplicationContext(), "onStart keyrðist", Toast.LENGTH_LONG).show();
     }
-
-   /* @Override
-    public StringBuffer getLog() {
-        return mProvider.getLog();
-    }
-
-    @Override
-    public EmvCard getCard() {
-        return mReadCard;
-    }
-
-    @Override
-    public void setRefreshableContent(final IRefreshable pRefreshable) {
-        mRefreshableContent = new WeakReference<IRefreshable>(pRefreshable);
-    }*/
 
     /**
      * Method used to clear data
