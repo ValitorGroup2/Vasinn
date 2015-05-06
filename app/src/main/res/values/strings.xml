@@ -7,7 +7,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
-    <string name="action_settings">Settings</string>
+
     <string name="title_activity_read_card">ReadCardActivity</string>
     <string name="card_reading">Les kort</string>
     <string name="error_communication_nfc">Villa átti sér stað við lestur korts</string>
@@ -19,5 +19,10 @@
     <string name="msg_info">Skilaboð</string>
     <string name="card_reading_desc">reading...</string>
 
-
+    <string name="action_settings">Stillingar</string>
+    <string name="username_hint">Notendanafn</string>
+    <string name="password_hint">Lykilorð</string>
+    <string name="label_login">Innskráning</string>
+    <string name="btn_login_text">Innskrá</string>
+    <string name="logo_name">logo</string>
 </resources>
