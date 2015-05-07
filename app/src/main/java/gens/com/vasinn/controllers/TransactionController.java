@@ -27,12 +27,6 @@ public class TransactionController {
         return transRepo.getRange(from, to);
     }
 
-    //returns the size of the repo
-    public int getSize(){
-
-        return transRepo.size();
-    }
-
     public Transaction findById(int id)
     {
         return transRepo.findById(id);
@@ -46,5 +40,9 @@ public class TransactionController {
     public void add(Transaction addMe)
     {
         transRepo.add(new Transaction(0, addMe.getDate(), addMe.getAmount(), addMe.getUserName()));
+    }
+
+    public int getSize() {
+        return transRepo.size();
     }
 }

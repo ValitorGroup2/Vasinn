@@ -22,7 +22,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.emvnfccard.provider.Provider;
@@ -41,8 +40,12 @@ import java.lang.ref.WeakReference;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.List;
 
 import fr.devnied.bitlib.BytesUtils;
+import gens.com.vasinn.controllers.TransactionController;
+import gens.com.vasinn.controllers.UserController;
+import gens.com.vasinn.repos.objects.Transaction;
 
 //com/github/devnied/emvnfccard/utils/SimpleAsyncTask.java
 
@@ -77,6 +80,20 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        VasiApplication vasi = ((VasiApplication) this.getApplication());
+        TransactionController transCon = vasi.getTransactionController();
+        UserController userCon = vasi.getUserController();
+
+        List<Transaction> range = transCon.getRange(0, 3);
+        String stuff = "";
+        for(int i = 0; i < range.size(); i++)
+        {
+            stuff += "\nid:"      + range.get(i).getId();
+            stuff += "\nTími:"    + range.get(i).getDateTimeString();
+            stuff += "\nUpphæð:"  + range.get(i).getAmount();
+            stuff += "\nNotandi:" + range.get(i).getUserName();
+        }
+
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -92,14 +109,30 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         if (getIntent().getAction() == NfcAdapter.ACTION_TECH_DISCOVERED) {
             onNewIntent(getIntent());
         }
+
     }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        Fragment objFragment = null;
+
+        switch (position) {
+            case 0:
+                objFragment = new PosiFragment();
+                break;
+            case 1:
+                objFragment = new SalesFragment();
+                break;
+            case 2:
+                objFragment = PlaceholderFragment.newInstance(position + 1);
+                logout();
+                break;
+        }
+
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, objFragment)
                 .commit();
     }
 
@@ -131,10 +164,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                // Logout the user
-                logout();
                 break;
         }
     }
@@ -172,12 +201,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
             case R.id.action_logout:
                 logout();
                 return true;
-
-
-            case R.id.action_transactions:
-                Intent intent = new Intent(this, TransactionsActivity.class);
-                startActivity(intent);
-                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -226,7 +249,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     @Override
     protected void onResume() {
-
         mNfcUtils.enableDispatch();
 
         // Check NFC enable
@@ -253,8 +275,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
             alertbox.setCancelable(false);
             mAlertDialog = alertbox.show();
         }
-
-
         super.onResume();
     }
 
@@ -433,9 +453,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     @Override
     public void onStart(){
         super.onStart();
-
-        TextView tvUpphaed = (TextView)findViewById(R.id.tViewUpphaed);
-        tvUpphaed.setText("10010 kr.");
     }
 
     /**

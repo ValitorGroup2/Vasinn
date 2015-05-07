@@ -56,42 +56,18 @@ public class TransactionRepo {
         transactions.add(new Transaction(id, addMe.getDate(), addMe.getAmount(), addMe.getUserName()));
     }
 
-    /*
-        from is a zero based index of the first transaction to put in the returned range
-        to is a zero based index of the last transaction to put in the returned range
-
-        to is allowed to be smaller than from.
+    /*  from og to are (til og með)
+        from is a zero based index of the first transaction to list
+        to is a zero based index of the first transaction to list
     */
     public List<Transaction> getRange(int from, int to){
-
-        if (from < 0) from = 0;
-        if (to < 0) to = 0;
-        int last = transactions.size() - 1;
-
-        if (last < 0)
-            return null;
-
-        if (from > last) from = last;
-        if (to  > last)  to = last;
+        if (from < 0 || to > transactions.size() - 1)
+            throw new IndexOutOfBoundsException("Transaction Range is out of bounds");
 
         List<Transaction> retTrans = new ArrayList<Transaction>();
 
-        if (from == to){
-            //only one record to return
-            retTrans.add(transactions.get(from));
-            return retTrans;
-            }
-
-        if (from < to){
-            for(int i = from; i < to + 1; i++) {
-                retTrans.add(transactions.get(i));
-            }
-        }
-        else{ //to is less than from
-            for(int i = from; i > to - 1; i--) {
-                retTrans.add(transactions.get(i));
-            }
-
+        for(int i = from; i < to + 1; i++) {
+            retTrans.add(transactions.get(i));
         }
 
         return retTrans;
