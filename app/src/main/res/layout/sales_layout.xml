@@ -14,5 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/lViewTransactions"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:listSelector="@drawable/list_color_selector"
+        />
 </RelativeLayout>

@@ -60,10 +60,15 @@ public class TransactionsAdapter extends ArrayAdapter {
             handler.tViewDate   = (TextView)row.findViewById(R.id.tViewRowDate);
             handler.tViewUser   = (TextView)row.findViewById(R.id.tViewRowUser);
             handler.tViewAmount = (TextView)row.findViewById(R.id.tViewRowAmount);
-            if (position % 2 == 0)
+
+            /*if ( (position % 2) == 0)
             {
-                row.setBackgroundColor(0xFF00FF00);
+                row.setBackgroundColor(0xcccccccc);
             }
+            else{
+                row.setBackgroundColor(0xFFFFFFFF);
+            }*/
+
             row.setTag(handler);
         }
         else{

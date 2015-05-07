@@ -35,15 +35,9 @@ public class SalesFragment extends Fragment {
         List<Transaction> range = transCon.getRange(transCon.getSize()-1, 0);
         adapter = new TransactionsAdapter(rootview.getContext(), R.layout.row_layout_transaction);
         listView.setAdapter(adapter);
-        String stuff = "";
         for(int i = 0; i < range.size(); i++)
         {
             adapter.add(range.get(i));
-            /*stuff += "\nid:"      + range.get(i).getId();
-            stuff += "\nTími:"    + range.get(i).getDateTimeString();
-            stuff += "\nUpphæð:"  + range.get(i).getAmount();
-            stuff += "\nNotandi:" + range.get(i).getUserName();*/
-
         }
 
         return rootview;

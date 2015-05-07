@@ -23,7 +23,9 @@ public class Transaction extends Object {
     }
     public String getAmountString() {
 
-        String ret = new Double(amount).toString();
+        String ret = new Double(amount).toString() + " kr.";
+
+
         return ret;
     }
 
