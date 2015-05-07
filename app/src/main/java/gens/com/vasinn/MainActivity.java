@@ -124,9 +124,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                 objFragment = new SalesFragment();
                 break;
             case 2:
-                objFragment = PlaceholderFragment.newInstance(position + 1);
-                logout();
-                break;
+                logoutConfirm();
+                return;
         }
 
         // update the main content by replacing fragments
@@ -136,7 +135,30 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                 .commit();
     }
 
-    public void logout() {
+    public void logoutConfirm() {
+        // Alert to check if user is sure about logging out
+        AlertDialog.Builder logoutAlert = new AlertDialog.Builder(this);
+        logoutAlert.setMessage("Ertu viss?")
+                .setTitle("Útskráning")
+                .setIcon(R.drawable.scan_card)
+                .setPositiveButton("Já", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        logout();
+                    }
+                })
+                .setNegativeButton("Hætta við", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        logoutAlert.show();
+    }
+
+    private void logout() {
         // select your mode to be either private or public.
         int mode = Activity.MODE_PRIVATE;
 
@@ -199,7 +221,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         switch(id)
         {
             case R.id.action_logout:
-                logout();
+                logoutConfirm();
                 return true;
         }
 
