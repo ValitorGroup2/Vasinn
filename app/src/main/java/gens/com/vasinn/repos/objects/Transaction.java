@@ -21,6 +21,13 @@ public class Transaction extends Object {
     public double getAmount() {
         return amount;
     }
+    public String getAmountString() {
+
+        String ret = new Double(amount).toString() + " kr.";
+
+
+        return ret;
+    }
 
     private double amount;
 
@@ -34,6 +41,9 @@ public class Transaction extends Object {
 
     public int getId() {
         return id;
+    }
+    public String getIdString() {
+        return Integer.toString(id);
     }
 
     public String getUserName() {

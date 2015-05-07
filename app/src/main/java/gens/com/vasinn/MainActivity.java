@@ -88,7 +88,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         String stuff = "";
         for(int i = 0; i < range.size(); i++)
         {
-            stuff += "\nid:"      + range.get(i).getId();
+            stuff += "\nid:"      + range.get(i).getIdString();
             stuff += "\nTími:"    + range.get(i).getDateTimeString();
             stuff += "\nUpphæð:"  + range.get(i).getAmount();
             stuff += "\nNotandi:" + range.get(i).getUserName();
