@@ -22,7 +22,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,12 +41,8 @@ import java.lang.ref.WeakReference;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.List;
 
 import fr.devnied.bitlib.BytesUtils;
-import gens.com.vasinn.controllers.TransactionController;
-import gens.com.vasinn.controllers.UserController;
-import gens.com.vasinn.repos.objects.Transaction;
 
 //com/github/devnied/emvnfccard/utils/SimpleAsyncTask.java
 
@@ -81,20 +76,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        VasiApplication vasi = ((VasiApplication) this.getApplication());
-        TransactionController transCon = vasi.getTransactionController();
-        UserController userCon = vasi.getUserController();
-
-        List<Transaction> range = transCon.getRange(transCon.getSize()-1, 0);
-        String stuff = "";
-        for(int i = 0; i < range.size(); i++)
-        {
-            stuff += "\nid:"      + range.get(i).getId();
-            stuff += "\nTími:"    + range.get(i).getDateTimeString();
-            stuff += "\nUpphæð:"  + range.get(i).getAmount();
-            stuff += "\nNotandi:" + range.get(i).getUserName();
-        }
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -191,6 +172,12 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
             case R.id.action_logout:
                 logout();
                 return true;
+
+
+            case R.id.action_transactions:
+                Intent intent = new Intent(this, TransactionsActivity.class);
+                startActivity(intent);
+                break;
         }
 
         return super.onOptionsItemSelected(item);

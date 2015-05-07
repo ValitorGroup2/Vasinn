@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="80dp"
+    android:background="#ffd0e6ff">
+
+    <TextView
+        android:id="@+id/tViewRowId"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:text="the ID string"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tViewRowDate"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:layout_toEndOf="@+id/tViewRowId"
+        android:text="The date string"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tViewRowUser"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:layout_toEndOf="@+id/tViewRowDate"
+        android:text="The user string"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tViewRowAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_alignParentRight="true"
+        android:text="100100 kr."
+        android:gravity="center" />
+    <View
+        android:layout_width="match_parent"
+        android:background="#ff13f1d3"
+        android:layout_height="2dp"
+        android:layout_below="@+id/tViewRowId"/>
+</RelativeLayout>

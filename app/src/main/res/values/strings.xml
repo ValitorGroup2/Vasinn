@@ -6,7 +6,7 @@
     <string name="title_section3">Útskrá</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">Example action</string>
+    <string name="action_help">Hjálp</string>
 
     <string name="title_activity_read_card">ReadCardActivity</string>
     <string name="card_reading">Les kort</string>
@@ -28,4 +28,6 @@
     <string name="logo_name">logo</string>
     <string name="btn_logout_text">Útskrá</string>
     <string name="label_scan_card">Berðu kortið upp að tækinu</string>
+    <string name="title_activity_transactions">YfirlitActivity</string>
+    <string name="action_transactions">Söluyfirlit</string>
 </resources>
