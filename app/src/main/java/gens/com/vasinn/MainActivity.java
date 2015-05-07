@@ -86,7 +86,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         TransactionController transCon = vasi.getTransactionController();
         UserController userCon = vasi.getUserController();
 
-        List<Transaction> range = transCon.getRange(0, 3);
+        List<Transaction> range = transCon.getRange(transCon.getSize()-1, 0);
         String stuff = "";
         for(int i = 0; i < range.size(); i++)
         {
@@ -108,12 +108,9 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         // init NfcUtils
         mNfcUtils = new NFCUtils(this);
 
-
-
         if (getIntent().getAction() == NfcAdapter.ACTION_TECH_DISCOVERED) {
             onNewIntent(getIntent());
         }
-
     }
 
     @Override
@@ -452,9 +449,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
         TextView tvUpphaed = (TextView)findViewById(R.id.tViewUpphaed);
         tvUpphaed.setText("10010 kr.");
-
-
-
     }
 
     /**
