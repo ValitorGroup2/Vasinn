@@ -1,8 +1,11 @@
 package gens.com.vasinn.repos.objects;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Gudjon on 6.5.2015.
@@ -23,10 +26,14 @@ public class Transaction extends Object {
     }
     public String getAmountString() {
 
-        String ret = new Double(amount).toString() + " kr.";
+        String ret;
 
+        DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();
+        symbols.setGroupingSeparator(' ');
 
-        return ret;
+        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("is", "IS", "")));
+
+        return df.format(amount) + " kr.";
     }
 
     private double amount;
