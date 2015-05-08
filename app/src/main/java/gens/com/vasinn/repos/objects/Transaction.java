@@ -21,12 +21,20 @@ public class Transaction extends Object {
     private int id;
     private String userName;
 
+    public String getCard() {
+        return card;
+    }
+
+    public void setCard(String card) {
+        this.card = card;
+    }
+
+    private String card;
+
     public double getAmount() {
         return amount;
     }
     public String getAmountString() {
-
-        String ret;
 
         DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();
         symbols.setGroupingSeparator(' ');
@@ -39,11 +47,16 @@ public class Transaction extends Object {
     private double amount;
 
 
-    public Transaction(int id, Date date, double amount, String userName) {
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public Transaction(int id, Date date, double amount, String userName, String card) {
         this.date = date;
         this.id = id;
         this.amount = amount;
         this.userName = userName;
+        this.card = card;
     }
 
     public int getId() {

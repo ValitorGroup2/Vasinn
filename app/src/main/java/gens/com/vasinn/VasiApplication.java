@@ -1,6 +1,7 @@
 package gens.com.vasinn;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 
 import gens.com.vasinn.controllers.TransactionController;
 import gens.com.vasinn.controllers.UserController;
@@ -26,6 +27,17 @@ public class VasiApplication extends Application{
 
     public UserController getUserController() {
         return userController;
+    }
+
+    public String getLoggedInUsername(){
+        SharedPreferences mySharedPreferences;
+
+        mySharedPreferences = getSharedPreferences(getString(R.string.VASINN_PREFERENCE), MODE_PRIVATE);
+
+        // Retrieve the saved values.
+        String ret = mySharedPreferences.getString(getString(R.string.VASINN_PREFERENCE_USERNAME), "");
+
+        return ret;
     }
 
 }

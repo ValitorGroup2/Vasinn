@@ -34,10 +34,10 @@ public class LoginActivity extends ActionBarActivity {
         int mode = Activity.MODE_PRIVATE;
 
         SharedPreferences mySharedPreferences;
-        mySharedPreferences = getSharedPreferences("vasinnPreference", mode);
+        mySharedPreferences = getSharedPreferences(getString(R.string.VASINN_PREFERENCE), mode);
 
         // Retrieve the saved values.
-        String un = mySharedPreferences.getString("myUsername", "");
+        String un = mySharedPreferences.getString(getString(R.string.VASINN_PREFERENCE_USERNAME), "");
 
         // TODO delete this shit
         Toast.makeText(getApplicationContext(), un, Toast.LENGTH_SHORT).show();
@@ -81,13 +81,14 @@ public class LoginActivity extends ActionBarActivity {
 
             // get the sharedPreference of your context.
             SharedPreferences mySharedPreferences;
-            mySharedPreferences = getSharedPreferences("vasinnPreference", mode);
+
+            mySharedPreferences = getSharedPreferences(getString(R.string.VASINN_PREFERENCE), mode);
 
             // retrieve an editor to modify the shared preferences
             SharedPreferences.Editor editor = mySharedPreferences.edit();
 
             // now store your primitive type values. In this case it is true, 1f and Hello! World
-            editor.putString("myUsername", userName);
+            editor.putString(getString(R.string.VASINN_PREFERENCE_USERNAME), userName);
 
             //save the changes that you made
             editor.commit();

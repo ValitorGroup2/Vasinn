@@ -32,14 +32,21 @@ public class TransactionController {
         return transRepo.findById(id);
     }
 
-    public void add(Date date, double amount, String userName) {
 
-        this.add(new Transaction(0, date, amount, userName));
+    //spurning um hvort skula leyfa aðgang að get i controller
+    public Transaction get(int position) {
+
+        return transRepo.get(position);
     }
 
-    public void add(Transaction addMe)
+
+    /*public Transaction add(Transaction addMe)
     {
-        transRepo.add(new Transaction(0, addMe.getDate(), addMe.getAmount(), addMe.getUserName()));
+        return transRepo.add(new Transaction(0, addMe.getDate(), addMe.getAmount(), addMe.getUserName(), addMe.getCard()));
+    }*/
+     public Transaction add(double amount, String userName, String card)
+    {
+        return transRepo.add(new Transaction(0, new Date(System.currentTimeMillis()), amount, userName, card));
     }
 
     public int getSize() {

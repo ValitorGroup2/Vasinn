@@ -32,4 +32,22 @@
     <string name="skra_value">Skrá upphæð</string>
     <string name="default_calculator_value">0</string>
     <string name="action_help">Titill Aegir</string>
+    <string name="TRANSACTION_KEY_ID">"gens.com.vasinn.TRANSACTION_KEY_ID</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_transaction">Framkvæmd gjaldfærsla</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="transaction_time">Tími:</string>
+    <string name="transaction_card">Gerð korts:</string>
+    <string name="transaction_amount">Upphæð:</string>
+    <string name="button_send_receipt">Senda kvittun</string>
+    <string name="button_send_report">Tilkynna</string>
+    <string name="button_refund">Bakfæra</string>
+    <string name="transaction_username">Starfsmaður:</string>
+    <string name="button_back">Til baka</string>
+    <string name="transaction_head_text">Upplysingar um gjaldfærslu</string>
+    <string name="VASINN_PREFERENCE">vasinnPreference</string>
+    <string name="VASINN_PREFERENCE_USERNAME">myUsername</string>
+
 </resources>

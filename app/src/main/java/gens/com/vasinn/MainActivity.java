@@ -164,13 +164,13 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
         // get the sharedPreference of your context.
         SharedPreferences mySharedPreferences;
-        mySharedPreferences = getSharedPreferences("vasinnPreference", mode);
+        mySharedPreferences = getSharedPreferences(getString(R.string.VASINN_PREFERENCE), mode);
 
         // retrieve an editor to modify the shared preferences
         SharedPreferences.Editor editor = mySharedPreferences.edit();
 
         // now store your primitive type values. In this case it is true, 1f and Hello! World
-        editor.putString("myUsername", "");
+        editor.putString(getString(R.string.VASINN_PREFERENCE_USERNAME), "");
 
         //save the changes that you made
         editor.commit();

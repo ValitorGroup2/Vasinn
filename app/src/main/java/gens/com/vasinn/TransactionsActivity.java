@@ -51,20 +51,6 @@ public class TransactionsActivity extends ActionBarActivity
 
         listView = (ListView)findViewById(R.id.lViewTransactions);
 
-        VasiApplication vasi = ((VasiApplication) this.getApplication());
-        TransactionController transCon = vasi.getTransactionController();
-
-        List<Transaction> range = transCon.getRange(transCon.getSize()-1, 0);
-        String stuff = "";
-        for(int i = 0; i < range.size(); i++)
-        {
-            /*stuff += "\nid:"      + range.get(i).getId();
-            stuff += "\nTími:"    + range.get(i).getDateTimeString();
-            stuff += "\nUpphæð:"  + range.get(i).getAmount();
-            stuff += "\nNotandi:" + range.get(i).getUserName();*/
-
-        }
-
     }
 
     @Override
