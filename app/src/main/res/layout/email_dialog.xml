@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/edtTextForgot"
+        android:hint="@string/email"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send"
+        android:id="@+id/btnForgotSend"
+        android:layout_below="@+id/edtTextForgot"
+        android:layout_alignStart="@+id/edtTextForgot" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lc_cancel"
+        android:id="@+id/btnForgotCancel"
+        android:layout_alignTop="@+id/btnForgotSend"
+        android:layout_toEndOf="@+id/btnForgotSend" />
+</RelativeLayout>

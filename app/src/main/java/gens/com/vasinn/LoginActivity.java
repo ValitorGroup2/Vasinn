@@ -1,6 +1,7 @@
 package gens.com.vasinn;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -98,7 +99,13 @@ public class LoginActivity extends ActionBarActivity {
             intent.putExtra(PASSWORD_KEY, password);
             startActivity(intent);
         } else {
-            Toast.makeText(getApplicationContext(), "Þú ert ekki skráður í kerfið, vinsamlegast skráðu þig á www.vasinn.is", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.user_doesnt_exist), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void forgotPassword(View view) {
+        FragmentManager manager = getFragmentManager();
+        EmailDialog emailDialog = new EmailDialog();
+        emailDialog.show(manager, "EmailDialog");
     }
 }

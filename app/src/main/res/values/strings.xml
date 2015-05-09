@@ -32,6 +32,17 @@
     <string name="skra_value">Skrá upphæð</string>
     <string name="default_calculator_value">0</string>
     <string name="action_help">Titill Aegir</string>
+    <string name="lc_question">Ertu viss?</string>
+    <string name="lc_title">Útskráning</string>
+    <string name="lc_yes">Já</string>
+    <string name="lc_cancel">Hætta við</string>
+    <string name="btn_forgot_text">Gleymt lykilorð</string>
+    <string name="email">Netfang</string>
+    <string name="send">Senda</string>
+    <string name="password_sent">Lykilorðið hefur verið sent</string>
+    <string name="password_sent_failure">Villa kom upp</string>
+    <string name="user_doesnt_exist">Þú ert ekki skráður í kerfið, vinsamlegast skráðu þig á www.vasinn.is</string>
+    <string name="forgot_emptyemail">Vinsamlegast sláðu inn netfangið þitt</string>
     <string name="TRANSACTION_KEY_ID">"gens.com.vasinn.TRANSACTION_KEY_ID</string>
 
 <!-- TODO: Remove or change this placeholder text -->
@@ -49,5 +60,4 @@
     <string name="transaction_head_text">Upplysingar um gjaldfærslu</string>
     <string name="VASINN_PREFERENCE">vasinnPreference</string>
     <string name="VASINN_PREFERENCE_USERNAME">myUsername</string>
-
 </resources>

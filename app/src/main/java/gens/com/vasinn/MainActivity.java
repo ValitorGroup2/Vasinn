@@ -138,17 +138,17 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     public void logoutConfirm() {
         // Alert to check if user is sure about logging out
         AlertDialog.Builder logoutAlert = new AlertDialog.Builder(this);
-        logoutAlert.setMessage("Ertu viss?")
-                .setTitle("Útskráning")
+        logoutAlert.setMessage(getString(R.string.lc_question))
+                .setTitle(getString(R.string.lc_title))
                 .setIcon(R.drawable.scan_card)
-                .setPositiveButton("Já", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.lc_yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         logout();
                     }
                 })
-                .setNegativeButton("Hætta við", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.lc_cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
