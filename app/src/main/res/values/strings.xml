@@ -9,7 +9,6 @@
     <string name="action_example">Example action</string>
 
     <string name="title_activity_read_card">ReadCardActivity</string>
-    <string name="card_reading">Les kort</string>
     <string name="error_communication_nfc">Villa átti sér stað við lestur korts</string>
     <string name="card_read">Kort hefur verið lesið</string>
     <string name="nfc_locked">Kort læst</string>
@@ -17,7 +16,8 @@
     <string name="msg_nfc_disable">NFC er ekki virkt</string>
     <string name="msg_activate_nfc">Virkji NFC</string>
     <string name="msg_info">Skilaboð</string>
-    <string name="card_reading_desc">reading...</string>
+    <string name="card_reading_title">Les kort</string>
+    <string name="card_reading_desc">Sæki upplýsingar...</string>
 
     <string name="action_settings">Stillingar</string>
     <string name="action_logout">Útskrá</string>
@@ -60,4 +60,7 @@
     <string name="transaction_head_text">Upplysingar um gjaldfærslu</string>
     <string name="VASINN_PREFERENCE">vasinnPreference</string>
     <string name="VASINN_PREFERENCE_USERNAME">myUsername</string>
+    <string name="VASINN_PREFERENCE_AMOUNT">vasinn_preference_amount</string>
+    <string name="VASINN_CALLING_CLASS">calling_class_name</string>
+
 </resources>

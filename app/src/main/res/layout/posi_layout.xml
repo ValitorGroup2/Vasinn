@@ -6,13 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editCalc"
-        android:text="@string/default_calculator_value"
+        android:text="0"
         android:gravity="right"
         android:editable="false"
         android:textSize="42sp"
-        android:textColor="#ffffffff"
-        android:textIsSelectable="true"
-        android:inputType="number" />
+        android:textColor="#ff000000"
+        android:textIsSelectable="true" />
 
     <Button
         android:layout_width="76dp"

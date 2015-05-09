@@ -39,5 +39,26 @@ public class VasiApplication extends Application{
 
         return ret;
     }
+    public float getChargedAmount(){
+        SharedPreferences mySharedPreferences;
+
+        mySharedPreferences = getSharedPreferences(getString(R.string.VASINN_PREFERENCE), MODE_PRIVATE);
+
+        // Retrieve the saved values.
+        float ret = mySharedPreferences.getFloat(getString(R.string.VASINN_PREFERENCE_AMOUNT), 0);
+
+
+        return ret;
+    }
+    public void setChargedAmount(float amount){
+        SharedPreferences sPrefs;
+
+        sPrefs = getSharedPreferences(getString(R.string.VASINN_PREFERENCE), MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sPrefs.edit();
+        editor.putFloat(getString(R.string.VASINN_PREFERENCE_AMOUNT), amount);
+        editor.commit();
+
+    }
 
 }

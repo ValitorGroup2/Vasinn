@@ -1,5 +1,6 @@
 package gens.com.vasinn;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -86,6 +87,21 @@ public class TransactionActivity extends ActionBarActivity {
     }
 
     public void onBackClick(View view) {
+
+        Bundle bundle = getIntent().getExtras();
+
+        if (bundle != null) {
+            String callingClassName =  bundle.getString(getString(R.string.VASINN_CALLING_CLASS));
+
+            this.getIntent().putExtra(getString(R.string.VASINN_CALLING_CLASS), "");
+            if (callingClassName != null && callingClassName.equals("gens.com.vasinn.MainActivity$4")){
+
+
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return;
+            }
+        }
         this.onBackPressed();
     }
 

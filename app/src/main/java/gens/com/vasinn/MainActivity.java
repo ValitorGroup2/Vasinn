@@ -40,11 +40,9 @@ import java.lang.ref.WeakReference;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.List;
+import java.util.Date;
 
 import fr.devnied.bitlib.BytesUtils;
-import gens.com.vasinn.controllers.TransactionController;
-import gens.com.vasinn.controllers.UserController;
 import gens.com.vasinn.repos.objects.Transaction;
 
 //com/github/devnied/emvnfccard/utils/SimpleAsyncTask.java
@@ -52,6 +50,8 @@ import gens.com.vasinn.repos.objects.Transaction;
 
 public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    Fragment objFragment = null;
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -74,25 +74,16 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     private ProgressDialog mDialog;
     private AlertDialog mAlertDialog;
 
+    VasiApplication vasi;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        vasi = (VasiApplication) this.getApplication();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        VasiApplication vasi = ((VasiApplication) this.getApplication());
-        TransactionController transCon = vasi.getTransactionController();
-        UserController userCon = vasi.getUserController();
-
-        List<Transaction> range = transCon.getRange(0, 3);
-        String stuff = "";
-        for(int i = 0; i < range.size(); i++)
-        {
-            stuff += "\nid:"      + range.get(i).getIdString();
-            stuff += "\nTími:"    + range.get(i).getDateTimeString();
-            stuff += "\nUpphæð:"  + range.get(i).getAmount();
-            stuff += "\nNotandi:" + range.get(i).getUserName();
-        }
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -105,6 +96,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
         // init NfcUtils
         mNfcUtils = new NFCUtils(this);
+        vasi.setChargedAmount(0);
 
         if (getIntent().getAction() == NfcAdapter.ACTION_TECH_DISCOVERED) {
             onNewIntent(getIntent());
@@ -114,7 +106,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        Fragment objFragment = null;
 
         switch (position) {
             case 0:
@@ -128,11 +119,17 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                 return;
         }
 
-        // update the main content by replacing fragments
+        FragmentReplace(objFragment);
+
+
+    }
+    // update the main content by replacing fragments
+    public void FragmentReplace(Fragment objFragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, objFragment)
                 .commit();
+
     }
 
     public void logoutConfirm() {
@@ -309,6 +306,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     @Override
     protected void onNewIntent(final Intent intent) {
         super.onNewIntent(intent);
+
+
         final Tag mTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         if (mTag != null) {
 
@@ -335,7 +334,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                     mProvider.getLog().setLength(0);
                     // Show dialog
                     if (mDialog == null) {
-                        mDialog = ProgressDialog.show(MainActivity.this, getString(R.string.card_reading),
+                        mDialog = ProgressDialog.show(MainActivity.this, getString(R.string.card_reading_title),
                                 getString(R.string.card_reading_desc), true, false);
                     } else {
                         mDialog.show();
@@ -354,6 +353,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                     mException = false;
 
                     try {
+                        if (vasi.getChargedAmount() == 0)
+                            return;
                         mReadCard = null;
                         // Open connection
                         mTagcomm.connect();
@@ -380,15 +381,22 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                     if (mDialog != null) {
                         mDialog.cancel();
                     }
+
+                    boolean isTransactionComplete = false;
+                    //todo: delete temp;
                     String temp = "";
+
                     if (!mException) {
+                        if (vasi.getChargedAmount() == 0 )
+                            return;
+
                         if (mCard != null) {
                             if (StringUtils.isNotBlank(mCard.getCardNumber())) {
                                 temp += getText(R.string.card_read);
-
+                                temp += "\nCard number:" + mCard.getCardNumber();
                                 temp += "\nCard Aid:" + mCard.getAid();
                                 temp += "\nProvider:" + mCard.getType();
-                                if (mCard.getExpireDate()!= null) {
+                                if (mCard.getExpireDate() != null) {
                                     DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
                                     temp += "\nExpires: " + df.format(mCard.getExpireDate());
                                 }
@@ -399,28 +407,58 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                                 temp += getText(R.string.nfc_locked);
                             }
                         } else {
-                            temp +=getText(R.string.error_card_unknown);
+                            temp += getText(R.string.error_card_unknown);
 
                         }
                     } else {
-                        temp +=getText(R.string.error_communication_nfc);
+                        temp += getText(R.string.error_communication_nfc);
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-                    builder.setTitle("Lestur korts");
-                    builder.setMessage(temp);
+                    Date now = new Date();
+                    if ((mCard != null)
+                            && (StringUtils.isNotBlank(mCard.getCardNumber()))
+                            ) {
 
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Do nothing but close the dialog
-                            dialog.dismiss();
+                        if (now.before(mCard.getExpireDate())) {
+                            temp += "\nCard is not expired: ";
+
+                            double amount = vasi.getChargedAmount();
+                            vasi.setChargedAmount(0);
+
+                            String strType ="";
+                            strType += mCard.getType();
+                            Transaction item = vasi.getTransactionController().add(amount, vasi.getLoggedInUsername(), strType );
+                            isTransactionComplete=true;
+                            Bundle bundle = new Bundle();
+                            bundle.putInt(getString(R.string.TRANSACTION_KEY_ID), item.getId());
+                            String str = this.getClass().getName();
+                            bundle.putString(getString(R.string.VASINN_CALLING_CLASS), str);
+                            Intent intent = new Intent(MainActivity.this, TransactionActivity.class);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                            return;
+
+
                         }
-                    });
 
-                    AlertDialog alert = builder.create();
-                    alert.show();
+                    }
+                    if (!isTransactionComplete)
+                    {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setTitle("Lestur korts");
+                        builder.setMessage(temp);
 
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Do nothing but close the dialog
+                                dialog.dismiss();
+                            }
+                        });
+
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    }
                     refreshContent();
                 }
             }.execute();
@@ -491,4 +529,14 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     public byte[] getLastAts() {
         return lastAts;
     }
+
+    public void btnClicked(View v){
+        ((PosiFragment)objFragment).btnClicked(v);
+
+    }
+    public void btnSaveValueClick(View v) {
+        ((PosiFragment) objFragment).btnSaveValueClick(v);
+
+    }
+
 }

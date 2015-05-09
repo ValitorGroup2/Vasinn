@@ -1,0 +1,30 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="gens.com.vasinn.CardReaderFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:text="Vinsamlegast berðu kortið upp að tækinu"
+        android:textSize="@dimen/abc_text_size_large_material"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/transaction_amount"
+        android:id="@+id/tViewReaderAmountDesc"
+        android:layout_gravity="left|center_vertical" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/tViewReaderAmount"
+        android:layout_toEndOf="@+id/tViewReaderAmountDesc"
+        android:layout_gravity="center" />
+
+
+
+</FrameLayout>
