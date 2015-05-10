@@ -83,35 +83,73 @@
         android:layout_alignTop="@+id/tViewTransactionAmountDesc"
         android:layout_toEndOf="@+id/tViewTransactionAmountDesc" />
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        
+        android:layout_below="@+id/tViewTransactionAmountDesc"
+        android:weightSum="2"
+        android:layout_marginTop="@dimen/dialog_padding_top"
+        android:id="@+id/linearLayoutTransaction1"
+        android:paddingTop="20dp">
+
     <Button
-        android:layout_width="@dimen/button_width_medium"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:text="@string/button_send_receipt"
         android:id="@+id/btnSendReceipt"
         android:onClick="onSendReceiptClick"
-        android:layout_below="@+id/tViewTransactionAmountDesc"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginRight="@dimen/button_default_margin"
+        android:background="@color/default_dialog_button_bg"
+        />
 
     <Button
-        android:layout_width="@dimen/button_width_medium"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:text="@string/button_send_report"
         android:id="@+id/btnSendReport"
         android:onClick="onSendReportClick"
-        android:layout_alignTop="@+id/btnSendReceipt"
-        android:layout_alignEnd="@+id/tViewTransactionTitle" />
+        android:layout_alignEnd="@+id/tViewTransactionTitle"
+        android:layout_marginLeft="@dimen/button_default_margin"
+        android:background="@color/default_dialog_button_bg"/>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayoutTransaction1"
+        android:weightSum="2"
+        android:layout_marginTop="@dimen/dialog_padding_top"
+        android:id="@+id/linearLayoutTransaction2">
 
     <Button
-        android:layout_width="@dimen/button_width_medium"
+
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:text="@string/button_refund"
         android:id="@+id/btnRefund"
-        android:layout_marginTop="30dp"
         android:onClick="onRefundClick"
-        android:layout_below="@+id/btnSendReceipt"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="@dimen/button_default_margin"
+        android:background="@color/default_dialog_button_bg"/>
 
+    <Button
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="@string/button_back"
+        android:id="@+id/btnTransactionBack"
+        android:onClick="onBackClick"
+        android:layout_marginLeft="@dimen/button_default_margin"
+        android:background="@color/default_dialog_button_bg"
+        android:layout_toEndOf="@+id/btnRefund"
+         />
+</LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -128,14 +166,7 @@
         android:layout_alignTop="@+id/tViewUserDesc"
         android:layout_alignStart="@+id/tViewTransactionCard" />
 
-    <Button
-        android:layout_width="@dimen/button_width_medium"
-        android:layout_height="wrap_content"
-        android:text="@string/button_back"
-        android:id="@+id/btnTransactionBack"
-        android:onClick="onBackClick"
-        android:layout_alignTop="@+id/btnRefund"
-        android:layout_alignStart="@+id/btnSendReport" />
+
 
 
 </RelativeLayout>

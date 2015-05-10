@@ -9,14 +9,14 @@ import javax.mail.MessagingException;
 class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
     Mail m = new Mail("vasigens@gmail.com", "luxusKaffi");
 
-    public SendEmailAsyncTask(String sendTo) {
+    public SendEmailAsyncTask(String sendTo, String lykilord) {
         if (BuildConfig.DEBUG) Log.v(SendEmailAsyncTask.class.getName(), "SendEmailAsyncTask()");
         String[] toArr = new String[1];
         toArr[0] = sendTo;
         m.setTo(toArr);
         m.setFrom("vasigens@gmail.com");
         m.setSubject("Gleymt lykilorð");
-        m.setBody("Lykilorðið þitt er: 123");
+        m.setBody("Lykilorðið þitt er: " + lykilord);
     }
 
     @Override

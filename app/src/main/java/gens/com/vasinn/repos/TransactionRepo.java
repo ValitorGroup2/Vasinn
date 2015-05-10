@@ -66,7 +66,7 @@ public class TransactionRepo {
         from is a zero based index of the first transaction to put in the returned range
         to is a zero based index of the last transaction to put in the returned range
 
-        to is allowed to be smaller than from.
+        to is allowed to be smaller than from, so you can get data descending.
     */
     public List<Transaction> getRange(int from, int to){
 

@@ -18,7 +18,16 @@ public class UserController {
     /* Checks if user can login, returns true if so, else false */
     public boolean loginUser(String username, String password) {
         List<User> users = userRepo.getUsers();
-        if (users.contains(new User(username, password)))   return true;
-        else                                                return false;
+        return users.contains(new User(username, password));
+    }
+
+    //returns null if userName is not found created by Gudjon 9.5.2015
+    public User findByName(String userNameToFind){
+        return userRepo.findByName(userNameToFind);
+    }
+
+    //returns null if userEmail is not found created by Gudjon 9.5.2015
+    public User findByEmail(String userEmailToFind){
+        return userRepo.findByEmail(userEmailToFind);
     }
 }

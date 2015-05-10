@@ -1,5 +1,6 @@
 package gens.com.vasinn;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -66,9 +67,8 @@ public class TransactionActivity extends ActionBarActivity {
     }
 
 
-    public void onRefundClick(View view) {
-        Toast.makeText(getApplicationContext(), "onRefundClick", Toast.LENGTH_SHORT).show();
-
+    public void refund()
+    {
         if (transaction.getAmount() > 0 ){
 
             transaction = transactionController.add(transaction.getAmount()* -1,
@@ -76,6 +76,15 @@ public class TransactionActivity extends ActionBarActivity {
                     transaction.getCard());
             loadTransaction(transaction);
         }
+    }
+    public void onRefundClick(View view) {
+
+        UserPasswordDialog dialog = UserPasswordDialog.newInstance(getString(R.string.get_user_password_title), transaction.getId());
+        dialog.show(getFragmentManager(), "UserPasswordDialog");
+/*
+*  CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), num);
+        ((MainActivity) this.getActivity()).FragmentReplace(fragment);*/
+
     }
 
     public void onSendReportClick(View view) {

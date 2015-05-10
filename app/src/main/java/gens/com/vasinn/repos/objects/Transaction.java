@@ -76,7 +76,7 @@ public class Transaction extends Object {
     }
 
     public String getDateTimeString() {
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         return df.format(this.date);
     }
 

@@ -253,8 +253,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
+            return inflater.inflate(R.layout.fragment_main, container, false);
         }
 
         @Override
@@ -281,7 +280,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
                 @Override
                 public void onClick(final DialogInterface dialog, final int which) {
-                    Intent intent = null;
+                    Intent intent;
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         intent = new Intent(Settings.ACTION_NFC_SETTINGS);
                     } else {
@@ -382,9 +381,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                         mDialog.cancel();
                     }
 
-                    boolean isTransactionComplete = false;
-                    //todo: delete temp;
-                    String temp = "";
+                    String strMessage = "";
 
                     if (!mException) {
                         if (vasi.getChargedAmount() == 0 )
@@ -392,26 +389,26 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
                         if (mCard != null) {
                             if (StringUtils.isNotBlank(mCard.getCardNumber())) {
-                                temp += getText(R.string.card_read);
-                                temp += "\nCard number:" + mCard.getCardNumber();
-                                temp += "\nCard Aid:" + mCard.getAid();
-                                temp += "\nProvider:" + mCard.getType();
+                                strMessage += getText(R.string.card_read);
+                                strMessage += "\nCard number:" + mCard.getCardNumber();
+                                strMessage += "\nCard Aid:" + mCard.getAid();
+                                strMessage += "\nProvider:" + mCard.getType();
                                 if (mCard.getExpireDate() != null) {
                                     DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-                                    temp += "\nExpires: " + df.format(mCard.getExpireDate());
+                                    strMessage += "\nExpires: " + df.format(mCard.getExpireDate());
                                 }
-                                temp += "\nPin tries left: " + mCard.getLeftPinTry();
+                                strMessage += "\nPin tries left: " + mCard.getLeftPinTry();
 
                                 mReadCard = mCard;
                             } else if (mCard.isNfcLocked()) {
-                                temp += getText(R.string.nfc_locked);
+                                strMessage += getText(R.string.nfc_locked);
                             }
                         } else {
-                            temp += getText(R.string.error_card_unknown);
+                            strMessage += getText(R.string.error_card_unknown);
 
                         }
                     } else {
-                        temp += getText(R.string.error_communication_nfc);
+                        strMessage += getText(R.string.error_communication_nfc);
                     }
 
 
@@ -421,7 +418,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                             ) {
 
                         if (now.before(mCard.getExpireDate())) {
-                            temp += "\nCard is not expired: ";
+                            //Card is not expired
 
                             double amount = vasi.getChargedAmount();
                             vasi.setChargedAmount(0);
@@ -429,7 +426,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                             String strType ="";
                             strType += mCard.getType();
                             Transaction item = vasi.getTransactionController().add(amount, vasi.getLoggedInUsername(), strType );
-                            isTransactionComplete=true;
                             Bundle bundle = new Bundle();
                             bundle.putInt(getString(R.string.TRANSACTION_KEY_ID), item.getId());
                             String str = this.getClass().getName();
@@ -438,16 +434,17 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
                             intent.putExtras(bundle);
                             startActivity(intent);
                             return;
-
-
+                        }
+                        else
+                        {
+                            strMessage = getString(R.string.card_is_expired);
                         }
 
                     }
-                    if (!isTransactionComplete)
-                    {
+                        //unable to read card.
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                         builder.setTitle("Lestur korts");
-                        builder.setMessage(temp);
+                        builder.setMessage(strMessage);
 
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -458,7 +455,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
                         AlertDialog alert = builder.create();
                         alert.show();
-                    }
+
                     refreshContent();
                 }
             }.execute();

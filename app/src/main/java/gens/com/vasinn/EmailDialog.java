@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import gens.com.vasinn.controllers.UserController;
+import gens.com.vasinn.repos.objects.User;
+
 /**
  * Created by Ægir Már Jónsson on 8.5.2015.
  */
@@ -36,19 +39,26 @@ public class EmailDialog extends DialogFragment implements View.OnClickListener 
         if (view.getId() == R.id.btnForgotSend) {
             // Send button was clicked
             String emailString = email.getText().toString();
-            // TODO: Validate that this email is registered and fetch the relevant password
-            // TODO: Make it more secure LOL
-            if (!emailString.isEmpty()) {
+            if (emailString.isEmpty())
+            {
+                Toast.makeText(getActivity(), getString(R.string.forgot_emptyemail), Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            VasiApplication vasi = ((VasiApplication) this.getActivity().getApplication());
+            UserController userController =vasi.getUserController();
+            User user = userController.findByEmail(emailString);
+            if (user !=null && user.getEmail().equals(emailString) ) {
                 try {
-                    new SendEmailAsyncTask(emailString).execute();
-                    Toast.makeText(getActivity(), getString(R.string.password_sent), Toast.LENGTH_SHORT).show();
+                    new SendEmailAsyncTask(emailString, user.getPassword()).execute();
+                    Toast.makeText(getActivity(), getString(R.string.password_sent), Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     e.getMessage();
-                    Toast.makeText(getActivity(), getString(R.string.password_sent_failure), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getString(R.string.password_sent_failure), Toast.LENGTH_LONG).show();
                 }
                 dismiss();
             } else {
-                Toast.makeText(getActivity(), getString(R.string.forgot_emptyemail), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), vasi.getString(R.string.email_not_registered), Toast.LENGTH_LONG).show();
             }
         } else if (view.getId() == R.id.btnForgotCancel) {
             // Cancel button was clicked
