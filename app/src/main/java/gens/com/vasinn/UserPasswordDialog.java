@@ -1,11 +1,13 @@
 package gens.com.vasinn;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,12 +50,14 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
         vasi = ((VasiApplication) this.getActivity().getApplication());
 
         if (getArguments() != null) {
-            mDialogTitle     = getArguments().getString(ARG_PARAM_TITLE);
+            mDialogTitle = getArguments().getString(ARG_PARAM_TITLE);
             mActionConstants = getArguments().getInt(ARG_PARAM_ACTION);
-            mAmount          = getArguments().getFloat(ARG_PARAM_AMOUNT);
+            mAmount = getArguments().getFloat(ARG_PARAM_AMOUNT);
         }
 
         getDialog().setTitle(mDialogTitle);
+        showKeyboard();
+
 
         return view;
     }
@@ -67,6 +71,15 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
         fragment.setArguments(args);
         return fragment;
     }
+    public void showKeyboard(){
+        edtPassword.requestFocus();
+        InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED,InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+    public void hideKeyboard(){
+        InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imgr.hideSoftInputFromWindow(edtPassword.getWindowToken(), 0);
+    }
 
     @Override
     public void onClick(View view) {
@@ -75,6 +88,9 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
             String passwordString = edtPassword.getText().toString();
             UserController userController =vasi.getUserController();
             User user = userController.findByName(vasi.getLoggedInUsername());
+
+            hideKeyboard();
+
 
             if (!passwordString.isEmpty() && user !=null && user.getPassword().equals(passwordString) ) {
 
@@ -96,6 +112,7 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
             }
         } else if (view.getId() == R.id.btnCancelPassword) {
             // Cancel button was clicked
+            hideKeyboard();
             dismiss();
         }
     }

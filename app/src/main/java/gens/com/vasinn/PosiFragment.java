@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,7 @@ import android.widget.Toast;
 public class PosiFragment extends Fragment{
 
     View rootview;
-
+    Button btnCharge;
     private EditText Src;
     private float NumberBf = 0;  //save screen before button press operation
     private String Operation ="";
@@ -34,6 +36,36 @@ public class PosiFragment extends Fragment{
 
         Src = (EditText)rootview.findViewById(R.id.editCalc);
 
+        btnCharge = (Button)rootview.findViewById(R.id.buttonSaveValue);
+        btnCharge.setEnabled(false);
+        Src.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                float fNum;
+                try {
+                    fNum = Float.parseFloat(Src.getText().toString());
+                }
+                catch(Exception e)
+                {
+
+                    fNum = 0; //an error
+                }
+
+                btnCharge.setEnabled(fNum != 0);
+            }
+        });
+//btnCharge
         return rootview;
     }
 
