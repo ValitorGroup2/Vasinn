@@ -123,7 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayoutTransaction1"
         android:weightSum="2"
-        android:layout_marginTop="@dimen/dialog_padding_top"
+        android:layout_marginTop="10dp"
         android:id="@+id/linearLayoutTransaction2">
 
     <Button
@@ -135,7 +135,6 @@
         android:id="@+id/btnRefund"
         android:onClick="onRefundClick"
         android:layout_alignParentStart="true"
-        android:layout_marginRight="@dimen/button_default_margin"
         style="@style/buttonDefault"/>
 
     <Button
@@ -145,7 +144,6 @@
         android:text="@string/button_back"
         android:id="@+id/btnTransactionBack"
         android:onClick="onBackClick"
-        android:layout_marginLeft="@dimen/button_default_margin"
         style="@style/buttonDefault"
         android:layout_toEndOf="@+id/btnRefund"
          />

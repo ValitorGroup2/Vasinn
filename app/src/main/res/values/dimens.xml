@@ -8,6 +8,6 @@
     <dimen name="navigation_drawer_width">240dp</dimen>
     <dimen name="button_width_medium">140dp</dimen>
     <dimen name="textSizeDialogTitle">20sp</dimen>
-    <dimen name="dialog_padding_top">25dp</dimen>
+    <dimen name="dialog_padding_top">20dp</dimen>
     <dimen name="button_default_margin">1dp</dimen>
 </resources>

@@ -32,6 +32,7 @@
 
     <style name="buttonDefault">
         <item name="android:background">@drawable/button_default</item>
+        <item name="android:layout_margin">5dp</item>
 
     </style>
 
