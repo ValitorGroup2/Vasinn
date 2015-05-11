@@ -1,5 +1,6 @@
 package gens.com.vasinn.controllers;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -57,5 +58,19 @@ public class TransactionController {
 
     public int getSize() {
         return transRepo.size();
+    }
+
+    public List<Transaction> getRangeByUser(int from, int to, String loggedInUsername) {
+        List<Transaction> allTrans = transRepo.getRange(from, to);
+        List<Transaction> myTrans = new ArrayList<>();
+
+        for (int i = 0; i < allTrans.size(); i++) {
+            Transaction currTrans = allTrans.get(i);
+            if (allTrans.get(i).getUserName().equals(loggedInUsername)) {
+                myTrans.add(currTrans);
+            }
+        }
+
+        return myTrans;
     }
 }

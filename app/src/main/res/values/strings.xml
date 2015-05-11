@@ -70,7 +70,7 @@
     <string name="email_forgot_password_subject">Gleymt lykilorð</string>
     <string name="email_forgot_password_body_before">Lykilorðið þitt er: </string>
     <string name="email_forgot_password_body_after">.</string>
-    <string name="transactions_title">Söluyfirlit</string>
+    <string name="transactions_title">Mitt Söluyfirlit</string>
 
 
 </resources>

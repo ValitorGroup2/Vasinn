@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -58,7 +56,7 @@ public class SalesFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        loadTransactons();
+        loadTransactions();
     }
 
     @Nullable
@@ -67,10 +65,11 @@ public class SalesFragment extends Fragment {
         return super.getView();
     }
 
-    public void loadTransactons(){
+    public void loadTransactions(){
 
         TransactionController transCon = vasi.getTransactionController();
-        List<Transaction> range = transCon.getRange(transCon.getSize()-1, 0);
+        //List<Transaction> range = transCon.getRange(transCon.getSize()-1, 0);
+        List<Transaction> range = transCon.getRangeByUser(transCon.getSize()-1, 0, vasi.getLoggedInUsername());
         adapter = new TransactionsAdapter(rootview.getContext(), R.layout.row_layout_transaction);
         listView.setAdapter(adapter);
         for(int i = 0; i < range.size(); i++)
