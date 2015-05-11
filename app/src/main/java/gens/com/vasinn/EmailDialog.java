@@ -1,11 +1,13 @@
 package gens.com.vasinn;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,9 +29,12 @@ public class EmailDialog extends DialogFragment implements View.OnClickListener 
         send = (Button) view.findViewById(R.id.btnForgotSend);
         cancel = (Button) view.findViewById(R.id.btnForgotCancel);
         email = (EditText) view.findViewById(R.id.edtTextForgot);
-        email.requestFocus();
         send.setOnClickListener(this);
         cancel.setOnClickListener(this);
+
+        email.requestFocus();
+        InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
         return view;
     }

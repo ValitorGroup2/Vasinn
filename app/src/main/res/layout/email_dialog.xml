@@ -10,7 +10,8 @@
         android:id="@+id/edtTextForgot"
         android:hint="@string/email"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:focusable="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
