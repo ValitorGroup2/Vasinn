@@ -89,22 +89,21 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
             UserController userController =vasi.getUserController();
             User user = userController.findByName(vasi.getLoggedInUsername());
 
-            hideKeyboard();
-
-
             if (!passwordString.isEmpty() && user !=null && user.getPassword().equals(passwordString) ) {
 
                 switch (mActionConstants)
                 {
                     case ActionConstants.ACTION_MAIN_REFUND:
                         ((TransactionActivity)this.getActivity()).refund();
+                        break;
                     case ActionConstants.ACTION_MAIN_CHARGE:
                         CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), mAmount);
                         ((MainActivity) this.getActivity()).FragmentReplace(fragment);
+                        break;
 
-                    break;
                 }
 
+                hideKeyboard();
                 dismiss();
 
             } else {
