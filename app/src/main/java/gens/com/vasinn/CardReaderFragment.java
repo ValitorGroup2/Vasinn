@@ -140,7 +140,9 @@ public class CardReaderFragment extends Fragment {
         // Retrieve the saved values.
         float ret = mySharedPreferences.getFloat(getString(R.string.VASINN_PREFERENCE_AMOUNT), 0);
         //mySharedPreferences.edit().putFloat(getString(R.string.VASINN_PREFERENCE_AMOUNT), 0);*/
-        ((TextView)getView().findViewById(R.id.tViewReaderAmount)).setText(amountToString(mParamAmount));
+        String text = getString(R.string.transaction_amount) + " ";
+        text+=amountToString(mParamAmount);
+        ((TextView)getView().findViewById(R.id.tViewReaderAmount)).setText(text);
 
     }
 

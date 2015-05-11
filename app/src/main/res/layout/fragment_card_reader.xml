@@ -1,30 +1,49 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="gens.com.vasinn.CardReaderFragment">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gens.com.vasinn.CardReaderFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="Vinsamlegast berðu kortið upp að tækinu"
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/card_reader_text_ask_for_card"
         android:textSize="@dimen/abc_text_size_large_material"
-        />
+        android:id="@+id/tViewCardReaderText"
+        android:paddingTop="@dimen/dialog_padding_top"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/imageViewCardReader"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/transaction_amount"
-        android:id="@+id/tViewReaderAmountDesc"
-        android:layout_gravity="left|center_vertical" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/tViewReaderAmount"
-        android:layout_toEndOf="@+id/tViewReaderAmountDesc"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        style="@style/BigAmount"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp" />
+
+    <ImageView
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:id="@+id/imageViewCardReader"
+        android:src="@mipmap/ic_image_card_reader"
+        android:layout_below="@+id/tViewReaderAmount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:layout_width="@dimen/button_width_medium"
+        android:layout_height="wrap_content"
+        android:text="@string/lc_cancel"
+        android:id="@+id/buttonCardReaderCancel"
+        android:onClick="onButtonCardReaderCancel"
+        style="@style/buttonDefault"
+        android:layout_below="@+id/tViewCardReaderText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
 
-
-</FrameLayout>
+</RelativeLayout>

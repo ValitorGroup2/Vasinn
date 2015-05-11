@@ -102,7 +102,7 @@
         android:onClick="onSendReceiptClick"
         android:layout_alignParentStart="true"
         android:layout_marginRight="@dimen/button_default_margin"
-        android:background="@color/default_dialog_button_bg"
+        style="@style/buttonDefault"
         />
 
     <Button
@@ -114,7 +114,7 @@
         android:onClick="onSendReportClick"
         android:layout_alignEnd="@+id/tViewTransactionTitle"
         android:layout_marginLeft="@dimen/button_default_margin"
-        android:background="@color/default_dialog_button_bg"/>
+        style="@style/buttonDefault"/>
 
 </LinearLayout>
 
@@ -136,7 +136,7 @@
         android:onClick="onRefundClick"
         android:layout_alignParentStart="true"
         android:layout_marginRight="@dimen/button_default_margin"
-        android:background="@color/default_dialog_button_bg"/>
+        style="@style/buttonDefault"/>
 
     <Button
         android:layout_width="0dp"
@@ -146,7 +146,7 @@
         android:id="@+id/btnTransactionBack"
         android:onClick="onBackClick"
         android:layout_marginLeft="@dimen/button_default_margin"
-        android:background="@color/default_dialog_button_bg"
+        style="@style/buttonDefault"
         android:layout_toEndOf="@+id/btnRefund"
          />
 </LinearLayout>

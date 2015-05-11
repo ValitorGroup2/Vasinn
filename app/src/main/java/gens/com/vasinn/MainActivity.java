@@ -225,6 +225,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -535,6 +537,10 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     public void btnSaveValueClick(View v) {
         ((PosiFragment) objFragment).btnSaveValueClick(v);
 
+    }
+
+    public void onButtonCardReaderCancel(View view) {
+        this.onBackPressed();
     }
 
 }

@@ -153,5 +153,9 @@ public class TransactionActivity extends ActionBarActivity {
         }
     }
 
+    public void onButtonCardReaderCancel(View view) {
+        this.onBackPressed();
+    }
+
 
 }
