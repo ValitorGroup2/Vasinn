@@ -50,7 +50,12 @@ public class EmailDialog extends DialogFragment implements View.OnClickListener 
             User user = userController.findByEmail(emailString);
             if (user !=null && user.getEmail().equals(emailString) ) {
                 try {
-                    new SendEmailAsyncTask(emailString, "Gleymt lykilorð", "Lykilorðið þitt er: "  + user.getPassword()).execute();
+                    new SendEmailAsyncTask(emailString,
+                            getString(R.string.email_forgot_password_subject),
+                            getString(R.string.email_forgot_password_body_before)  + user.getPassword()
+                                    + getString(R.string.email_forgot_password_body_after)
+                    ).execute();
+
                     Toast.makeText(getActivity(), getString(R.string.password_sent), Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     e.getMessage();

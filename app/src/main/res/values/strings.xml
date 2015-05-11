@@ -67,5 +67,10 @@
     <string name="password_title">Vinsamlegast sláðu inn lykilorð</string>
     <string name="get_user_password_title">Sláðu inn lykilorð</string>
     <string name="email_not_registered">Þetta netfang er er óskráð</string>
+    <string name="email_forgot_password_subject">Gleymt lykilorð</string>
+    <string name="email_forgot_password_body_before">Lykilorðið þitt er: </string>
+    <string name="email_forgot_password_body_after">.</string>
+
+
 
 </resources>
