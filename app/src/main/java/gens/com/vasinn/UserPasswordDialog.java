@@ -71,11 +71,13 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
         fragment.setArguments(args);
         return fragment;
     }
+
     public void showKeyboard(){
         edtPassword.requestFocus();
         InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED,InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
+
     public void hideKeyboard(){
         InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imgr.hideSoftInputFromWindow(edtPassword.getWindowToken(), 0);
@@ -91,6 +93,7 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
 
             if (!passwordString.isEmpty() && user !=null && user.getPassword().equals(passwordString) ) {
 
+                hideKeyboard();
                 switch (mActionConstants)
                 {
                     case ActionConstants.ACTION_MAIN_REFUND:
@@ -100,10 +103,7 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
                         CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), mAmount);
                         ((MainActivity) this.getActivity()).FragmentReplace(fragment);
                         break;
-
                 }
-
-                hideKeyboard();
                 dismiss();
 
             } else {
@@ -115,6 +115,4 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
             dismiss();
         }
     }
-
-
 }

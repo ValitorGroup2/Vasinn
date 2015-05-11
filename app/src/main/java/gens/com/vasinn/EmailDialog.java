@@ -31,10 +31,7 @@ public class EmailDialog extends DialogFragment implements View.OnClickListener 
         email = (EditText) view.findViewById(R.id.edtTextForgot);
         send.setOnClickListener(this);
         cancel.setOnClickListener(this);
-
-        email.requestFocus();
-        InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+        showKeyboard();
 
         return view;
     }
@@ -66,13 +63,26 @@ public class EmailDialog extends DialogFragment implements View.OnClickListener 
                     e.getMessage();
                     Toast.makeText(getActivity(), getString(R.string.password_sent_failure), Toast.LENGTH_LONG).show();
                 }
+                hideKeyboard();
                 dismiss();
             } else {
                 Toast.makeText(getActivity(), vasi.getString(R.string.email_not_registered), Toast.LENGTH_LONG).show();
             }
         } else if (view.getId() == R.id.btnForgotCancel) {
             // Cancel button was clicked
+            hideKeyboard();
             dismiss();
         }
+    }
+
+    public void showKeyboard(){
+        email.requestFocus();
+        InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED,InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
+    public void hideKeyboard(){
+        InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imgr.hideSoftInputFromWindow(email.getWindowToken(), 0);
     }
 }
