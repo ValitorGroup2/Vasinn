@@ -16,10 +16,10 @@ public class UserRepo {
         users.add(new User("aegir",   "123", "aegir13@ru.is"));
         users.add(new User("liljar",  "123", "liljar11@ru.is"));
         users.add(new User("gudjon",  "123", "gudjon02@ru.is"));
-        users.add(new User("gudny",   "123", ""));
+        users.add(new User("gudny",   "123", "gudnyoskg@gmail.com"));
         users.add(new User("karl",    "123", "karlb12@ru.is"));
-        users.add(new User("trausti", "123", ""));
-        users.add(new User("gretar",  "123", ""));
+        users.add(new User("trausti", "123", "traustie09@ru.is"));
+        users.add(new User("gretar",  "123", "grellinn@gmail.com"));
     }
 
     public List<User> getUsers() {

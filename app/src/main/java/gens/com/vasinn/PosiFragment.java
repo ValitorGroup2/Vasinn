@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -243,9 +244,17 @@ public class PosiFragment extends Fragment{
             Toast.makeText(rootview.getContext(), "Ekki tókst að skrá töluna " + Float.toString(num), Toast.LENGTH_SHORT).show();
             return;
         }
-        CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), num);
-        ((MainActivity) this.getActivity()).FragmentReplace(fragment);
 
+        if(num < 0) {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            UserPasswordDialog dialog = UserPasswordDialog.newInstance(getString(R.string.get_user_password_title), ActionConstants.ACTION_MAIN_CHARGE, num);
+            dialog.show(getActivity().getFragmentManager(), "UserPasswordDialog");
+        }
+        else {
+
+            CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), num);
+            ((MainActivity) this.getActivity()).FragmentReplace(fragment);
+        }
     }
 
 }

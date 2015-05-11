@@ -1,6 +1,7 @@
 package gens.com.vasinn;
 
 import android.app.FragmentManager;
+import android.app.Notification;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -66,7 +67,17 @@ public class TransactionActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void charge() {
+        if (transaction.getAmount() != 0 ){
+            Transaction oldTransaction = transaction;
+            transaction = transactionController.add(transaction.getAmount(),
+                    ((VasiApplication) this.getApplication()).getLoggedInUsername(),
+                    transaction.getCard(), transaction.getAmount() > 0);
 
+            loadTransaction(transaction);
+        }
+
+    }
     public void refund()
     {
         if (transaction.getAmount() != 0 ){
@@ -82,7 +93,7 @@ public class TransactionActivity extends ActionBarActivity {
     }
     public void onRefundClick(View view) {
 
-        UserPasswordDialog dialog = UserPasswordDialog.newInstance(getString(R.string.get_user_password_title), transaction.getId());
+        UserPasswordDialog dialog = UserPasswordDialog.newInstance(getString(R.string.get_user_password_title), ActionConstants.ACTION_MAIN_REFUND, (float)transaction.getAmount());
         dialog.show(getFragmentManager(), "UserPasswordDialog");
 /*
 *  CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), num);
@@ -141,4 +152,6 @@ public class TransactionActivity extends ActionBarActivity {
             ((TextView)findViewById(R.id.tViewTransactionUsername)).setText("Færsla fannst ekki");
         }
     }
+
+
 }

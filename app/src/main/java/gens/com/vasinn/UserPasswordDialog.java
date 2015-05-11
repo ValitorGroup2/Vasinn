@@ -3,7 +3,6 @@ package gens.com.vasinn;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +17,23 @@ import gens.com.vasinn.repos.objects.User;
  * Created by Gudjon on 9.5.2015.
  */
 public class UserPasswordDialog extends DialogFragment implements View.OnClickListener {
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM_TITLE = "param1";
+    private static final String ARG_PARAM_ACTION = "param2";
+    private static final String ARG_PARAM_AMOUNT = "param3";
+
 
     Button btnConfirm, btnCancel;
     EditText edtPassword;
     VasiApplication vasi;
-    String mParam1;
-    int mTransactionID;
+    String mDialogTitle;
+    int mActionConstants;
+    float mAmount;
+
+    @Override
+    public void show(android.app.FragmentManager manager, String tag) {
+        super.show(manager, tag);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,20 +48,22 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
         vasi = ((VasiApplication) this.getActivity().getApplication());
 
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mTransactionID = getArguments().getInt(ARG_PARAM2);
+            mDialogTitle     = getArguments().getString(ARG_PARAM_TITLE);
+            mActionConstants = getArguments().getInt(ARG_PARAM_ACTION);
+            mAmount          = getArguments().getFloat(ARG_PARAM_AMOUNT);
         }
 
-        getDialog().setTitle(mParam1);
+        getDialog().setTitle(mDialogTitle);
 
         return view;
     }
 
-    public static UserPasswordDialog newInstance(String strDialogTitle, int transactionID) {
+    public static UserPasswordDialog newInstance(String strDialogTitle, int inActionConstants, float amount) {
         UserPasswordDialog fragment = new UserPasswordDialog();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, strDialogTitle);
-        args.putInt(ARG_PARAM2, transactionID);
+        args.putString(ARG_PARAM_TITLE, strDialogTitle);
+        args.putInt(ARG_PARAM_ACTION, inActionConstants);
+        args.putFloat(ARG_PARAM_AMOUNT, amount);
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,11 +77,22 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
             User user = userController.findByName(vasi.getLoggedInUsername());
 
             if (!passwordString.isEmpty() && user !=null && user.getPassword().equals(passwordString) ) {
-                ((TransactionActivity)this.getActivity()).refund();
+
+                switch (mActionConstants)
+                {
+                    case ActionConstants.ACTION_MAIN_REFUND:
+                        ((TransactionActivity)this.getActivity()).refund();
+                    case ActionConstants.ACTION_MAIN_CHARGE:
+                        CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), mAmount);
+                        ((MainActivity) this.getActivity()).FragmentReplace(fragment);
+
+                    break;
+                }
+
                 dismiss();
 
             } else {
-                Toast.makeText(getActivity(), "username and password do NOT match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), vasi.getString(R.string.username_and_password_do_not_match), Toast.LENGTH_SHORT).show();
             }
         } else if (view.getId() == R.id.btnCancelPassword) {
             // Cancel button was clicked
