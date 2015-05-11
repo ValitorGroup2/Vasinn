@@ -69,11 +69,14 @@ public class TransactionActivity extends ActionBarActivity {
 
     public void refund()
     {
-        if (transaction.getAmount() > 0 ){
-
+        if (transaction.getAmount() != 0 ){
+            Transaction oldTransaction = transaction;
             transaction = transactionController.add(transaction.getAmount()* -1,
-                    ((VasiApplication) this.getApplication()).getLoggedInUsername(),
-                    transaction.getCard());
+            ((VasiApplication) this.getApplication()).getLoggedInUsername(),
+            transaction.getCard(), false);
+            oldTransaction.setIsRefundable(false);
+            transactionController.updateTransaction(oldTransaction); //make old transaction un-refundable to prevent double booking
+
             loadTransaction(transaction);
         }
     }
@@ -126,10 +129,8 @@ public class TransactionActivity extends ActionBarActivity {
             ((TextView)findViewById(R.id.tViewTransactionAmount)).setText(transaction.getAmountString());
             ((TextView)findViewById(R.id.tViewTransactionUsername)).setText(transaction.getUserName());
 
-            if(transaction.getAmount() < 0)
-            {
-                ((Button)findViewById(R.id.btnRefund)).setEnabled(false);
-            }
+            ((Button)findViewById(R.id.btnRefund)).setEnabled(transaction.isRefundable());
+
 
         }
         else{

@@ -425,7 +425,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
                             String strType ="";
                             strType += mCard.getType();
-                            Transaction item = vasi.getTransactionController().add(amount, vasi.getLoggedInUsername(), strType );
+                            boolean isRefundable = (amount > 0);
+                            Transaction item = vasi.getTransactionController().add(amount, vasi.getLoggedInUsername(), strType, isRefundable);
                             Bundle bundle = new Bundle();
                             bundle.putInt(getString(R.string.TRANSACTION_KEY_ID), item.getId());
                             String str = this.getClass().getName();

@@ -33,10 +33,16 @@ public class TransactionController {
     }
 
 
-    //spurning um hvort skula leyfa aðgang að get i controller
     public Transaction get(int position) {
 
         return transRepo.get(position);
+    }
+    public boolean updateTransaction(Transaction updateMe) {
+        Transaction old = transRepo.get(updateMe.getId());
+        if (old == null)
+            return false;
+
+        return transRepo.set(updateMe);
     }
 
 
@@ -44,9 +50,9 @@ public class TransactionController {
     {
         return transRepo.add(new Transaction(0, addMe.getDate(), addMe.getAmount(), addMe.getUserName(), addMe.getCard()));
     }*/
-     public Transaction add(double amount, String userName, String card)
+     public Transaction add(double amount, String userName, String card, boolean isRefundabble)
     {
-        return transRepo.add(new Transaction(0, new Date(System.currentTimeMillis()), amount, userName, card));
+        return transRepo.add(new Transaction(0, new Date(System.currentTimeMillis()), amount, userName, card, isRefundabble));
     }
 
     public int getSize() {

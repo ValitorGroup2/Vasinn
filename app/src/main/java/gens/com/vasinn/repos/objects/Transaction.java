@@ -20,6 +20,7 @@ public class Transaction extends Object {
     private Date date;
     private int id;
     private String userName;
+    private boolean isRefundable;
 
     public String getCard() {
         return card;
@@ -51,12 +52,13 @@ public class Transaction extends Object {
         this.amount = amount;
     }
 
-    public Transaction(int id, Date date, double amount, String userName, String card) {
+    public Transaction(int id, Date date, double amount, String userName, String card, boolean isRefundable) {
         this.date = date;
         this.id = id;
         this.amount = amount;
         this.userName = userName;
         this.card = card;
+        this.isRefundable = isRefundable;
     }
 
     public int getId() {
@@ -70,10 +72,6 @@ public class Transaction extends Object {
         return userName;
     }
 
-    public String getDateString() {
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-        return df.format(this.date);
-    }
 
     public String getDateTimeString() {
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
@@ -93,5 +91,13 @@ public class Transaction extends Object {
                 this.date.equals(his.date) &&
                 this.id == his.id &&
                 this.userName.equals(his.userName);
+    }
+
+    public boolean isRefundable() {
+        return isRefundable;
+    }
+
+    public void setIsRefundable(boolean isRefundable) {
+        this.isRefundable = isRefundable;
     }
 }
