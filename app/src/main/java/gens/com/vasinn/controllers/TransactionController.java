@@ -14,6 +14,17 @@ import gens.com.vasinn.repos.objects.Transaction;
 public class TransactionController {
     private TransactionRepo transRepo;
 
+    //add a transaction fake delay to reprecent the delay, when taalking to a real server
+
+    private void fakeDelay(){
+        try {
+            //todo: to simulate transaction delay dlgWait
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public TransactionController() {
         transRepo = new TransactionRepo();
     }
@@ -39,6 +50,9 @@ public class TransactionController {
         return transRepo.get(position);
     }
     public boolean updateTransaction(Transaction updateMe) {
+
+        fakeDelay();
+
         Transaction old = transRepo.get(updateMe.getId());
         if (old == null)
             return false;
@@ -53,6 +67,7 @@ public class TransactionController {
     }*/
      public Transaction add(double amount, String userName, String card, boolean isRefundabble)
     {
+        fakeDelay();
         return transRepo.add(new Transaction(0, new Date(System.currentTimeMillis()), amount, userName, card, isRefundabble));
     }
 
