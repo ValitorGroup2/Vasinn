@@ -1,6 +1,11 @@
 package gens.com.vasinn.activities;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import gens.com.vasinn.R;
+import gens.com.vasinn.dialogs.HelpDialog;
 import gens.com.vasinn.dialogs.UserPasswordDialog;
 import gens.com.vasinn.VasiApplication;
 import gens.com.vasinn.constants.ActionConstants;
@@ -62,8 +68,16 @@ public class TransactionActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id)
+        {
+            case R.id.action_logout:
+                logoutConfirm();
+                return true;
+            case R.id.action_help:
+                FragmentManager manager = getFragmentManager();
+                HelpDialog helpDialog = new HelpDialog();
+                helpDialog.show(manager, "HelpDialog");
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -159,5 +173,48 @@ public class TransactionActivity extends ActionBarActivity {
         this.onBackPressed();
     }
 
+    public void logoutConfirm() {
+        // Alert to check if user is sure about logging out
+        AlertDialog.Builder logoutAlert = new AlertDialog.Builder(this);
+        logoutAlert.setMessage(getString(R.string.lc_question))
+                .setTitle(getString(R.string.lc_title))
+                .setIcon(R.drawable.scan_card)
+                .setPositiveButton(getString(R.string.lc_yes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        logout();
+                    }
+                })
+                .setNegativeButton(getString(R.string.lc_cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        logoutAlert.show();
+    }
+
+    private void logout() {
+        // select your mode to be either private or public.
+        int mode = Activity.MODE_PRIVATE;
+
+        // get the sharedPreference of your context.
+        SharedPreferences mySharedPreferences;
+        mySharedPreferences = getSharedPreferences(getString(R.string.VASINN_PREFERENCE), mode);
+
+        // retrieve an editor to modify the shared preferences
+        SharedPreferences.Editor editor = mySharedPreferences.edit();
+
+        // now store your primitive type values. In this case it is true, 1f and Hello! World
+        editor.putString(getString(R.string.VASINN_PREFERENCE_USERNAME), "");
+
+        //save the changes that you made
+        editor.commit();
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 
 }

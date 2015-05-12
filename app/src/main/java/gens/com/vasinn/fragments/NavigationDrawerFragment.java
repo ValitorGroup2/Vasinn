@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import gens.com.vasinn.R;
 import gens.com.vasinn.dialogs.HelpDialog;
@@ -252,7 +251,6 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_help) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
             FragmentManager manager = getActivity().getFragmentManager();
             HelpDialog helpDialog = new HelpDialog();
             helpDialog.show(manager, "HelpDialog");
