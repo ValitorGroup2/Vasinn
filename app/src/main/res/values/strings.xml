@@ -6,7 +6,7 @@
     <string name="title_section3">Útskrá</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">Example action</string>
+    <string name="action_help">Hjálp</string>
 
     <string name="title_activity_read_card">ReadCardActivity</string>
     <string name="error_communication_nfc">Villa átti sér stað við lestur korts</string>
@@ -31,7 +31,6 @@
     <string name="square_root_symbol">\\u221a</string>
     <string name="skra_value">Skrá upphæð</string>
     <string name="default_calculator_value">0</string>
-    <string name="action_help">Titill Aegir</string>
     <string name="lc_question">Ertu viss?</string>
     <string name="lc_title">Útskráning</string>
     <string name="lc_yes">Já</string>
@@ -74,6 +73,7 @@
     <string name="username_and_password_do_not_match">Notendanafn og lykilorð stemma ekki</string>
     <string name="card_reader_text_ask_for_card">Vinsamlegast berðu kortið upp að bakhlið tækisins</string>
     <string name="forgot_password_title">Gleymt Lykilorð</string>
+    <string name="help_title">Hjálp</string>
 
 
 </resources>
