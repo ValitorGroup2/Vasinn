@@ -1,6 +1,5 @@
 package gens.com.vasinn.activities;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,16 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import gens.com.vasinn.R;
-import gens.com.vasinn.SendEmailAsyncTask;
-import gens.com.vasinn.dialogs.EmailDialog;
-import gens.com.vasinn.dialogs.ReportDialog;
 import gens.com.vasinn.dialogs.UserPasswordDialog;
 import gens.com.vasinn.VasiApplication;
 import gens.com.vasinn.constants.ActionConstants;
 import gens.com.vasinn.controllers.TransactionController;
 import gens.com.vasinn.controllers.UserController;
 import gens.com.vasinn.repos.objects.Transaction;
-import gens.com.vasinn.repos.objects.User;
 
 
 public class TransactionActivity extends ActionBarActivity {
@@ -108,14 +103,12 @@ public class TransactionActivity extends ActionBarActivity {
 
     }
 
+    public void onSendReportClick(View view) {
+        Toast.makeText(getApplicationContext(), "onSendReportClick", Toast.LENGTH_SHORT).show();
+    }
 
     public void onSendReceiptClick(View view) {
-        /*FragmentManager manager = getFragmentManager();
-        EmailDialog emailDialog = new EmailDialog();
-        emailDialog.show(manager, "EmailDialog");*/
-
-        EmailDialog dialog = EmailDialog.newInstance(getString(R.string.ask_user_email_dialog_title), ActionConstants.ACTION_ASK_CUSTOMER_EMAIL, transaction.getId());
-        dialog.show(getFragmentManager(), "UserPasswordDialog");
+        Toast.makeText(this.getBaseContext(), "onSendReceiptClick", Toast.LENGTH_SHORT).show();
     }
 
     public void onBackClick(View view) {
@@ -166,12 +159,5 @@ public class TransactionActivity extends ActionBarActivity {
         this.onBackPressed();
     }
 
-    public void onSendReportClick(View view) {
-        ReportDialog dialog = ReportDialog.newInstance(getString(R.string.report_dialog_title), transaction.getId());
-        dialog.show(getFragmentManager(), "ReportDialog");
 
-    }
-    public void onBtnSendReportDialog(View view) {
-        Toast.makeText(getApplicationContext(), "onSendReportClick", Toast.LENGTH_SHORT).show();
-    }
 }

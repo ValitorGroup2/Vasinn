@@ -53,7 +53,7 @@
     <string name="transaction_card">Gerð korts:</string>
     <string name="transaction_amount">Upphæð:</string>
     <string name="button_send_receipt">Senda kvittun</string>
-    <string name="button_send_report">Senda tilkynningu</string>
+    <string name="button_send_report">Tilkynna</string>
     <string name="button_refund">Bakfæra</string>
     <string name="transaction_username">Starfsmaður:</string>
     <string name="button_back">Til baka</string>
@@ -74,19 +74,6 @@
     <string name="username_and_password_do_not_match">Notendanafn og lykilorð stemma ekki</string>
     <string name="card_reader_text_ask_for_card">Vinsamlegast berðu kortið upp að bakhlið tækisins</string>
     <string name="forgot_password_title">Gleymt Lykilorð</string>
-    <string name="hint_report_text">Ritaðu hér athugasemdir þínar varðandi þessa færslu</string>
-    <string name="report_dialog_title">Senda tilkynningu um færslu</string>
-    <string name="email_report_subject">Tilkynning vegna færslu</string>
-    <string name="email_report_body_before">Athugasemdir starfsmanns:</string>
-    <string name="email_report_body_after">Færslu upplýsingar:</string>
-    <string name="url_notifycation_link"> http://vasinn.azurewebsites.net/Notification</string>
-    <string name="your_notifycations">Þínar tilkynningar:</string>
-    <string name="ask_user_email_dialog_title">Netfang viðskiptavinar</string>
-    <string name="email_user_receipt_subject">Greiðslukvittun</string>
-    <string name="email_receipt_sent_ok">Greiðslukvittun hefur verið send</string>
-    <string name="email_receipt_sent_fail">Ekki tókst að senda greiðslukvittun</string>
-    <string name="email_report_sent_ok">Tilkynning hefur verið send</string>
-    <string name="email_report_sent_fail">Ekki tókst að senda tilkynningu</string>
 
 
 </resources>
