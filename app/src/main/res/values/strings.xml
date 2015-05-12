@@ -73,6 +73,7 @@
     <string name="transactions_title">Söluyfirlit</string>
     <string name="username_and_password_do_not_match">Notendanafn og lykilorð stemma ekki</string>
     <string name="card_reader_text_ask_for_card">Vinsamlegast berðu kortið upp að bakhlið tækisins</string>
+    <string name="forgot_password_title">Gleymt Lykilorð</string>
 
 
 </resources>

@@ -5,10 +5,10 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/edtTextPassword"
-        android:hint="@string/password_hint"
+        android:id="@+id/edtTextForgot"
+        android:hint="@string/email"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dialog_padding_top" />
@@ -16,30 +16,31 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtTextPassword"
+        android:layout_below="@+id/edtTextForgot"
         android:weightSum="2"
         android:layout_marginTop="@dimen/dialog_padding_top"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayoutForgot">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/send"
+            android:id="@+id/btnForgotSend"
+            android:layout_below="@+id/edtTextForgot"
+            android:layout_alignStart="@+id/edtTextForgot"
+            style="@style/buttonDefault"/>
 
         <Button
             style="@style/buttonDefault"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/btn_confirm"
-            android:id="@+id/btnConfirmPassword"
-            android:layout_below="@+id/edtTextPassword"
-            android:layout_alignStart="@+id/edtTextPassword" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="@string/lc_cancel"
-            android:id="@+id/btnCancelPassword"
-            android:layout_alignTop="@+id/btnConfirmPassword"
-            android:layout_toEndOf="@+id/btnConfirmPassword"
-            style="@style/buttonDefault" />
+            android:id="@+id/btnForgotCancel"
+            android:layout_alignTop="@+id/btnForgotSend"
+            android:layout_toEndOf="@+id/btnForgotSend" />
+
     </LinearLayout>
 
 </RelativeLayout>

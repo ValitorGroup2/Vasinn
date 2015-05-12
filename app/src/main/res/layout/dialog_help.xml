@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Með því að smella á &quot;Staðfesta&quot; verður þér beint á hjálparsíðu Vasans."
+        android:id="@+id/tViewHelpText" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tViewHelpText"
+        android:weightSum="2"
+        android:layout_marginTop="@dimen/dialog_padding_top"
+        android:id="@+id/linearLayoutHelp">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_confirm"
+            android:id="@+id/btnHelpConfirm"
+            android:layout_below="@+id/tViewHelpText"
+            android:layout_alignStart="@+id/tViewHelpText"
+            style="@style/buttonDefault"/>
+
+        <Button
+            style="@style/buttonDefault"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/lc_cancel"
+            android:id="@+id/btnHelpCancel"
+            android:layout_alignTop="@+id/btnHelpConfirm"
+            android:layout_toEndOf="@+id/btnHelpConfirm" />
+
+    </LinearLayout>
+
+</RelativeLayout>

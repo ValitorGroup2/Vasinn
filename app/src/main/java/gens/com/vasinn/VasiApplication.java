@@ -1,7 +1,10 @@
 package gens.com.vasinn;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import gens.com.vasinn.controllers.TransactionController;
 import gens.com.vasinn.controllers.UserController;
@@ -61,4 +64,14 @@ public class VasiApplication extends Application{
 
     }
 
+    public void showKeyboard(EditText edtText){
+        edtText.requestFocus();
+        InputMethodManager imgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED,InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
+    public void hideKeyboard(EditText edtText){
+        InputMethodManager imgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imgr.hideSoftInputFromWindow(edtText.getWindowToken(), 0);
+    }
 }

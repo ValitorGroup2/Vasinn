@@ -16,7 +16,7 @@ import gens.com.vasinn.repos.objects.User;
 /**
  * Created by Ægir Már Jónsson on 8.5.2015.
  */
-public class EmailDialog extends DialogFragment implements View.OnClickListener {
+public class HelpDialog extends DialogFragment implements View.OnClickListener {
     Button send, cancel;
     EditText email;
     VasiApplication vasinn;
