@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import gens.com.vasinn.constants.ActionConstants;
+
 /**
  * Maid by by Gudjon on 9.5.2015
  */

@@ -17,12 +17,12 @@ public class TransactionController {
     //add a transaction fake delay to reprecent the delay, when taalking to a real server
 
     private void fakeDelay(){
-        try {
+        /*try {
             //todo: to simulate transaction delay dlgWait
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public TransactionController() {

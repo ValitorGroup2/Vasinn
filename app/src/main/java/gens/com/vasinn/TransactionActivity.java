@@ -1,7 +1,5 @@
 package gens.com.vasinn;
 
-import android.app.FragmentManager;
-import android.app.Notification;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import gens.com.vasinn.constants.ActionConstants;
 import gens.com.vasinn.controllers.TransactionController;
 import gens.com.vasinn.controllers.UserController;
 import gens.com.vasinn.repos.objects.Transaction;
