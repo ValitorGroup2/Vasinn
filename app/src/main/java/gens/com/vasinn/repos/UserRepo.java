@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gens.com.vasinn.constants.UserConstants;
-import gens.com.vasinn.repos.objects.Transaction;
 import gens.com.vasinn.repos.objects.User;
 
 /**
@@ -14,13 +13,13 @@ public class UserRepo {
     private List<User> users = new ArrayList<>();
 
     public UserRepo() {
-        users.add(new User("aegir",   "123", "aegir13@ru.is", UserConstants.USER_LEVEL_NORMAL));
-        users.add(new User("liljar",  "123", "liljar11@ru.is", UserConstants.USER_LEVEL_NORMAL));
-        users.add(new User("gudjon",  "123", "gudjon02@ru.is", UserConstants.USER_LEVEL_NORMAL));
-        users.add(new User("gudny",   "123", "gudnyoskg@gmail.com", UserConstants.USER_LEVEL_NORMAL));
-        users.add(new User("karl",    "123", "karlb12@ru.is", UserConstants.USER_LEVEL_NORMAL));
-        users.add(new User("trausti", "123", "traustie09@ru.is", UserConstants.USER_LEVEL_NORMAL));
-        users.add(new User("gretar",  "123", "grellinn@gmail.com", UserConstants.USER_LEVEL_NORMAL));
+        users.add(new User("aegir",   "123", "aegir13@ru.is", UserConstants.USER_LEVEL_NORMAL, "gudjon"));
+        users.add(new User("liljar",  "123", "liljar11@ru.is", UserConstants.USER_LEVEL_NORMAL, "gudjon"));
+        users.add(new User("gudjon",  "123", "gudjon02@ru.is", UserConstants.USER_LEVEL_NORMAL, "gudjon"));
+        users.add(new User("gudny",   "123", "gudnyoskg@gmail.com", UserConstants.USER_LEVEL_NORMAL, "gudjon"));
+        users.add(new User("karl",    "123", "karlb12@ru.is", UserConstants.USER_LEVEL_NORMAL, "gudjon"));
+        users.add(new User("trausti", "123", "traustie09@ru.is", UserConstants.USER_LEVEL_NORMAL, "gudjon"));
+        users.add(new User("gretar",  "123", "grellinn@gmail.com", UserConstants.USER_LEVEL_NORMAL, "gudjon"));
     }
 
     public List<User> getUsers() {
@@ -42,10 +41,31 @@ public class UserRepo {
         User ret;
         for(int i = 0; i < users.size(); i++) {
             ret = users.get(i);
-            if (ret.getUsername().equals(userNameToFind))
+            if (ret.getName().equals(userNameToFind))
                 return ret;
         }
         return null;
+    }
+    /**
+     * Created by Gudjon on 12.5.2015.
+     * returns null if if admin email is not found created by Gudjon 9.5.2015
+     */
+    public String findAdminEmail(User user){
+
+        User admin = findByName(user.getAdmin());
+        if (admin == null) return null;
+        return admin.getEmail();
+    }
+    /**
+     * Created by Gudjon on 12.5.2015.
+     * returns null if admin email is not found created by Gudjon 9.5.2015
+     */
+    public String findAdminEmail(String userName){
+
+        User user = findByName(userName);
+        if (user == null) return null;
+
+        return findAdminEmail(user);
     }
     /**
      * Created by Gudjon on 9.5.2015.

@@ -1,4 +1,4 @@
-package gens.com.vasinn;
+package gens.com.vasinn.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -43,6 +43,11 @@ import java.util.Collection;
 import java.util.Date;
 
 import fr.devnied.bitlib.BytesUtils;
+import gens.com.vasinn.fragments.PosiFragment;
+import gens.com.vasinn.R;
+import gens.com.vasinn.fragments.SalesFragment;
+import gens.com.vasinn.VasiApplication;
+import gens.com.vasinn.fragments.NavigationDrawerFragment;
 import gens.com.vasinn.repos.objects.Transaction;
 
 //com/github/devnied/emvnfccard/utils/SimpleAsyncTask.java

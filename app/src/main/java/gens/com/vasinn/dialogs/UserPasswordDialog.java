@@ -1,4 +1,4 @@
-package gens.com.vasinn;
+package gens.com.vasinn.dialogs;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -10,8 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import gens.com.vasinn.R;
+import gens.com.vasinn.VasiApplication;
+import gens.com.vasinn.activities.MainActivity;
+import gens.com.vasinn.activities.TransactionActivity;
 import gens.com.vasinn.constants.ActionConstants;
 import gens.com.vasinn.controllers.UserController;
+import gens.com.vasinn.fragments.CardReaderFragment;
 import gens.com.vasinn.repos.objects.User;
 
 /**

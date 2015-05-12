@@ -1,7 +1,5 @@
-package gens.com.vasinn;
+package gens.com.vasinn.fragments;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,8 +14,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
-import gens.com.vasinn.controllers.TransactionController;
-import gens.com.vasinn.repos.objects.Transaction;
+import gens.com.vasinn.R;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -30,4 +30,8 @@ public class UserController {
     public User findByEmail(String userEmailToFind){
         return userRepo.findByEmail(userEmailToFind);
     }
+
+    public String findAdminEmail(String userName){
+        return userRepo.findAdminEmail(userName);
+    }
 }

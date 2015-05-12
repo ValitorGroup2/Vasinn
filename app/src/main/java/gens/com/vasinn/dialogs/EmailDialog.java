@@ -1,4 +1,4 @@
-package gens.com.vasinn;
+package gens.com.vasinn.dialogs;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -10,13 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import gens.com.vasinn.R;
+import gens.com.vasinn.SendEmailAsyncTask;
+import gens.com.vasinn.VasiApplication;
 import gens.com.vasinn.controllers.UserController;
 import gens.com.vasinn.repos.objects.User;
 
 /**
  * Created by Ægir Már Jónsson on 8.5.2015.
  */
-public class HelpDialog extends DialogFragment implements View.OnClickListener {
+public class EmailDialog extends DialogFragment implements View.OnClickListener {
     Button send, cancel;
     EditText email;
     VasiApplication vasinn;

@@ -1,4 +1,4 @@
-package gens.com.vasinn;
+package gens.com.vasinn.fragments;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -15,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import gens.com.vasinn.R;
+import gens.com.vasinn.dialogs.UserPasswordDialog;
+import gens.com.vasinn.activities.MainActivity;
 import gens.com.vasinn.constants.ActionConstants;
 
 /**

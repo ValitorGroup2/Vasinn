@@ -1,4 +1,4 @@
-package gens.com.vasinn;
+package gens.com.vasinn.activities;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import gens.com.vasinn.R;
+import gens.com.vasinn.dialogs.UserPasswordDialog;
+import gens.com.vasinn.VasiApplication;
 import gens.com.vasinn.constants.ActionConstants;
 import gens.com.vasinn.controllers.TransactionController;
 import gens.com.vasinn.controllers.UserController;
@@ -116,7 +119,7 @@ public class TransactionActivity extends ActionBarActivity {
             String callingClassName =  bundle.getString(getString(R.string.VASINN_CALLING_CLASS));
 
             this.getIntent().putExtra(getString(R.string.VASINN_CALLING_CLASS), "");
-            if (callingClassName != null && callingClassName.equals("gens.com.vasinn.MainActivity$4")){
+            if (callingClassName != null && callingClassName.equals("gens.com.vasinn.activities.MainActivity$4")){
 
 
                 Intent intent = new Intent(this, MainActivity.class);

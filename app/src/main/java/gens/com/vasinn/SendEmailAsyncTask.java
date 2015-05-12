@@ -6,7 +6,7 @@ import android.util.Log;
 import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
-class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
+public class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
     Mail m = new Mail("vasigens@gmail.com", "luxusKaffi");
 
     public SendEmailAsyncTask(String sendTo,

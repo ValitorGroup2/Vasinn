@@ -1,4 +1,4 @@
-package gens.com.vasinn;
+package gens.com.vasinn.activities;
 
 import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
@@ -14,11 +14,8 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ListView;
 
-import java.util.List;
-
-import gens.com.vasinn.controllers.TransactionController;
-import gens.com.vasinn.controllers.UserController;
-import gens.com.vasinn.repos.objects.Transaction;
+import gens.com.vasinn.R;
+import gens.com.vasinn.fragments.NavigationDrawerFragment;
 
 
 public class TransactionsActivity extends ActionBarActivity

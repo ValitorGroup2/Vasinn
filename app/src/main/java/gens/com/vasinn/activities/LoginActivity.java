@@ -1,4 +1,4 @@
-package gens.com.vasinn;
+package gens.com.vasinn.activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -12,7 +12,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import gens.com.vasinn.R;
 import gens.com.vasinn.controllers.UserController;
+import gens.com.vasinn.dialogs.EmailDialog;
 
 
 public class LoginActivity extends ActionBarActivity {

@@ -1,4 +1,4 @@
-package gens.com.vasinn;
+package gens.com.vasinn.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import gens.com.vasinn.R;
+import gens.com.vasinn.activities.TransactionActivity;
+import gens.com.vasinn.TransactionsAdapter;
+import gens.com.vasinn.VasiApplication;
 import gens.com.vasinn.controllers.TransactionController;
 import gens.com.vasinn.repos.objects.Transaction;
 
