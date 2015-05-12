@@ -13,43 +13,32 @@ import java.util.Locale;
 public class Transaction extends Object {
 
 
-    public Date getDate() {
-        return date;
-    }
+
 
     private Date date;
     private int id;
     private String userName;
     private boolean isRefundable;
-
-    public String getCard() {
-        return card;
-    }
-
-    public void setCard(String card) {
-        this.card = card;
-    }
-
     private String card;
+    private double amount;
 
-    public double getAmount() {
-        return amount;
-    }
+    public void setAmount(double amount) {this.amount = amount;}
+    public void setCard(String card) {this.card = card;}
+    public void setIsRefundable(boolean isRefundable) {this.isRefundable = isRefundable;}
+
+    public Date getDate() {return date;}
+    public boolean isRefundable() {return isRefundable;}
+    public String getCard() {return card;}
+    public double getAmount() {return amount;}
+    public int getId() {return id;}
+    public String getUserName() {return userName;}
+    public String getIdString() {return Integer.toString(id);}
     public String getAmountString() {
 
         DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();
         symbols.setGroupingSeparator(' ');
-
         DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("is", "IS", "")));
-
         return df.format(amount) + " kr.";
-    }
-
-    private double amount;
-
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 
     public Transaction(int id, Date date, double amount, String userName, String card, boolean isRefundable) {
@@ -59,17 +48,6 @@ public class Transaction extends Object {
         this.userName = userName;
         this.card = card;
         this.isRefundable = isRefundable;
-    }
-
-    public int getId() {
-        return id;
-    }
-    public String getIdString() {
-        return Integer.toString(id);
-    }
-
-    public String getUserName() {
-        return userName;
     }
 
 
@@ -93,11 +71,21 @@ public class Transaction extends Object {
                 this.userName.equals(his.userName);
     }
 
-    public boolean isRefundable() {
-        return isRefundable;
-    }
 
-    public void setIsRefundable(boolean isRefundable) {
-        this.isRefundable = isRefundable;
+
+    //returns a string containging all information about a transaction
+    public String toString(boolean includeRefundable){
+
+       String ret = " ID : " + getIdString() +
+                  "\nTími : " + getDateTimeString() +
+                  "\nStarfsmaður : " + getUserName();
+        if (includeRefundable)
+            ret +="\nMá endurgreiða : " + (isRefundable() ? "Já" : "Nei");
+
+        ret +=
+                  "\nKort : " + getCard() +
+                  "\nUpphæð : " + getAmountString();
+
+        return ret;
     }
 }

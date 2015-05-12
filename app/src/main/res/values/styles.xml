@@ -32,8 +32,18 @@
 
     <style name="buttonDefault">
         <item name="android:background">@drawable/button_default</item>
-        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
 
+    <style name="buttonPosi">
+        <item name="android:background">@drawable/button_posi</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_width">76dp</item>
+        <item name="android:layout_height">58dp</item>
+        <item name="android:textSize">@dimen/abc_text_size_large_material</item>
     </style>
 
 </resources>

@@ -101,7 +101,6 @@
         android:id="@+id/btnSendReceipt"
         android:onClick="onSendReceiptClick"
         android:layout_alignParentStart="true"
-        android:layout_marginRight="@dimen/button_default_margin"
         style="@style/buttonDefault"
         />
 
@@ -113,7 +112,6 @@
         android:id="@+id/btnSendReport"
         android:onClick="onSendReportClick"
         android:layout_alignEnd="@+id/tViewTransactionTitle"
-        android:layout_marginLeft="@dimen/button_default_margin"
         style="@style/buttonDefault"/>
 
 </LinearLayout>
