@@ -1,4 +1,4 @@
-package gens.com.vasinn;
+package gens.com.vasinn.constants;
 
 /**
  * Created by Gudjon on 11.5.2015.
