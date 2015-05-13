@@ -13,12 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import gens.com.vasinn.R;
-import gens.com.vasinn.dialogs.UserPasswordDialog;
 import gens.com.vasinn.activities.MainActivity;
 import gens.com.vasinn.constants.ActionConstants;
+import gens.com.vasinn.dialogs.UserPasswordDialog;
 
 /**
  * Maid by by Gudjon on 9.5.2015
@@ -27,7 +28,7 @@ import gens.com.vasinn.constants.ActionConstants;
 public class PosiFragment extends Fragment{
 
     View rootview;
-    Button btnCharge;
+    ImageButton btnCharge;
     private EditText Src;
     private float NumberBf = 0;  //save screen before button press operation
     private String Operation ="";
@@ -41,7 +42,7 @@ public class PosiFragment extends Fragment{
 
         Src = (EditText)rootview.findViewById(R.id.editCalc);
 
-        btnCharge = (Button)rootview.findViewById(R.id.buttonSaveValue);
+        btnCharge = (ImageButton) rootview.findViewById(R.id.buttonSaveValue);
         btnCharge.setEnabled(false);
         Src.addTextChangedListener(new TextWatcher() {
             @Override

@@ -15,21 +15,29 @@
     <color name="admin_lightgreen">#6fd1bd</color>
     <color name="admin_gray">#f3f3f4</color>
 
-    <color name="posi_button_border">#ff2b7f24</color>
-    <color name="posi_button_number">#ff79a47b</color>
-    <color name="posi_button_number_pressed">#ffa7e5a9</color>
+    <color name="posi_button_border">#ff000000</color>
+    <color name="posi_button_number">@color/admin_gray</color>
+    <color name="posi_button_number_pressed">#ff8e8e8f</color>
 
-    <color name="posi_button_func">#ff5f8261</color>
-    <color name="posi_button_func_pressed">#ffa7e5a9</color>
-    <color name="posi_button_border_func">#ff79a47b</color>
+    <color name="posi_button_func">#ff314481</color>
+    <color name="posi_button_func_pressed">#ff405dab</color>
+    <color name="posi_button_border_func">#ff1a2443</color>
 
     <color name="posi_button_equal">#ff826e78</color>
     <color name="posi_button_equal_pressed">#ffa48c96</color>
     <color name="posi_button_border_equal">#ff5d4d56</color>
 
-    <color name="posi_button_charge">#ff314482</color>
-    <color name="posi_button_charge_pressed">#ff4059a9</color>
-    <color name="posi_button_border_charge">#ff1e2852</color>
+    <color name="posi_button_charge">#ff235e1d</color>
+    <color name="posi_button_charge_pressed">@color/vasi_green</color>
+    <color name="posi_button_border_charge">#ff173212</color>
+
+    <color name="posi_button_erase">#ffd5de29</color>
+    <color name="posi_button_erase_pressed">#ff9da31e</color>
+    <color name="posi_button_border_erase">#ff000000</color>
+
+    <color name="posi_button_clear">#ffd02000</color>
+    <color name="posi_button_clear_pressed">#ff620f00</color>
+    <color name="posi_button_border_clear">#ff000000</color>
 
 
     <color name="vasi_green">#ff184013</color>

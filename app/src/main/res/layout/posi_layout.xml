@@ -11,197 +11,185 @@
         android:editable="false"
         android:textSize="42sp"
         android:textColor="#ff000000"
-        android:textIsSelectable="true" />
+        android:textIsSelectable="true"
+        android:inputType="number" />
 
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editCalc"
+        android:gravity="center_horizontal"
+        android:baselineAligned="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true">
 
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editCalc"
-        android:gravity="center">
-        <Button
-            style="@style/buttonPosiFunc"
-            android:text="+"
-            android:id="@+id/buttonPlus"
-            android:layout_below="@+id/button9"
-            android:layout_toRightOf="@+id/button9"
-            android:layout_toEndOf="@+id/button9"
-            android:onClick="btnClicked"
-            />
-
-        <Button
-            style="@style/buttonPosiFunc"
-            android:text="C"
-            android:id="@+id/buttonClear"
-            android:onClick="btnClicked"
-            android:layout_alignParentStart="true" />
-
-
-
-        <Button
-            style="@style/buttonPosiFunc"
-            android:text="/"
-            android:id="@+id/buttonDivide"
-            android:onClick="btnClicked"
-            android:layout_toEndOf="@+id/buttonClear" />
-
-        <Button
-            style="@style/buttonPosiFunc"
-            android:text="*"
-            android:id="@+id/buttonMultiply"
-            android:onClick="btnClicked"
-            android:layout_toEndOf="@+id/buttonDivide" />
-
-        <Button
-            style="@style/buttonPosiFunc"
-            android:text="&lt;"
-            android:id="@+id/buttonBackspace"
-            android:onClick="btnClicked"
-            android:layout_toEndOf="@+id/buttonMultiply" />
-
-
-
-        <Button
-            style="@style/buttonPosi"
-            android:text="7"
-            android:id="@+id/button7"
-            android:onClick="btnClicked"
-            android:layout_above="@+id/button6"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            style="@style/buttonPosi"
-            android:text="8"
-            android:id="@+id/button8"
-            android:layout_below="@+id/buttonDivide"
-            android:layout_toRightOf="@+id/buttonClear"
-            android:layout_toEndOf="@+id/buttonClear"
-            android:onClick="btnClicked"
-           />
-
-        <Button
-            style="@style/buttonPosi"
-            android:text="9"
-            android:id="@+id/button9"
-            android:onClick="btnClicked"
-            android:layout_above="@+id/button6"
-            android:layout_toEndOf="@+id/button8" />
-
-        <Button
-            style="@style/buttonPosiFunc"
-            android:text="-"
-            android:id="@+id/buttonMinus"
-            android:layout_below="@+id/buttonMultiply"
-            android:layout_toRightOf="@+id/buttonMultiply"
-            android:layout_toEndOf="@+id/buttonMultiply"
-            android:onClick="btnClicked"
-             />
-
-        <Button
-            style="@style/buttonPosi"
-            android:text="4"
-            android:id="@+id/button4"
-            android:onClick="btnClicked"
-            android:layout_above="@+id/button1"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            style="@style/buttonPosi"
-            android:text="1"
-            android:id="@+id/button1"
-            android:onClick="btnClicked"
-            android:layout_above="@+id/buttonEqual"
-            android:layout_alignLeft="@+id/button4"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            android:text="0"
-            android:id="@+id/button0"
-            android:onClick="btnClicked"
-            style="@style/buttonPosi"
-            android:layout_below="@+id/button1"
-            android:layout_alignStart="@+id/button1" />
-
-        <Button
-            style="@style/buttonPosi"
-            android:text="2"
-            android:id="@+id/button2"
-            android:onClick="btnClicked"
-            android:layout_below="@+id/button4"
-            android:layout_toEndOf="@+id/button1" />
-
-        <Button
-            style="@style/buttonPosi"
-            android:text="5"
-            android:id="@+id/button5"
-            android:onClick="btnClicked"
-            android:layout_below="@+id/button7"
-            android:layout_toEndOf="@+id/button4" />
-
-        <Button
-            style="@style/buttonPosi"
-            android:text="6"
-            android:id="@+id/button6"
-            android:layout_below="@+id/button8"
-            android:layout_toRightOf="@+id/button8"
-            android:layout_toEndOf="@+id/button8"
-            android:onClick="btnClicked"
-            />
-
-        <Button
-            style="@style/buttonPosi"
-            android:text="3"
-            android:id="@+id/button3"
-            android:onClick="btnClicked"
-            android:layout_above="@+id/buttonEqual"
-            android:layout_toEndOf="@+id/button2" />
-
-        <Button
-            style="@style/buttonPosiFunc"
-            android:text="+/-"
-            android:id="@+id/buttonSign"
-            android:layout_below="@+id/buttonPlus"
-            android:layout_toRightOf="@+id/button3"
-            android:layout_toEndOf="@+id/button3"
-            android:onClick="btnClicked" />
-
-        <Button
-            style="@style/buttonPosiFunc"
-            android:text="."
-            android:id="@+id/buttonDot"
-            android:layout_below="@+id/button2"
-            android:layout_toRightOf="@+id/button0"
-            android:layout_toEndOf="@+id/button0"
-            android:onClick="btnClicked"
-             />
-
-        <Button
-            android:layout_width="140dp"
-            style="@style/buttonPosiEqual"
-            android:text="="
-            android:id="@+id/buttonEqual"
-            android:onClick="btnClicked"
-            android:layout_toRightOf="@+id/buttonDot"
-            android:layout_alignRight="@+id/buttonSign"
-            android:layout_alignEnd="@+id/buttonSign"
-            android:layout_below="@+id/buttonSign"
-            android:layout_marginTop="6dp" />
-
-        <Button
+        <TableLayout
             android:layout_width="wrap_content"
-            android:layout_height="58dp"
-            android:text="@string/skra_value"
-            android:id="@+id/buttonSaveValue"
-            android:layout_below="@+id/button0"
-            android:layout_alignLeft="@+id/button0"
-            android:layout_alignStart="@+id/button0"
-            android:layout_alignRight="@+id/buttonEqual"
-            android:layout_alignEnd="@+id/buttonEqual"
-            android:onClick="btnSaveValueClick"
-            style="@style/buttonPosiCharge" />
-    </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editCalc"
+            android:gravity="center">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    style="@style/buttonPosi"
+                    android:text="1"
+                    android:id="@+id/button1"
+                    android:onClick="btnClicked"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignParentBottom="false" />
+
+                <Button
+                    style="@style/buttonPosi"
+                    android:text="2"
+                    android:id="@+id/button2"
+                    android:onClick="btnClicked"
+                    android:layout_column="1" />
+
+                <Button
+                    style="@style/buttonPosi"
+                    android:text="3"
+                    android:id="@+id/button3"
+                    android:onClick="btnClicked" />
+
+                <Button
+                    style="@style/buttonPosiFunc"
+                    android:text="+"
+                    android:id="@+id/buttonPlus"
+                    android:onClick="btnClicked" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    style="@style/buttonPosi"
+                    android:text="4"
+                    android:id="@+id/button4"
+                    android:onClick="btnClicked" />
+
+                <Button
+                    style="@style/buttonPosi"
+                    android:text="5"
+                    android:id="@+id/button5"
+                    android:onClick="btnClicked" />
+
+                <Button
+                    style="@style/buttonPosi"
+                    android:text="6"
+                    android:id="@+id/button6"
+                    android:onClick="btnClicked" />
+
+                <Button
+                    style="@style/buttonPosiFunc"
+                    android:text="-"
+                    android:id="@+id/buttonMinus"
+                    android:onClick="btnClicked" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    style="@style/buttonPosi"
+                    android:text="7"
+                    android:id="@+id/button7"
+                    android:onClick="btnClicked" />
+
+                <Button
+                    style="@style/buttonPosi"
+                    android:text="8"
+                    android:id="@+id/button8"
+                    android:onClick="btnClicked" />
+
+                <Button
+                    style="@style/buttonPosi"
+                    android:text="9"
+                    android:id="@+id/button9"
+                    android:onClick="btnClicked" />
+
+                <Button
+                    style="@style/buttonPosiFunc"
+                    android:text="*"
+                    android:id="@+id/buttonMultiply"
+                    android:onClick="btnClicked" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    style="@style/buttonPosiFunc"
+                    android:text="."
+                    android:id="@+id/buttonDot"
+                    android:onClick="btnClicked" />
+
+                <Button
+                    android:text="0"
+                    android:id="@+id/button0"
+                    android:onClick="btnClicked"
+                    style="@style/buttonPosi" />
+
+                <Button
+                    style="@style/buttonPosiFunc"
+                    android:text="+/-"
+                    android:id="@+id/buttonSign"
+                    android:onClick="btnClicked"
+                    android:layout_column="2" />
+
+                <Button
+                    style="@style/buttonPosiFunc"
+                    android:text="/"
+                    android:id="@+id/buttonDivide"
+                    android:onClick="btnClicked"
+                    android:layout_column="3" />
+            </TableRow>
+
+            <Button
+                style="@style/buttonPosiEqual"
+                android:text="="
+                android:id="@+id/buttonEqual"
+                android:onClick="btnClicked" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
+
+                <ImageButton
+                    android:src="@android:drawable/ic_menu_close_clear_cancel"
+                    style="@style/buttonPosiClear"
+                    android:id="@+id/buttonClear"
+                    android:onClick="btnClicked"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:src="@android:drawable/ic_input_delete"
+                    style="@style/buttonPosiErase"
+                    android:id="@+id/buttonBackspace"
+                    android:onClick="btnClicked"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:src="@drawable/ic_action_accept"
+                    style="@style/buttonPosiCharge"
+                    android:id="@+id/buttonSaveValue"
+                    android:onClick="btnSaveValueClick"
+                    android:layout_weight="1" />
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+
 </RelativeLayout>
