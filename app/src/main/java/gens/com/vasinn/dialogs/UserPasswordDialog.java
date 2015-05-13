@@ -102,7 +102,12 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
                 dismiss();
 
             } else {
-                Toast.makeText(getActivity(), vasi.getString(R.string.username_and_password_do_not_match), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), vasi.getString(R.string.username_and_password_do_not_match), Toast.LENGTH_SHORT).show();
+
+                OkDialog dialog = null;
+                dialog = OkDialog.newInstance(getString(R.string.username_and_password_do_not_match_title), getString(R.string.username_and_password_do_not_match));
+                dialog.show(getFragmentManager(), "OkDialog");
+
             }
         } else if (view.getId() == R.id.btnCancelPassword) {
             // Cancel button was clicked

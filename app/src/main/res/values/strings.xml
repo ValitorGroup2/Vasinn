@@ -89,6 +89,10 @@
     <string name="email_report_sent_fail">Ekki tókst að senda tilkynningu</string>
     <string name="send_report_result_title">Sending tilkynningar</string>
     <string name="help_title">Hjálp</string>
-
-
+    <string name="user_doesnt_exist_title">Notandi finnst ekki</string>
+    <string name="forgot_emptyemail_title">Netfang vantar</string>
+    <string name="email_receipt_sent_title">Sending kvittunar</string>
+    <string name="password_sent_title">Senda lykilorð</string>
+    <string name="email_not_registered_title">Rangt netfang</string>
+    <string name="username_and_password_do_not_match_title">Rangt lykilorð</string>
 </resources>

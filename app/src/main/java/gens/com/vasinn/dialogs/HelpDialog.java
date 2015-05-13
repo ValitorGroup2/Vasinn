@@ -43,11 +43,14 @@ public class HelpDialog extends DialogFragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnForgotSend) {
+            OkDialog dialog = null;
             // Send button was clicked
             String emailString = email.getText().toString();
             if (emailString.isEmpty())
             {
-                Toast.makeText(getActivity(), getString(R.string.forgot_emptyemail), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), getString(R.string.forgot_emptyemail), Toast.LENGTH_LONG).show();
+                dialog = OkDialog.newInstance(getString(R.string.forgot_emptyemail_title), getString(R.string.forgot_emptyemail));
+                dialog.show(getFragmentManager(), "OkDialog");
                 return;
             }
 
@@ -62,15 +65,20 @@ public class HelpDialog extends DialogFragment implements View.OnClickListener {
                                     + getString(R.string.email_forgot_password_body_after)
                     ).execute();
 
-                    Toast.makeText(getActivity(), getString(R.string.password_sent), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getActivity(), getString(R.string.password_sent), Toast.LENGTH_LONG).show();
+                    dialog = OkDialog.newInstance(getString(R.string.password_sent_title), getString(R.string.password_sent));
                 } catch (Exception e) {
                     e.getMessage();
-                    Toast.makeText(getActivity(), getString(R.string.password_sent_failure), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getActivity(), getString(R.string.password_sent_failure), Toast.LENGTH_LONG).show();
+                    dialog = OkDialog.newInstance(getString(R.string.password_sent_title), getString(R.string.password_sent_failure));
                 }
                 vasinn.hideKeyboard(email);
+
+                dialog.show(getFragmentManager(), "OkDialog");
                 dismiss();
             } else {
-                Toast.makeText(getActivity(), vasi.getString(R.string.email_not_registered), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), vasi.getString(R.string.email_not_registered), Toast.LENGTH_LONG).show();
+                dialog.show(getFragmentManager(), "OkDialog");
             }
         } else if (view.getId() == R.id.btnForgotCancel) {
             // Cancel button was clicked
