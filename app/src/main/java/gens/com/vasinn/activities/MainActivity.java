@@ -43,6 +43,8 @@ import java.util.Collection;
 import java.util.Date;
 
 import fr.devnied.bitlib.BytesUtils;
+import gens.com.vasinn.dialogs.CardNumberDialog;
+import gens.com.vasinn.dialogs.EmailDialog;
 import gens.com.vasinn.fragments.PosiFragment;
 import gens.com.vasinn.R;
 import gens.com.vasinn.fragments.SalesFragment;
@@ -230,6 +232,14 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+    public void onButtonCardReaderGetCardNumber(View view) {
+
+
+        android.app.FragmentManager manager = getFragmentManager();
+        CardNumberDialog dialog = new CardNumberDialog();
+        dialog.show(manager, "CardNumberDialog");
+
+    }
 
 
     /**
@@ -432,15 +442,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
                             String strType ="";
                             strType += mCard.getType();
-                            boolean isRefundable = (amount > 0);
-                            Transaction item = vasi.getTransactionController().add(amount, vasi.getLoggedInUsername(), strType, isRefundable);
-                            Bundle bundle = new Bundle();
-                            bundle.putInt(getString(R.string.TRANSACTION_KEY_ID), item.getId());
-                            String str = this.getClass().getName();
-                            bundle.putString(getString(R.string.VASINN_CALLING_CLASS), str);
-                            Intent intent = new Intent(MainActivity.this, TransactionActivity.class);
-                            intent.putExtras(bundle);
-                            startActivity(intent);
+                            doTransaction(strType, amount, mCard.getCardNumber(), 0, mCard.getExpireDate().getYear(), mCard.getExpireDate().getMonth());
+
                             return;
                         }
                         else
@@ -469,7 +472,21 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
             }.execute();
         }
     }
+//expiresMonth 0 = january
+    public boolean doTransaction(String strType, double amount, String strCardNumber, int sequrityNumber, int expiresYear, int expiresMonth){
+        //todo: shall we do anything with the card number, sequrityNumber,  expiresYear and expiresMonth
+        boolean isRefundable = (amount > 0);
 
+        Transaction item = vasi.getTransactionController().add(amount, vasi.getLoggedInUsername(), strType, isRefundable);
+        Bundle bundle = new Bundle();
+        bundle.putInt(getString(R.string.TRANSACTION_KEY_ID), item.getId());
+        String str = this.getClass().getName();
+        bundle.putString(getString(R.string.VASINN_CALLING_CLASS), str);
+        Intent intent = new Intent(MainActivity.this, TransactionActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        return true;  //todo: do some error checking
+    }
     public void backToHomeScreen() {
         // Select first menu
        /* mDrawerListView.performItemClick(mDrawerListView, 0, mDrawerListView.getItemIdAtPosition(0));

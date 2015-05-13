@@ -39,7 +39,7 @@
     <color name="posi_button_clear_pressed">#ff620f00</color>
     <color name="posi_button_border_clear">#ff000000</color>
 
-
+    <color name="default_line_separator">#ff17a5ff</color>
     <color name="vasi_green">#ff184013</color>
 
 </resources>

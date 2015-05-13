@@ -1,0 +1,131 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="gens.com.vasinn.dialogs.CardNumberDialog">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/relativeLayoutCardNumberDlg">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:hint="@string/type_card_information"
+        android:id="@+id/edtCardNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center" />
+</RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/default_line_separator_height"
+        android:background="@color/default_line_separator"
+        android:id="@+id/viewCardNumberLine1"
+        android:layout_below="@+id/relativeLayoutCardNumberDlg"
+        android:layout_marginTop="@dimen/default_line_separator_vertical_margin"
+        android:layout_marginBottom="@dimen/default_line_separator_vertical_margin"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewCardNumberLine1"
+        android:id="@+id/layout_card_number_date"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tViewCardNumberDate"
+            android:text="Gildistími:"
+            />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerMonth"
+            android:entries="@array/array_months"
+
+            android:gravity="center" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerYear"
+            android:entries="@array/array_years"
+
+            android:gravity="center" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/default_line_separator_height"
+        android:background="@color/default_line_separator"
+        android:id="@+id/viewCardNumberLine2"
+        android:layout_below="@+id/layout_card_number_date"
+        android:layout_marginTop="@dimen/default_line_separator_vertical_margin"
+        android:layout_marginBottom="@dimen/default_line_separator_vertical_margin"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewCardNumberLine2"
+        android:weightSum="2"
+        android:id="@+id/layout_card_number_safetynum"
+        android:gravity="center">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:hint="@string/hint_savety_number"
+            android:ems="10"
+            android:id="@+id/edtSafetyNumber"
+            android:gravity="center" />
+    </LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/default_line_separator_height"
+        android:background="@color/default_line_separator"
+        android:id="@+id/viewCardNumberLine3"
+        android:layout_below="@+id/layout_card_number_safetynum"
+        android:layout_marginTop="@dimen/default_line_separator_vertical_margin"
+        android:layout_marginBottom="@dimen/default_line_separator_vertical_margin"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewCardNumberLine3"
+        android:weightSum="2"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/linearLayout2">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/card_number_dialog_charge"
+                android:id="@+id/btnChargeCardGetNumber"
+                android:layout_below="@+id/relativeLayout"
+                android:layout_alignParentStart="true"
+                style="@style/buttonDefault"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/lc_cancel"
+                android:id="@+id/btnCancelCardGetNumber"
+                android:layout_alignBottom="@+id/button"
+                android:layout_toEndOf="@+id/button"
+                style="@style/buttonDefault"/>
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

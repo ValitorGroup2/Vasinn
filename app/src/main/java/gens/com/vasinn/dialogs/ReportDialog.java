@@ -19,12 +19,7 @@ import gens.com.vasinn.VasiApplication;
 import gens.com.vasinn.repos.objects.Transaction;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ReportDialog.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ReportDialog#newInstance} factory method to
- * create an instance of this fragment.
+ * Created by Gudjon on 13.5.2015.
  */
 public class ReportDialog extends DialogFragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match

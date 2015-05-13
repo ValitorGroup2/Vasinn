@@ -1,6 +1,34 @@
 <resources>
     <string name="app_name">Vasinn</string>
 
+    <string-array name="array_months">
+        <item>Janúar</item>
+        <item>Febrúar</item>
+        <item>Mars</item>
+        <item>Apríl</item>
+        <item>Maí</item>
+        <item>Júní</item>
+        <item>Júlí</item>
+        <item>Ágúst</item>
+        <item>September</item>
+        <item>Október</item>
+        <item>Nóvember</item>
+        <item>Desember</item>
+    </string-array>
+
+    <string-array name="array_years">
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+     </string-array>
+
     <string name="title_section1">Posi</string>
     <string name="title_section2">Söluyfirlit</string>
     <string name="title_section3">Útskrá</string>
@@ -95,4 +123,9 @@
     <string name="password_sent_title">Senda lykilorð</string>
     <string name="email_not_registered_title">Rangt netfang</string>
     <string name="username_and_password_do_not_match_title">Rangt lykilorð</string>
+    <string name="button_get_card_number">Skrá kortanúmer</string>
+    <string name="type_card_information">Skráðu kortanúmer hér</string>
+    <string name="card_number_dialog_charge">Gjaldfæra</string>
+    <string name="skra_kortanumer_title">Skrá kortanúmer</string>
+    <string name="hint_savety_number">Öryggisnúmer</string>
 </resources>
