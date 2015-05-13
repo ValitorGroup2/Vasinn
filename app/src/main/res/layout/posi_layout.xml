@@ -24,7 +24,7 @@
         android:layout_below="@id/editCalc"
         android:gravity="center">
         <Button
-            style="@style/buttonPosi"
+            style="@style/buttonPosiFunc"
             android:text="+"
             android:id="@+id/buttonPlus"
             android:layout_below="@+id/button9"
@@ -34,7 +34,7 @@
             />
 
         <Button
-            style="@style/buttonPosi"
+            style="@style/buttonPosiFunc"
             android:text="C"
             android:id="@+id/buttonClear"
             android:onClick="btnClicked"
@@ -43,21 +43,21 @@
 
 
         <Button
-            style="@style/buttonPosi"
+            style="@style/buttonPosiFunc"
             android:text="/"
             android:id="@+id/buttonDivide"
             android:onClick="btnClicked"
             android:layout_toEndOf="@+id/buttonClear" />
 
         <Button
-            style="@style/buttonPosi"
+            style="@style/buttonPosiFunc"
             android:text="*"
             android:id="@+id/buttonMultiply"
             android:onClick="btnClicked"
             android:layout_toEndOf="@+id/buttonDivide" />
 
         <Button
-            style="@style/buttonPosi"
+            style="@style/buttonPosiFunc"
             android:text="&lt;"
             android:id="@+id/buttonBackspace"
             android:onClick="btnClicked"
@@ -92,7 +92,7 @@
             android:layout_toEndOf="@+id/button8" />
 
         <Button
-            style="@style/buttonPosi"
+            style="@style/buttonPosiFunc"
             android:text="-"
             android:id="@+id/buttonMinus"
             android:layout_below="@+id/buttonMultiply"
@@ -161,7 +161,7 @@
             android:layout_toEndOf="@+id/button2" />
 
         <Button
-            style="@style/buttonPosi"
+            style="@style/buttonPosiFunc"
             android:text="+/-"
             android:id="@+id/buttonSign"
             android:layout_below="@+id/buttonPlus"
@@ -170,7 +170,7 @@
             android:onClick="btnClicked" />
 
         <Button
-            style="@style/buttonPosi"
+            style="@style/buttonPosiFunc"
             android:text="."
             android:id="@+id/buttonDot"
             android:layout_below="@+id/button2"
@@ -181,7 +181,7 @@
 
         <Button
             android:layout_width="140dp"
-            style="@style/buttonPosi"
+            style="@style/buttonPosiEqual"
             android:text="="
             android:id="@+id/buttonEqual"
             android:onClick="btnClicked"
@@ -202,6 +202,6 @@
             android:layout_alignRight="@+id/buttonEqual"
             android:layout_alignEnd="@+id/buttonEqual"
             android:onClick="btnSaveValueClick"
-            style="@style/buttonPosi" />
+            style="@style/buttonPosiCharge" />
     </RelativeLayout>
 </RelativeLayout>

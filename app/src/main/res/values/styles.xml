@@ -46,6 +46,31 @@
         <item name="android:textSize">@dimen/abc_text_size_large_material</item>
     </style>
 
+    <style name="buttonPosiFunc">
+        <item name="android:background">@drawable/button_posi_func</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_width">76dp</item>
+        <item name="android:layout_height">58dp</item>
+        <item name="android:textSize">@dimen/abc_text_size_large_material</item>
+    </style>
+    <style name="buttonPosiEqual">
+        <item name="android:background">@drawable/button_posi_equal</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_width">76dp</item>
+        <item name="android:layout_height">58dp</item>
+        <item name="android:textSize">@dimen/abc_text_size_large_material</item>
+    </style>
+    <style name="buttonPosiCharge">
+        <item name="android:background">@drawable/button_posi_charge</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_width">76dp</item>
+        <item name="android:layout_height">58dp</item>
+        <item name="android:textSize">@dimen/abc_text_size_large_material</item>
+    </style>
+
     <style name="MainActivityTheme" parent="AppTheme">
         <item name="android:homeAsUpIndicator">@mipmap/ic_logo_drawer</item>
         <item name="android:actionBarStyle">@style/vasinnActionBar</item>
