@@ -9,4 +9,8 @@
     <color name="default_dialog_button_bg">#107193</color>
     <color name="default_dialog_button_bg_pressed">#ff1094ba</color>
     <color name="default_dialog_button_border">#ff465b71</color>
+    <color name="admin_blue">#2f4050</color>
+    <color name="admin_green">#1ab394</color>
+    <color name="admin_lightgreen">#6fd1bd</color>
+    <color name="admin_gray">#f3f3f4</color>
 </resources>

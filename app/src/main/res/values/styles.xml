@@ -46,7 +46,7 @@
         <item name="android:textSize">@dimen/abc_text_size_large_material</item>
     </style>
 
-    <style name="CustomActivityTheme" parent="AppTheme">
+    <style name="MainActivityTheme" parent="AppTheme">
         <item name="android:homeAsUpIndicator">@mipmap/ic_logo_drawer</item>
         <item name="android:actionBarStyle">@style/vasinnActionBar</item>
 
@@ -58,10 +58,10 @@
     <!-- ActionBar styles -->
     <style name="vasinnActionBar" 
         parent="AppTheme">
-        <item name="android:background">@color/default_dialog_button_bg</item>
+        <item name="android:background">@color/admin_green</item>
 
         <!-- Support library compatibility -->
-        <item name="background">@color/default_dialog_button_bg</item>
+        <item name="background">@color/admin_green</item>
     </style>
 
 </resources>
