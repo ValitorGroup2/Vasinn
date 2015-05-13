@@ -7,20 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import gens.com.vasinn.R;
-import gens.com.vasinn.SendEmailAsyncTask;
-import gens.com.vasinn.VasiApplication;
-import gens.com.vasinn.constants.ActionConstants;
-import gens.com.vasinn.controllers.UserController;
-import gens.com.vasinn.repos.objects.Transaction;
-import gens.com.vasinn.repos.objects.User;
 
 /**
- * Created by Ægir Már Jónsson on 8.5.2015.
+ * Created by Gudjon on 13.5.2015.
  */
 public class OkDialog extends DialogFragment implements View.OnClickListener {
 

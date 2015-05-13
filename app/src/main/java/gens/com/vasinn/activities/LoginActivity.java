@@ -15,6 +15,7 @@ import android.widget.Toast;
 import gens.com.vasinn.R;
 import gens.com.vasinn.controllers.UserController;
 import gens.com.vasinn.dialogs.EmailDialog;
+import gens.com.vasinn.dialogs.OkDialog;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -42,11 +43,12 @@ public class LoginActivity extends ActionBarActivity {
         // Retrieve the saved values.
         String un = mySharedPreferences.getString(getString(R.string.VASINN_PREFERENCE_USERNAME), "");
 
-        // TODO delete this shit
-        Toast.makeText(getApplicationContext(), un, Toast.LENGTH_SHORT).show();
+
 
         // Checking if user is already logged in
         if (!un.isEmpty()) {
+            // TODO delete this shit
+            Toast.makeText(getApplicationContext(), "logged in user :" + un, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(USERNAME_KEY, un);
             startActivity(intent);
@@ -101,7 +103,11 @@ public class LoginActivity extends ActionBarActivity {
             intent.putExtra(PASSWORD_KEY, password);
             startActivity(intent);
         } else {
-            Toast.makeText(getApplicationContext(), getString(R.string.user_doesnt_exist), Toast.LENGTH_SHORT).show();
+            OkDialog dialog = OkDialog.newInstance(
+                    getString(R.string.user_doesnt_exist_title),
+                    getString(R.string.user_doesnt_exist));
+            dialog.show(getFragmentManager(), "OkDialog");
+
         }
     }
 
