@@ -31,7 +31,7 @@
     <string name="square_root_symbol">\\u221a</string>
     <string name="skra_value">Skrá upphæð</string>
     <string name="default_calculator_value">0</string>
-    <string name="action_help">Titill Aegir</string>
+    <string name="action_help">Hjálp</string>
     <string name="lc_question">Ertu viss?</string>
     <string name="lc_title">Útskráning</string>
     <string name="lc_yes">Já</string>
@@ -88,6 +88,7 @@
     <string name="email_report_sent_ok">Tilkynning hefur verið send</string>
     <string name="email_report_sent_fail">Ekki tókst að senda tilkynningu</string>
     <string name="send_report_result_title">Sending tilkynningar</string>
+    <string name="help_title">Hjálp</string>
 
 
 </resources>
