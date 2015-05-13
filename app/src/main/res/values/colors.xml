@@ -31,7 +31,7 @@
     <color name="posi_button_charge_pressed">#ff4059a9</color>
     <color name="posi_button_border_charge">#ff1e2852</color>
 
-
+    <color name="default_line_separator">#ff17a5ff</color>
     <color name="vasi_green">#ff184013</color>
 
 </resources>

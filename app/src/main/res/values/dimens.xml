@@ -10,4 +10,6 @@
     <dimen name="textSizeDialogTitle">20sp</dimen>
     <dimen name="dialog_padding_top">20dp</dimen>
     <dimen name="button_default_margin">1dp</dimen>
+    <dimen name="default_line_separator_height">2dp</dimen>
+    <dimen name="default_line_separator_vertical_margin">10dp</dimen>
 </resources>

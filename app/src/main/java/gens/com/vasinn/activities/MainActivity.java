@@ -442,18 +442,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
                             String strType ="";
                             strType += mCard.getType();
-                            doTransaction(strType, amount, mCard.getCardNumber());
-                            /*
-                            todo: delete this if all still works
-                            boolean isRefundable = (amount > 0);
-                            Transaction item = vasi.getTransactionController().add(amount, vasi.getLoggedInUsername(), strType, isRefundable);
-                            Bundle bundle = new Bundle();
-                            bundle.putInt(getString(R.string.TRANSACTION_KEY_ID), item.getId());
-                            String str = this.getClass().getName();
-                            bundle.putString(getString(R.string.VASINN_CALLING_CLASS), str);
-                            Intent intent = new Intent(MainActivity.this, TransactionActivity.class);
-                            intent.putExtras(bundle);
-                            startActivity(intent);*/
+                            doTransaction(strType, amount, mCard.getCardNumber(), 0, mCard.getExpireDate().getYear(), mCard.getExpireDate().getMonth());
 
                             return;
                         }
@@ -483,9 +472,9 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
             }.execute();
         }
     }
-
-    public boolean doTransaction(String strType, double amount, String strCardNumber){
-        //todo: shall we do anything with the card number
+//expiresMonth 0 = january
+    public boolean doTransaction(String strType, double amount, String strCardNumber, int sequrityNumber, int expiresYear, int expiresMonth){
+        //todo: shall we do anything with the card number, sequrityNumber,  expiresYear and expiresMonth
         boolean isRefundable = (amount > 0);
 
         Transaction item = vasi.getTransactionController().add(amount, vasi.getLoggedInUsername(), strType, isRefundable);
