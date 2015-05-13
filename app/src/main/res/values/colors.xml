@@ -9,4 +9,24 @@
     <color name="default_dialog_button_bg">#107193</color>
     <color name="default_dialog_button_bg_pressed">#ff1094ba</color>
     <color name="default_dialog_button_border">#ff465b71</color>
+    <color name="posi_button_border">#ff2b7f24</color>
+    <color name="posi_button_number">#ff79a47b</color>
+    <color name="posi_button_number_pressed">#ffa7e5a9</color>
+
+    <color name="posi_button_func">#ff5f8261</color>
+    <color name="posi_button_func_pressed">#ffa7e5a9</color>
+    <color name="posi_button_border_func">#ff79a47b</color>
+
+    <color name="posi_button_equal">#ff826e78</color>
+    <color name="posi_button_equal_pressed">#ffa48c96</color>
+    <color name="posi_button_border_equal">#ff5d4d56</color>
+
+    <color name="posi_button_charge">#ff314482</color>
+    <color name="posi_button_charge_pressed">#ff4059a9</color>
+    <color name="posi_button_border_charge">#ff1e2852</color>
+
+
+    <color name="vasi_green">#ff184013</color>
+
+
 </resources>
