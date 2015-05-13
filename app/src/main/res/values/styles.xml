@@ -36,4 +36,22 @@
 
     </style>
 
+    <style name="CustomActivityTheme" parent="AppTheme">
+        <item name="android:homeAsUpIndicator">@mipmap/ic_logo_drawer</item>
+        <item name="android:actionBarStyle">@style/vasinnActionBar</item>
+
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/vasinnActionBar</item>
+        <item name="homeAsUpIndicator">@mipmap/ic_logo_drawer</item>
+    </style>
+
+    <!-- ActionBar styles -->
+    <style name="vasinnActionBar" 
+        parent="AppTheme">
+        <item name="android:background">@color/default_dialog_button_bg</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/default_dialog_button_bg</item>
+    </style>
+
 </resources>
