@@ -130,7 +130,7 @@ public class ReportDialog extends DialogFragment implements View.OnClickListener
             String email = vasinn.getUserController().findAdminEmail(vasinn.getLoggedInUsername());
             if (email != null)
             {
-
+                OkDialog dialog = null;
                 try {
                     new SendEmailAsyncTask(email,
                             vasinn.getString(R.string.email_report_subject),
@@ -144,11 +144,16 @@ public class ReportDialog extends DialogFragment implements View.OnClickListener
                                     " : "+ vasinn.getString(R.string.url_notifycation_link)
                     ).execute();
 //email_receipt_sent_ok
-                    Toast.makeText(getActivity(), vasinn.getString(R.string.email_report_sent_ok), Toast.LENGTH_LONG).show();
+                    /*Toast.makeText(getActivity(), vasinn.getString(R.string.email_report_sent_ok), Toast.LENGTH_LONG).show();*/
+                    dialog = OkDialog.newInstance(getString(R.string.send_report_result_title), vasinn.getString(R.string.email_report_sent_ok));
+
+
                 } catch (Exception e) {
                     e.getMessage();
-                    Toast.makeText(getActivity(), vasinn.getString(R.string.email_report_sent_fail), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getActivity(), vasinn.getString(R.string.email_report_sent_fail), Toast.LENGTH_LONG).show();
+                    dialog = OkDialog.newInstance(getString(R.string.send_report_result_title), vasinn.getString(R.string.email_report_sent_fail));
                 }
+                dialog.show(getFragmentManager(), "OkDialog");
                 dismiss();
             }
         }

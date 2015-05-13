@@ -102,9 +102,6 @@ public class TransactionActivity extends ActionBarActivity {
 
         UserPasswordDialog dialog = UserPasswordDialog.newInstance(getString(R.string.get_user_password_title), ActionConstants.ACTION_MAIN_REFUND, (float)transaction.getAmount());
         dialog.show(getFragmentManager(), "UserPasswordDialog");
-/*
-*  CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), num);
-        ((MainActivity) this.getActivity()).FragmentReplace(fragment);*/
 
     }
 
@@ -170,8 +167,5 @@ public class TransactionActivity extends ActionBarActivity {
         ReportDialog dialog = ReportDialog.newInstance(getString(R.string.report_dialog_title), transaction.getId());
         dialog.show(getFragmentManager(), "ReportDialog");
 
-    }
-    public void onBtnSendReportDialog(View view) {
-        Toast.makeText(getApplicationContext(), "onSendReportClick", Toast.LENGTH_SHORT).show();
     }
 }

@@ -87,6 +87,7 @@
     <string name="email_receipt_sent_fail">Ekki tókst að senda greiðslukvittun</string>
     <string name="email_report_sent_ok">Tilkynning hefur verið send</string>
     <string name="email_report_sent_fail">Ekki tókst að senda tilkynningu</string>
+    <string name="send_report_result_title">Sending tilkynningar</string>
 
 
 </resources>
