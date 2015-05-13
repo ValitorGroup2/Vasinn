@@ -1,11 +1,7 @@
 package gens.com.vasinn.activities;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.FragmentManager;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,13 +12,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import gens.com.vasinn.R;
-import gens.com.vasinn.dialogs.HelpDialog;
+import gens.com.vasinn.SendEmailAsyncTask;
+import gens.com.vasinn.dialogs.EmailDialog;
+import gens.com.vasinn.dialogs.ReportDialog;
 import gens.com.vasinn.dialogs.UserPasswordDialog;
 import gens.com.vasinn.VasiApplication;
 import gens.com.vasinn.constants.ActionConstants;
 import gens.com.vasinn.controllers.TransactionController;
 import gens.com.vasinn.controllers.UserController;
 import gens.com.vasinn.repos.objects.Transaction;
+import gens.com.vasinn.repos.objects.User;
 
 
 public class TransactionActivity extends ActionBarActivity {
@@ -68,16 +67,8 @@ public class TransactionActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        switch(id)
-        {
-            case R.id.action_logout:
-                logoutConfirm();
-                return true;
-            case R.id.action_help:
-                FragmentManager manager = getFragmentManager();
-                HelpDialog helpDialog = new HelpDialog();
-                helpDialog.show(manager, "HelpDialog");
-                return true;
+        if (id == R.id.action_settings) {
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -111,18 +102,17 @@ public class TransactionActivity extends ActionBarActivity {
 
         UserPasswordDialog dialog = UserPasswordDialog.newInstance(getString(R.string.get_user_password_title), ActionConstants.ACTION_MAIN_REFUND, (float)transaction.getAmount());
         dialog.show(getFragmentManager(), "UserPasswordDialog");
-/*
-*  CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), num);
-        ((MainActivity) this.getActivity()).FragmentReplace(fragment);*/
 
     }
 
-    public void onSendReportClick(View view) {
-        Toast.makeText(getApplicationContext(), "onSendReportClick", Toast.LENGTH_SHORT).show();
-    }
 
     public void onSendReceiptClick(View view) {
-        Toast.makeText(this.getBaseContext(), "onSendReceiptClick", Toast.LENGTH_SHORT).show();
+        /*FragmentManager manager = getFragmentManager();
+        EmailDialog emailDialog = new EmailDialog();
+        emailDialog.show(manager, "EmailDialog");*/
+
+        EmailDialog dialog = EmailDialog.newInstance(getString(R.string.ask_user_email_dialog_title), ActionConstants.ACTION_ASK_CUSTOMER_EMAIL, transaction.getId());
+        dialog.show(getFragmentManager(), "UserPasswordDialog");
     }
 
     public void onBackClick(View view) {
@@ -173,48 +163,9 @@ public class TransactionActivity extends ActionBarActivity {
         this.onBackPressed();
     }
 
-    public void logoutConfirm() {
-        // Alert to check if user is sure about logging out
-        AlertDialog.Builder logoutAlert = new AlertDialog.Builder(this);
-        logoutAlert.setMessage(getString(R.string.lc_question))
-                .setTitle(getString(R.string.lc_title))
-                .setIcon(R.drawable.scan_card)
-                .setPositiveButton(getString(R.string.lc_yes), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        logout();
-                    }
-                })
-                .setNegativeButton(getString(R.string.lc_cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .create();
-        logoutAlert.show();
+    public void onSendReportClick(View view) {
+        ReportDialog dialog = ReportDialog.newInstance(getString(R.string.report_dialog_title), transaction.getId());
+        dialog.show(getFragmentManager(), "ReportDialog");
+
     }
-
-    private void logout() {
-        // select your mode to be either private or public.
-        int mode = Activity.MODE_PRIVATE;
-
-        // get the sharedPreference of your context.
-        SharedPreferences mySharedPreferences;
-        mySharedPreferences = getSharedPreferences(getString(R.string.VASINN_PREFERENCE), mode);
-
-        // retrieve an editor to modify the shared preferences
-        SharedPreferences.Editor editor = mySharedPreferences.edit();
-
-        // now store your primitive type values. In this case it is true, 1f and Hello! World
-        editor.putString(getString(R.string.VASINN_PREFERENCE_USERNAME), "");
-
-        //save the changes that you made
-        editor.commit();
-
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
-
 }

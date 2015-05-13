@@ -1,0 +1,151 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="gens.com.vasinn.dialogs.ReportDialog">
+
+
+   <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginTop="@dimen/dialog_padding_top"
+        android:id="@+id/RelativeLayoutReportDialogInfo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp">
+-
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tViewReportIdDesc"
+            android:text="ID:"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tViewReportTransactionID"
+            android:text="id færslu"
+            android:layout_toEndOf="@+id/tViewReportIdDesc" />
+
+
+
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tViewReportTransactionTimeDesc"
+            android:text="@string/transaction_time"
+            android:layout_below="@+id/tViewReportIdDesc"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tViewTransactionTime"
+            android:text="dagsetning hér"
+            android:layout_below="@+id/tViewReportTransactionID"
+            android:layout_toEndOf="@+id/tViewReportTransactionTimeDesc" />
+
+       <TextView
+           android:layout_width="120dp"
+           android:layout_height="wrap_content"
+           android:id="@+id/tViewReportTransactionCardDesc"
+           android:text="@string/transaction_card"
+           android:layout_below="@+id/tViewReportTransactionTimeDesc" />
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tViewReportTransactionCard"
+           android:layout_below="@+id/tViewReportTransactionTimeDesc"
+           android:layout_toEndOf="@+id/tViewReportTransactionCardDesc"
+           android:text="Vísa/Master" />
+
+
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/transaction_username"
+           android:id="@+id/tViewReportUserDesc"
+           android:layout_below="@+id/tViewReportTransactionCardDesc"
+           android:layout_alignParentStart="true" />
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="notandanafn"
+           android:id="@+id/tViewReportTransactionUsername"
+           android:layout_alignTop="@+id/tViewReportUserDesc"
+           android:layout_alignStart="@+id/tViewReportTransactionCard" />
+       <TextView
+           android:layout_width="120dp"
+           android:layout_height="wrap_content"
+           android:id="@+id/tViewReportTransactionAmountDesc"
+           android:text="@string/transaction_amount"
+           android:textAppearance="?android:attr/textAppearanceMedium"
+           android:textStyle="bold"
+           android:layout_below="@+id/tViewReportUserDesc"
+           android:layout_alignStart="@+id/tViewReportUserDesc" />
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/tViewReportTransactionAmount"
+           android:text="10.101 kr."
+           android:textAppearance="?android:attr/textAppearanceMedium"
+           android:textStyle="bold"
+           android:layout_alignTop="@+id/tViewReportTransactionAmountDesc"
+           android:layout_toEndOf="@+id/tViewReportTransactionAmountDesc" />
+
+   </RelativeLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:minLines="6"
+        android:gravity="top|left"
+        android:maxLines="10"
+        android:id="@+id/edtTextReport"
+        android:hint="@string/hint_report_text"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dialog_padding_top"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/RelativeLayoutReportDialogInfo"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edtTextReport"
+        android:weightSum="2"
+        android:layout_marginTop="@dimen/dialog_padding_top"
+        android:id="@+id/linearReportLayout"
+        android:layout_margin="8dp">
+
+        <Button
+            style="@style/buttonDefault"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/button_send_report"
+            android:id="@+id/btnSendDialogReport"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/lc_cancel"
+            android:id="@+id/btnCancelSendReport"
+            android:layout_alignTop="@+id/btnSendDialogReport"
+            android:layout_toEndOf="@+id/btnSendDialogReport"
+            style="@style/buttonDefault" />
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

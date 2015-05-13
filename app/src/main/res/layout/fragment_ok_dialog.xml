@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="gens.com.vasinn.dialogs.OkDialog">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="put your messsage here"
+        android:id="@+id/tViewOkDlgMessage"
+        android:layout_marginTop="@dimen/dialog_padding_top"
+        android:gravity="center" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tViewOkDlgMessage"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_confirm"
+                android:id="@+id/btnOkDlgConfirm"
+                style="@style/buttonDefault"
+                android:layout_centerHorizontal="true"
+               />
+        </RelativeLayout>
+</RelativeLayout>
