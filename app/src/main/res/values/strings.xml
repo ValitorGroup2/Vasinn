@@ -95,4 +95,8 @@
     <string name="password_sent_title">Senda lykilorð</string>
     <string name="email_not_registered_title">Rangt netfang</string>
     <string name="username_and_password_do_not_match_title">Rangt lykilorð</string>
+    <string name="button_get_card_number">Skrá kortanúmer</string>
+    <string name="type_card_information">Skráðu kortanúmer hér</string>
+    <string name="card_number_dialog_charge">Gjaldfæra</string>
+    <string name="skra_kortanumer_title">Skrá kortanúmer</string>
 </resources>
