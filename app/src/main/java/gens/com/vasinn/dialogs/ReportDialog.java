@@ -3,7 +3,6 @@ package gens.com.vasinn.dialogs;
 import android.app.DialogFragment;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import gens.com.vasinn.R;
 import gens.com.vasinn.SendEmailAsyncTask;
@@ -75,7 +73,7 @@ public class ReportDialog extends DialogFragment implements View.OnClickListener
         if (mTransaction != null)
         {
             ((TextView)view.findViewById(R.id.tViewReportTransactionID)).setText(mTransaction.getIdString());
-            ((TextView)view.findViewById(R.id.tViewReportTransactionID)).setText(mTransaction.getDateTimeString());
+            ((TextView)view.findViewById(R.id.tViewReportTransactionTime)).setText(mTransaction.getDateTimeString());
             ((TextView)view.findViewById(R.id.tViewReportTransactionCard)).setText(mTransaction.getCard());
             ((TextView)view.findViewById(R.id.tViewReportTransactionAmount)).setText(mTransaction.getAmountString());
             ((TextView)view.findViewById(R.id.tViewReportTransactionUsername)).setText(mTransaction.getUserName());
@@ -83,7 +81,7 @@ public class ReportDialog extends DialogFragment implements View.OnClickListener
         }
         else{
             ((TextView)view.findViewById(R.id.tViewReportTransactionID)).setText("");
-            ((TextView)view.findViewById(R.id.tViewReportTransactionID)).setText("");
+            ((TextView)view.findViewById(R.id.tViewReportTransactionTime)).setText("");
             ((TextView)view.findViewById(R.id.tViewReportTransactionCard)).setText("");
             ((TextView)view.findViewById(R.id.tViewReportTransactionAmount)).setText("");
             ((TextView)view.findViewById(R.id.tViewReportTransactionUsername)).setText("Færsla fannst ekki");

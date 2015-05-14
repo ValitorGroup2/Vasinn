@@ -72,6 +72,7 @@
     <string name="user_doesnt_exist">Þú ert ekki skráður í kerfið, vinsamlegast skráðu þig á www.vasinn.is</string>
     <string name="forgot_emptyemail">Vinsamlegast sláðu inn netfangið þitt</string>
     <string name="TRANSACTION_KEY_ID">"gens.com.vasinn.TRANSACTION_KEY_ID</string>
+    <string name="loggedIn_User"></string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -85,7 +86,7 @@
     <string name="button_refund">Bakfæra</string>
     <string name="transaction_username">Starfsmaður:</string>
     <string name="button_back">Til baka</string>
-    <string name="transaction_head_text">Upplysingar um gjaldfærslu</string>
+    <string name="transaction_head_text">Upplýsingar um gjaldfærslu</string>
     <string name="VASINN_PREFERENCE">vasinnPreference</string>
     <string name="VASINN_PREFERENCE_USERNAME">myUsername</string>
     <string name="VASINN_PREFERENCE_AMOUNT">vasinn_preference_amount</string>
@@ -94,7 +95,7 @@
     <string name="btn_confirm">Staðfesta</string>
     <string name="password_title">Vinsamlegast sláðu inn lykilorð</string>
     <string name="get_user_password_title">Sláðu inn lykilorð</string>
-    <string name="email_not_registered">Þetta netfang er er óskráð</string>
+    <string name="email_not_registered">Þetta netfang er óskráð</string>
     <string name="email_forgot_password_subject">Gleymt lykilorð</string>
     <string name="email_forgot_password_body_before">Lykilorðið þitt er: </string>
     <string name="email_forgot_password_body_after">.</string>
@@ -103,7 +104,7 @@
     <string name="card_reader_text_ask_for_card">Vinsamlegast berðu kortið upp að bakhlið tækisins</string>
     <string name="forgot_password_title">Gleymt Lykilorð</string>
     <string name="hint_report_text">Ritaðu hér athugasemdir þínar varðandi þessa færslu</string>
-    <string name="report_dialog_title">Senda tilkynningu um færslu</string>
+    <string name="report_dialog_title">Senda tilkynningu</string>
     <string name="email_report_subject">Tilkynning vegna færslu</string>
     <string name="email_report_body_before">Athugasemdir starfsmanns:</string>
     <string name="email_report_body_after">Færslu upplýsingar:</string>
@@ -128,4 +129,7 @@
     <string name="card_number_dialog_charge">Gjaldfæra</string>
     <string name="skra_kortanumer_title">Skrá kortanúmer</string>
     <string name="hint_savety_number">Öryggisnúmer</string>
+    <string name="help_details">Með því að smella á \"Staðfesta\" verður þér beint á hjálparsíðu Vasans.</string>
+    <string name="logout_check">Ertu viss?</string>
+    <string name="logout_title">Útskráning</string>
 </resources>

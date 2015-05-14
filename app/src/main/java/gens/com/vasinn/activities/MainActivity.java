@@ -43,13 +43,13 @@ import java.util.Collection;
 import java.util.Date;
 
 import fr.devnied.bitlib.BytesUtils;
-import gens.com.vasinn.dialogs.CardNumberDialog;
-import gens.com.vasinn.dialogs.EmailDialog;
-import gens.com.vasinn.fragments.PosiFragment;
 import gens.com.vasinn.R;
-import gens.com.vasinn.fragments.SalesFragment;
 import gens.com.vasinn.VasiApplication;
+import gens.com.vasinn.dialogs.CardNumberDialog;
+import gens.com.vasinn.dialogs.LogoutDialog;
 import gens.com.vasinn.fragments.NavigationDrawerFragment;
+import gens.com.vasinn.fragments.PosiFragment;
+import gens.com.vasinn.fragments.SalesFragment;
 import gens.com.vasinn.repos.objects.Transaction;
 
 //com/github/devnied/emvnfccard/utils/SimpleAsyncTask.java
@@ -80,6 +80,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     private byte[] lastAts;
     private ProgressDialog mDialog;
     private AlertDialog mAlertDialog;
+    private Menu menu;
 
     VasiApplication vasi;
 
@@ -141,25 +142,9 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     public void logoutConfirm() {
         // Alert to check if user is sure about logging out
-        AlertDialog.Builder logoutAlert = new AlertDialog.Builder(this);
-        logoutAlert.setMessage(getString(R.string.lc_question))
-                .setTitle(getString(R.string.lc_title))
-                .setIcon(R.drawable.scan_card)
-                .setPositiveButton(getString(R.string.lc_yes), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        logout();
-                    }
-                })
-                .setNegativeButton(getString(R.string.lc_cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .create();
-        logoutAlert.show();
+        android.app.FragmentManager manager = getFragmentManager();
+        LogoutDialog logoutDialog = new LogoutDialog();
+        logoutDialog.show(manager, "LogoutDialog");
     }
 
     private void logout() {
@@ -204,6 +189,8 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        menu.add(0, 1, Menu.NONE, vasi.getLoggedInUsername()).setEnabled(false).setShowAsAction(MenuItem.SHOW_AS_ACTION_WITH_TEXT + MenuItem.SHOW_AS_ACTION_ALWAYS);
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
@@ -212,7 +199,9 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
             restoreActionBar();
             return true;
         }
-        return super.onCreateOptionsMenu(menu);
+
+        this.menu = menu;
+        return true;
     }
 
     @Override
@@ -220,15 +209,6 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        switch(id)
-        {
-            case R.id.action_logout:
-                logoutConfirm();
-                return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 

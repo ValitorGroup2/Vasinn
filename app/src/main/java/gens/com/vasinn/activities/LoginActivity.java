@@ -95,6 +95,7 @@ public class LoginActivity extends ActionBarActivity {
             // now store your primitive type values. In this case it is true, 1f and Hello! World
             editor.putString(getString(R.string.VASINN_PREFERENCE_USERNAME), userName);
 
+
             //save the changes that you made
             editor.commit();
 

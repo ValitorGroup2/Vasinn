@@ -71,9 +71,9 @@ public class TransactionActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         switch(id)
         {
-            case R.id.action_logout:
+            /*case R.id.action_logout:
                 logoutConfirm();
-                return true;
+                return true;*/
             case R.id.action_help:
                 FragmentManager manager = getFragmentManager();
                 HelpDialog helpDialog = new HelpDialog();
