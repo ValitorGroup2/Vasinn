@@ -96,9 +96,14 @@
         <item name="homeAsUpIndicator">@mipmap/ic_logo_drawer</item>
     </style>
 
+    <style name="OthersActivityTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/vasinnActionBar</item>
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/vasinnActionBar</item>
+    </style>
+
     <!-- ActionBar styles -->
-    <style name="vasinnActionBar" 
-        parent="AppTheme">
+    <style name="vasinnActionBar" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <item name="android:background">@color/default_dialog_button_bg</item>
 
         <!-- Support library compatibility -->

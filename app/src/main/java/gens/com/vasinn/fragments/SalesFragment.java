@@ -9,13 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
 import gens.com.vasinn.R;
-import gens.com.vasinn.activities.TransactionActivity;
 import gens.com.vasinn.TransactionsAdapter;
 import gens.com.vasinn.VasiApplication;
+import gens.com.vasinn.activities.TransactionActivity;
 import gens.com.vasinn.controllers.TransactionController;
 import gens.com.vasinn.repos.objects.Transaction;
 
@@ -25,6 +26,7 @@ import gens.com.vasinn.repos.objects.Transaction;
 public class SalesFragment extends Fragment {
     View rootview;
     ListView listView;
+    TextView emptyText, titleText;
     TransactionsAdapter adapter;
     VasiApplication vasi;
 
@@ -33,6 +35,8 @@ public class SalesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.sales_layout, container, false);
         listView = (ListView)rootview.findViewById(R.id.lViewTransactions);
+        emptyText = (TextView)rootview.findViewById(R.id.tViewSalesEmpty);
+        titleText = (TextView)rootview.findViewById(R.id.tViewSalesTitle);
 
         vasi = ((VasiApplication) this.getActivity().getApplication());
 
@@ -76,9 +80,16 @@ public class SalesFragment extends Fragment {
         List<Transaction> range = transCon.getRangeByUser(transCon.getSize()-1, 0, vasi.getLoggedInUsername());
         adapter = new TransactionsAdapter(rootview.getContext(), R.layout.row_layout_transaction);
         listView.setAdapter(adapter);
-        for(int i = 0; i < range.size(); i++)
-        {
-            adapter.add(range.get(i));
+        if (range.size() != 0) {
+            emptyText.setVisibility(View.INVISIBLE);
+            titleText.setVisibility(View.VISIBLE);
+            for(int i = 0; i < range.size(); i++)
+            {
+                adapter.add(range.get(i));
+            }
+        } else {
+            emptyText.setVisibility(View.VISIBLE);
+            titleText.setVisibility(View.INVISIBLE);
         }
     }
 }

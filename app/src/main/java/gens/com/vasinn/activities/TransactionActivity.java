@@ -32,6 +32,8 @@ public class TransactionActivity extends ActionBarActivity {
     Transaction transaction = null;
     TransactionController transactionController;
     UserController userController;
+    VasiApplication vasi;
+    Menu menu;
     private View v;
 
     @Override
@@ -39,7 +41,7 @@ public class TransactionActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
 
-        VasiApplication vasi = ((VasiApplication) this.getApplication());
+        vasi = ((VasiApplication) this.getApplication());
         transactionController = vasi.getTransactionController();
         userController = vasi.getUserController();
         Bundle bundle = getIntent().getExtras();
@@ -57,6 +59,9 @@ public class TransactionActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        super.onCreateOptionsMenu(menu);
+        menu.add(0, 1, Menu.NONE, vasi.getLoggedInUsername()).setEnabled(false).setShowAsAction(MenuItem.SHOW_AS_ACTION_WITH_TEXT + MenuItem.SHOW_AS_ACTION_ALWAYS);
+        this.menu = menu;
         getMenuInflater().inflate(R.menu.menu_transaction, menu);
         return true;
     }

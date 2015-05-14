@@ -132,4 +132,5 @@
     <string name="help_details">Með því að smella á \"Staðfesta\" verður þér beint á hjálparsíðu Vasans.</string>
     <string name="logout_check">Ertu viss?</string>
     <string name="logout_title">Útskráning</string>
+    <string name="no_transaction_text">Þú átt engar færslur :(</string>
 </resources>

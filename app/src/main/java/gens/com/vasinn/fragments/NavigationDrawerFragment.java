@@ -19,8 +19,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import gens.com.vasinn.R;
 import gens.com.vasinn.dialogs.HelpDialog;
@@ -61,6 +65,20 @@ public class NavigationDrawerFragment extends Fragment {
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
+    private SimpleAdapter mAdapter;
+    private List<HashMap<String,String>> mList ;
+    final private String ITEM = "item";
+    final private String ICON = "icon";
+    final private String COUNT = "count";
+    String[] mItems = new String[] { "Posi","Söluyfirlit","Útskrá" };
+    int[] mIcons = new int[] {
+            R.drawable.ic_action_dial_pad,
+            R.drawable.ic_action_view_as_list,
+            R.drawable.ic_action_undo,
+
+    };
+    String[] mCount = new String[] { "1", "2", "3" };
+
     public NavigationDrawerFragment() {
     }
 
@@ -80,6 +98,15 @@ public class NavigationDrawerFragment extends Fragment {
 
         // Select either the default item (0) or the last selected item.
         selectItem(mCurrentSelectedPosition);
+
+        mList = new ArrayList<HashMap<String,String>>();
+        for (int i = 0; i < 3; i++) {
+            HashMap<String, String> hm = new HashMap<String,String>();
+            hm.put(ITEM, mItems[i]);
+            hm.put(COUNT, mCount[i]);
+            hm.put(ICON, Integer.toString(mIcons[i]) );
+            mList.add(hm);
+        }
     }
 
     @Override
@@ -94,22 +121,20 @@ public class NavigationDrawerFragment extends Fragment {
                              Bundle savedInstanceState) {
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.readcard_fragment_navigation_drawer, container, false);
+
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItem(position);
             }
         });
-        mDrawerListView.setAdapter(new ArrayAdapter<String>(
-                getActionBar().getThemedContext(),
-                android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
-                new String[]{
-                        getString(R.string.title_section1),
-                        getString(R.string.title_section2),
-                        getString(R.string.title_section3),
-                }));
-        mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+
+        String[] from = { ICON, ITEM, COUNT };
+        int[] to = { R.id.list_item_icon, R.id.list_item };
+        mAdapter = new SimpleAdapter(getActionBar().getThemedContext(), mList, R.layout.drawer_list_item, from, to);
+        mDrawerListView.setAdapter(mAdapter);
+
+         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
 

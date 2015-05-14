@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import gens.com.vasinn.R;
 import gens.com.vasinn.controllers.UserController;
@@ -48,7 +47,7 @@ public class LoginActivity extends ActionBarActivity {
         // Checking if user is already logged in
         if (!un.isEmpty()) {
             // TODO delete this shit
-            Toast.makeText(getApplicationContext(), "logged in user :" + un, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "logged in user :" + un, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(USERNAME_KEY, un);
             startActivity(intent);
@@ -59,6 +58,7 @@ public class LoginActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_login, menu);
+
         return true;
     }
 
