@@ -15,6 +15,8 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 import gens.com.vasinn.R;
+import gens.com.vasinn.VasiApplication;
+import gens.com.vasinn.activities.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -139,6 +141,12 @@ public class CardReaderFragment extends Fragment {
         //mySharedPreferences.edit().putFloat(getString(R.string.VASINN_PREFERENCE_AMOUNT), 0);*/
         String text = getString(R.string.transaction_amount) + " ";
         text+=amountToString(mParamAmount);
+        if(mParamAmount == 0)
+        {   //no ammount to display so let's go to posi
+            ((MainActivity)getActivity()).onNavigationDrawerItemSelected(0);
+        }
+        mParamAmount = 0;
+
         ((TextView)getView().findViewById(R.id.tViewReaderAmount)).setText(text);
 
     }
