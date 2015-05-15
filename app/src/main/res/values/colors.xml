@@ -42,5 +42,8 @@
 
     <color name="default_line_separator">#ff17a5ff</color>
     <color name="vasi_green">#ff184013</color>
+    <color name="button_disabled">#cccccccc</color>
+    <color name="button_disabled_border">#cc434343</color>
+
 
 </resources>

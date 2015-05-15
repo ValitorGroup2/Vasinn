@@ -80,7 +80,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="transaction_time">Tími:</string>
     <string name="transaction_card">Gerð korts:</string>
-    <string name="transaction_amount">Upphæð:</string>
+    <string name="transaction_amount">Upphæð</string>
     <string name="button_send_receipt">Senda kvittun</string>
     <string name="button_send_report">Senda tilkynningu</string>
     <string name="button_refund">Bakfæra</string>

@@ -139,7 +139,7 @@ public class CardReaderFragment extends Fragment {
         // Retrieve the saved values.
         float ret = mySharedPreferences.getFloat(getString(R.string.VASINN_PREFERENCE_AMOUNT), 0);
         //mySharedPreferences.edit().putFloat(getString(R.string.VASINN_PREFERENCE_AMOUNT), 0);*/
-        String text = getString(R.string.transaction_amount) + " ";
+        String text = getString(R.string.transaction_amount) + ": ";
         text+=amountToString(mParamAmount);
         if(mParamAmount == 0)
         {   //no ammount to display so let's go to posi
