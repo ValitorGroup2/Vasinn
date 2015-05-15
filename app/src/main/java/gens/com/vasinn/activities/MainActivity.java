@@ -118,7 +118,9 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         String fragmentTag ="";
         switch (position) {
             case 0:
-                objFragment = new PosiFragment();
+                double amount = vasi.getChargedAmount();
+                vasi.setChargedAmount(0);
+                objFragment = (Fragment)new PosiFragment().newInstance((float)amount);
                 fragmentTag = "PosiFragment";
                 break;
             case 1:
@@ -533,13 +535,16 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     @Override
     public void onBackPressed() {
 
-       PosiFragment f = (PosiFragment)getSupportFragmentManager().findFragmentByTag("PosiFragment");
+       Fragment f;
+        String str = objFragment.getClass().getName();
+        f = (Fragment)getSupportFragmentManager().findFragmentByTag("PosiFragment");
 
         if(f != null && f.isVisible()) {
             moveTaskToBack(true);
             finish();  //not sure that this is needed
+            return;
         }
-
+        
         super.onBackPressed();
     }
 

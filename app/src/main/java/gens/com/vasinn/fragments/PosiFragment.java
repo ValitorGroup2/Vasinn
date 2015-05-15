@@ -27,6 +27,8 @@ import gens.com.vasinn.dialogs.UserPasswordDialog;
 
 public class PosiFragment extends Fragment{
 
+    private static final String ARG_PARAM1 = "param1";
+
     View rootview;
     ImageButton btnCharge;
     private EditText Src;
@@ -35,16 +37,37 @@ public class PosiFragment extends Fragment{
     private int lastButton = 0;
     private boolean flipForEqual = false;
 
+    public static PosiFragment newInstance(float amount) {
+
+        PosiFragment fragment = new PosiFragment();
+        Bundle args = new Bundle();
+        args.putFloat(ARG_PARAM1, amount);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.posi_layout, container, false);
 
+
         Src = (EditText)rootview.findViewById(R.id.editCalc);
         Src.setEnabled(false);
 
         btnCharge = (ImageButton) rootview.findViewById(R.id.buttonSaveValue);
-        btnCharge.setEnabled(false);
+
+        if (getArguments() != null) {
+            float num = getArguments().getFloat(ARG_PARAM1);
+            if (num == 0 )
+                Src.setText("0");
+            else
+                Src.setText(Integer.toString(Math.round(num)));
+        }
+
+        enableChargeButtonIfNumIsValid();
+
+
         Src.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -58,25 +81,28 @@ public class PosiFragment extends Fragment{
 
             @Override
             public void afterTextChanged(Editable s) {
+                enableChargeButtonIfNumIsValid();
 
-                float fNum;
-                try {
-                    fNum = Float.parseFloat(Src.getText().toString());
-                }
-                catch(Exception e)
-                {
-
-                    fNum = 0; //an error
-                }
-
-                btnCharge.setEnabled(fNum != 0);
             }
         });
 //btnCharge
         return rootview;
     }
 
+    public void enableChargeButtonIfNumIsValid()
+    {
+        float fNum;
+        try {
+            fNum = Float.parseFloat(Src.getText().toString());
+        }
+        catch(Exception e)
+        {
 
+            fNum = 0; //an error
+        }
+
+        btnCharge.setEnabled(fNum != 0);
+    }
     public void btnClicked(View v)
     {
         String numb;
@@ -187,76 +213,76 @@ public class PosiFragment extends Fragment{
     }
 
     public void mResult(boolean saveNumberAf){
-        float NumAf;
+        float numAfter;
         float result = 0;
-        float NumBf = NumberBf;
+        float numBefore = NumberBf;
         if(Operation.length()<1) {
             return;
         }
         String str;
         try {
-            NumAf = Float.parseFloat(Src.getText().toString());
+            numAfter = Float.parseFloat(Src.getText().toString());
         }
         catch(Exception e){
             Toast.makeText(rootview.getContext(), "Invalid number", Toast.LENGTH_SHORT).show();
-            NumAf = 0; //an error
+            numAfter = 0; //an error
         }
 
 
         if (flipForEqual){
-            float tmp = NumAf;
-            NumAf = NumBf;
-            NumBf = tmp;
+            float tmp = numAfter;
+            numAfter = numBefore;
+            numBefore = tmp;
         }
         if (Operation.equals("Sqrt") || Operation.equals("Squared"))
-            str = Operation + " " + String.valueOf(NumBf);
+            str = Operation + " " + String.valueOf(numBefore);
         else
-            str = String.valueOf(NumBf) + " " + Operation + " " + String.valueOf(NumAf);
+            str = String.valueOf(numBefore) + " " + Operation + " " + String.valueOf(numAfter);
 
         if (Operation.equals("+"))
         {
-            result = NumBf + NumAf ;
+            result = numBefore + numAfter;
         }
         else if (Operation.equals("-"))
         {
-            result =  NumBf - NumAf;
+            result =  numBefore - numAfter;
 
         }
         else if (Operation.equals("/"))
         {
-            if (NumAf == 0) //no null division
+            if (numAfter == 0) //no null division
                 result = 0;
             else
-                result = NumBf / NumAf;
+                result = numBefore / numAfter;
         }
         else if (Operation.equals("*"))
         {
-            result = NumBf * NumAf ;
+            result = numBefore * numAfter;
         }
         else if (Operation.equals("%"))
         {
-            result = NumBf * (NumAf/100) ;
+            result = numBefore * (numAfter /100) ;
         }
         else if (Operation.equals("Power"))
         {
-            result = (float)(double)Math.pow(NumBf, NumAf);
+            result = (float)(double)Math.pow(numBefore, numAfter);
 
         }
 
         else if (Operation.equals("Sqrt"))
         {
-            result = (float)(double)Math.sqrt(NumBf);
-            NumAf = NumBf;
+            result = (float)(double)Math.sqrt(numBefore);
+            numAfter = numBefore;
         }
         else if (Operation.equals("Squared"))
         {
-            result = (float)(double)Math.pow(NumBf, 2);
-            NumAf = NumBf;
+            result = (float)(double)Math.pow(numBefore, 2);
+            numAfter = numBefore;
         }
 
         if (saveNumberAf){
 
-            NumberBf = NumAf;
+            NumberBf = numAfter;
             flipForEqual = true;
         }
 

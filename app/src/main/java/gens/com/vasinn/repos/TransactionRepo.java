@@ -18,9 +18,9 @@ public class TransactionRepo {
 
     public TransactionRepo() {
 
-        transactions.add(new Transaction( 1, new Date((new GregorianCalendar(2013, 5,  6, 13, 24, 56)).getTimeInMillis()),   1540, "gudjon","Visa", true));
-        transactions.add(new Transaction( 2, new Date((new GregorianCalendar(2015, 5,  6, 12, 15,  0)).getTimeInMillis()),  23800, "gudny", "Mastercard", true));
-        transactions.add(new Transaction( 3, new Date((new GregorianCalendar(2015, 5,  5, 11, 35, 15)).getTimeInMillis()), 212844, "aegir", "Visa", true));
+        transactions.add(new Transaction( 1, new Date((new GregorianCalendar(2013, 5,  6, 13, 24, 56)).getTimeInMillis()),   1540.10, "gudjon","Visa", true));
+        transactions.add(new Transaction( 2, new Date((new GregorianCalendar(2015, 5,  6, 12, 15,  0)).getTimeInMillis()),  23800.5, "gudny", "Mastercard", true));
+        transactions.add(new Transaction( 3, new Date((new GregorianCalendar(2015, 5,  5, 11, 35, 15)).getTimeInMillis()), 212844.51, "aegir", "Visa", true));
         transactions.add(new Transaction( 4, new Date((new GregorianCalendar(2015, 5,  5, 10, 25,  0)).getTimeInMillis()),  28401, "karl",  "American express",true ));
         transactions.add(new Transaction( 5, new Date((new GregorianCalendar(2015, 5,  3, 10, 25, 30)).getTimeInMillis()),    507, "aegir", "Mastercard",true ));
         transactions.add(new Transaction( 6, new Date((new GregorianCalendar(2015, 5,  1, 14, 30, 21)).getTimeInMillis()),   1240, "aegir", "Visa",true ));
