@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import gens.com.vasinn.R;
 import gens.com.vasinn.VasiApplication;
 import gens.com.vasinn.activities.MainActivity;
@@ -38,19 +41,27 @@ public class CardNumberDialog extends DialogFragment implements OnClickListener 
 
         if (id == R.id.btnChargeCardGetNumber)
         {
+
             Spinner spinner = (Spinner)getView().findViewById(R.id.spinnerMonth);
             int month, year, safetyNumber;
             month = spinner.getSelectedItemPosition();  //month 0 is januar
             spinner = (Spinner)getView().findViewById(R.id.spinnerYear);
             year = 2015 + spinner.getSelectedItemPosition();//first year in the list is 2015
+            safetyNumber = getSafetyNumber();
 
-            try {
-                safetyNumber = Integer.parseInt(edtSaftyNumber.getText().toString());
+            if (hasCardExpired(year, month)){
+
+                OkDialog dialog = new OkDialog().newInstance(getString(R.string.expiration_date_title), getString(R.string.card_is_expired));
+                dialog.show(getFragmentManager(), "OkDialog");
+                return;
             }
-            catch (Exception e)
-            {
-               safetyNumber = 0;
+            else if (safetyNumber < 0 ) {
+                OkDialog dialog = new OkDialog().newInstance(getString(R.string.safety_number_title), getString(R.string.safety_number_wrong_format));
+                dialog.show(getFragmentManager(), "OkDialog");
+                return;
+
             }
+            
             double amount = vasi.getChargedAmount();
             vasi.setChargedAmount(0);
             String strNum = edtCardNumber.getText().toString();
@@ -104,7 +115,55 @@ public class CardNumberDialog extends DialogFragment implements OnClickListener 
 
     public boolean isValidCardNumber(String number){
 
+
         return vasi.getCardType(number) != CardConstants.UNKNOWN;
+    }
+
+    //year, the expiration year
+    //month the expiration month, januar is number 0, feb number 1.
+    public  boolean hasCardExpired(int year, int month){
+
+        Calendar cal = Calendar.getInstance();
+        int nowMonth = cal.get(Calendar.MONTH);
+        int nowYear = cal.get(Calendar.YEAR);
+
+        boolean bRet;
+        if (nowYear != year) {
+            bRet = (nowYear > year);
+        }
+        else
+        {
+            bRet = nowMonth > month;
+        }
+        return bRet;
+    }
+    //returns the safety number
+    //return less than zero if number is invalid
+    public int getSafetyNumber(){
+
+        String strSaftyNumber = edtSaftyNumber.getText().toString();
+
+        if (strSaftyNumber.isEmpty())
+            return 0;
+        
+        int safetyNumber;
+        
+        try {
+            safetyNumber = Integer.parseInt(strSaftyNumber);
+        }
+        catch (Exception e)
+        {
+            safetyNumber = -1;
+        }
+        
+        if (safetyNumber < 0 || safetyNumber > 9999)
+            return -1;
+
+        if (    (  safetyNumber > 99 && safetyNumber < 1000 )
+             || ( safetyNumber > 999 && safetyNumber < 10000 ))
+            return safetyNumber; //apparently valid is 3 digits or 4 digits
+
+        return -1;
     }
 
 }

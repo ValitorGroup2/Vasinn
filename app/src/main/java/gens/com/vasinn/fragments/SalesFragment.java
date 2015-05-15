@@ -50,6 +50,8 @@ public class SalesFragment extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putInt(getString(R.string.TRANSACTION_KEY_ID), item.getId());
+                String str = this.getClass().getName();
+                bundle.putString(getString(R.string.VASINN_CALLING_CLASS), str);
 
                 Intent intent = new Intent(getActivity(), TransactionActivity.class);
                 intent.putExtras(bundle);

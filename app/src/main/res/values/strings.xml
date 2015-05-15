@@ -134,4 +134,7 @@
     <string name="logout_title">Útskráning</string>
     <string name="no_transaction_text">Þú átt engar færslur :(</string>
     <string name="posi_title">Posahamur</string>
+    <string name="safety_number_wrong_format">Öryggisnúmer þarf að vera þriggja eða fjöggra talna númer.</string>
+    <string name="safety_number_title">Öryggisnúmer</string>
+    <string name="expiration_date_title">Gildistími korts</string>
 </resources>

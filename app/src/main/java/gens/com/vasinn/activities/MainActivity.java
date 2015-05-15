@@ -115,27 +115,32 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 
+        String fragmentTag ="";
         switch (position) {
             case 0:
-                objFragment = new PosiFragment();
+                double amount = vasi.getChargedAmount();
+                vasi.setChargedAmount(0);
+                objFragment = (Fragment)new PosiFragment().newInstance((float)amount);
+                fragmentTag = "PosiFragment";
                 break;
             case 1:
                 objFragment = new SalesFragment();
+                fragmentTag = "SalesFragment";
                 break;
             case 2:
                 logoutConfirm();
                 return;
         }
 
-        FragmentReplace(objFragment);
+        FragmentReplace(objFragment, fragmentTag);
 
 
     }
     // update the main content by replacing fragments
-    public void FragmentReplace(Fragment objFragment) {
+    public void FragmentReplace(Fragment objFragment, String fragmentTag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment)
+                .replace(R.id.container, objFragment, fragmentTag)
                 .commit();
 
     }
@@ -468,12 +473,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         return true;  //todo: do some error checking
     }
     public void backToHomeScreen() {
-        // Select first menu
-       /* mDrawerListView.performItemClick(mDrawerListView, 0, mDrawerListView.getItemIdAtPosition(0));
-        // Close Drawer
-        mDrawerLayout.closeDrawer(mDrawerListView);*/
 
-        //todo: Hvað skal gera hér?
     }
 
 
@@ -532,6 +532,22 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         return lastAts;
     }
 
+    @Override
+    public void onBackPressed() {
+
+       Fragment f;
+        String str = objFragment.getClass().getName();
+        f = (Fragment)getSupportFragmentManager().findFragmentByTag("PosiFragment");
+
+        if(f != null && f.isVisible()) {
+            moveTaskToBack(true);
+            finish();  //not sure that this is needed
+            return;
+        }
+        
+        super.onBackPressed();
+    }
+
     public void btnClicked(View v){
         ((PosiFragment)objFragment).btnClicked(v);
 
@@ -542,6 +558,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     }
 
     public void onButtonCardReaderCancel(View view) {
+
         this.onBackPressed();
     }
 
