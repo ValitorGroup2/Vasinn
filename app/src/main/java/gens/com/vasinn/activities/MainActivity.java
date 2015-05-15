@@ -468,12 +468,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         return true;  //todo: do some error checking
     }
     public void backToHomeScreen() {
-        // Select first menu
-       /* mDrawerListView.performItemClick(mDrawerListView, 0, mDrawerListView.getItemIdAtPosition(0));
-        // Close Drawer
-        mDrawerLayout.closeDrawer(mDrawerListView);*/
 
-        //todo: Hvað skal gera hér?
     }
 
 
@@ -532,6 +527,11 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
         return lastAts;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     public void btnClicked(View v){
         ((PosiFragment)objFragment).btnClicked(v);
 
@@ -542,6 +542,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     }
 
     public void onButtonCardReaderCancel(View view) {
+
         this.onBackPressed();
     }
 

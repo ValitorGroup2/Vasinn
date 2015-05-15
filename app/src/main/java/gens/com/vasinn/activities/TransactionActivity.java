@@ -130,7 +130,8 @@ public class TransactionActivity extends ActionBarActivity {
         dialog.show(getFragmentManager(), "UserPasswordDialog");
     }
 
-    public void onBackClick(View view) {
+    @Override
+    public void onBackPressed() {
 
         Bundle bundle = getIntent().getExtras();
 
@@ -138,7 +139,9 @@ public class TransactionActivity extends ActionBarActivity {
             String callingClassName =  bundle.getString(getString(R.string.VASINN_CALLING_CLASS));
 
             this.getIntent().putExtra(getString(R.string.VASINN_CALLING_CLASS), "");
-            if (callingClassName != null && callingClassName.equals("gens.com.vasinn.activities.MainActivity$4")){
+            if ( callingClassName == null
+                 || callingClassName.equals("gens.com.vasinn.activities.MainActivity")
+                 || callingClassName.equals("")){
 
 
                 Intent intent = new Intent(this, MainActivity.class);
@@ -146,7 +149,13 @@ public class TransactionActivity extends ActionBarActivity {
                 return;
             }
         }
+
+        super.onBackPressed();
+    }
+
+    public void onBackClick(View view) {
         this.onBackPressed();
+
     }
 
     public void loadTransaction(Transaction newTransaction) {

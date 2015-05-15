@@ -41,6 +41,7 @@ public class PosiFragment extends Fragment{
         rootview = inflater.inflate(R.layout.posi_layout, container, false);
 
         Src = (EditText)rootview.findViewById(R.id.editCalc);
+        Src.setEnabled(false);
 
         btnCharge = (ImageButton) rootview.findViewById(R.id.buttonSaveValue);
         btnCharge.setEnabled(false);
