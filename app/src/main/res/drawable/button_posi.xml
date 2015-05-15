@@ -9,7 +9,7 @@
                 android:width="1dp"
                 android:color="@color/posi_button_border" />
             <corners
-                android:radius="58dp" />
+                android:radius="10dp" />
 
         </shape>
     </item>
@@ -22,7 +22,7 @@
                 android:width="1dp"
                 android:color="@color/posi_button_border" />
             <corners
-                android:radius="58dp" />
+                android:radius="10dp" />
 
         </shape>
     </item>

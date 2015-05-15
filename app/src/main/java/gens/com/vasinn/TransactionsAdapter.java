@@ -56,10 +56,10 @@ public class TransactionsAdapter extends ArrayAdapter {
             LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.row_layout_transaction, parent, false);
             handler = new DataHandler();
-            handler.tViewId     = (TextView)row.findViewById(R.id.tViewRowId);
-            handler.tViewDate   = (TextView)row.findViewById(R.id.tViewRowDate);
-            handler.tViewUser   = (TextView)row.findViewById(R.id.tViewRowUser);
-            handler.tViewAmount = (TextView)row.findViewById(R.id.tViewRowAmount);
+            handler.tViewId     = (TextView)row.findViewById(R.id.tViewTopRowId);
+            handler.tViewDate   = (TextView)row.findViewById(R.id.tViewTopRowDate);
+            handler.tViewUser   = (TextView)row.findViewById(R.id.tViewTopRowUser);
+            handler.tViewAmount = (TextView)row.findViewById(R.id.tViewTopRowAmount);
 
             /*if ( (position % 2) == 0)
             {

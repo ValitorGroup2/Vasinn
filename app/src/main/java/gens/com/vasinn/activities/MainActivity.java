@@ -200,7 +200,7 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
             return true;
         }
 
-        this.menu = menu;
+        //this.menu = menu;
         return true;
     }
 

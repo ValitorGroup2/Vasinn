@@ -12,6 +12,7 @@
 
     <color name="admin_blue">#2f4050</color>
     <color name="admin_green">#1ab394</color>
+    <color name="admin_green_clicked">#17A68A</color>
     <color name="admin_lightgreen">#6fd1bd</color>
     <color name="admin_gray">#f3f3f4</color>
 
@@ -19,7 +20,7 @@
     <color name="posi_button_number">@color/admin_gray</color>
     <color name="posi_button_number_pressed">#ff8e8e8f</color>
 
-    <color name="posi_button_func">#ff314481</color>
+    <color name="posi_button_func">#ff2f4050</color>
     <color name="posi_button_func_pressed">#ff405dab</color>
     <color name="posi_button_border_func">#ff1a2443</color>
 

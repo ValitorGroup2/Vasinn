@@ -82,14 +82,12 @@ public class SalesFragment extends Fragment {
         listView.setAdapter(adapter);
         if (range.size() != 0) {
             emptyText.setVisibility(View.INVISIBLE);
-            titleText.setVisibility(View.VISIBLE);
             for(int i = 0; i < range.size(); i++)
             {
                 adapter.add(range.get(i));
             }
         } else {
             emptyText.setVisibility(View.VISIBLE);
-            titleText.setVisibility(View.INVISIBLE);
         }
     }
 }

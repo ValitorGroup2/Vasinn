@@ -88,12 +88,12 @@
     </style>
 
     <style name="MainActivityTheme" parent="AppTheme">
-        <item name="android:homeAsUpIndicator">@mipmap/ic_logo_drawer</item>
+        <item name="android:homeAsUpIndicator">@mipmap/ic_drawer_2</item>
         <item name="android:actionBarStyle">@style/vasinnActionBar</item>
 
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/vasinnActionBar</item>
-        <item name="homeAsUpIndicator">@mipmap/ic_logo_drawer</item>
+        <item name="homeAsUpIndicator">@mipmap/ic_drawer_2</item>
     </style>
 
     <style name="OthersActivityTheme" parent="AppTheme">
@@ -104,10 +104,10 @@
 
     <!-- ActionBar styles -->
     <style name="vasinnActionBar" parent="Base.Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:background">@color/default_dialog_button_bg</item>
+        <item name="android:background">@color/admin_blue</item>
 
         <!-- Support library compatibility -->
-        <item name="background">@color/default_dialog_button_bg</item>
+        <item name="background">@color/admin_blue</item>
     </style>
 
 </resources>

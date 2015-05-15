@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import gens.com.vasinn.R;
 import gens.com.vasinn.controllers.UserController;
@@ -27,6 +30,21 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         userController = new UserController();
+
+        ((EditText)findViewById(R.id.edtLoginPassword)).setOnEditorActionListener(
+        new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                        actionId == EditorInfo.IME_ACTION_DONE ||
+                        event.getAction() == KeyEvent.ACTION_DOWN &&
+                                event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    login();
+                    return true; // consume.
+                }
+                return false; // pass on to other listeners.
+            }
+        });
     }
 
     @Override
@@ -77,7 +95,7 @@ public class LoginActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void login(View view) {
+    public void login() {
         String userName = ((EditText)findViewById(R.id.edtLoginUsername)).getText().toString();
         String password = ((EditText)findViewById(R.id.edtLoginPassword)).getText().toString();
         if (userController.loginUser(userName, password))  {

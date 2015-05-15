@@ -2,9 +2,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleWrapPosi"
+        android:gravity="center"
+        android:background="@drawable/sales_header_selector">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/posiTitle"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/posi_title"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8.5dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/admin_lightgreen"
+        android:id="@+id/SalesRule2"
+        android:layout_below="@+id/titleWrapPosi"
+        />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/SalesRule2"
         android:id="@+id/editCalc"
         android:text="0"
         android:gravity="right"
