@@ -96,7 +96,7 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
                         break;
                     case ActionConstants.ACTION_MAIN_CHARGE:
                         CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), mAmount);
-                        ((MainActivity) this.getActivity()).FragmentReplace(fragment);
+                        ((MainActivity) this.getActivity()).FragmentReplace(fragment, "CardReaderFragment");
                         break;
                 }
                 dismiss();

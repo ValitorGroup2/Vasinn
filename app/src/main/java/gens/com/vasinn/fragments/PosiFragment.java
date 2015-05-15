@@ -292,7 +292,7 @@ public class PosiFragment extends Fragment{
         else {
 
             CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), num);
-            ((MainActivity) this.getActivity()).FragmentReplace(fragment);
+            ((MainActivity) this.getActivity()).FragmentReplace(fragment, "CardReaderFragment");
         }
     }
 

@@ -148,9 +148,12 @@ public class TransactionActivity extends ActionBarActivity {
                 startActivity(intent);
                 return;
             }
+            else if (callingClassName != null && callingClassName.equals("gens.com.vasinn.fragments.SalesFragment$1")){
+                super.onBackPressed();
+            }
         }
 
-        super.onBackPressed();
+       //ignoring back button
     }
 
     public void onBackClick(View view) {

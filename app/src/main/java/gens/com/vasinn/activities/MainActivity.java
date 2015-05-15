@@ -115,27 +115,30 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 
+        String fragmentTag ="";
         switch (position) {
             case 0:
                 objFragment = new PosiFragment();
+                fragmentTag = "PosiFragment";
                 break;
             case 1:
                 objFragment = new SalesFragment();
+                fragmentTag = "SalesFragment";
                 break;
             case 2:
                 logoutConfirm();
                 return;
         }
 
-        FragmentReplace(objFragment);
+        FragmentReplace(objFragment, fragmentTag);
 
 
     }
     // update the main content by replacing fragments
-    public void FragmentReplace(Fragment objFragment) {
+    public void FragmentReplace(Fragment objFragment, String fragmentTag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment)
+                .replace(R.id.container, objFragment, fragmentTag)
                 .commit();
 
     }
@@ -529,6 +532,14 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
 
     @Override
     public void onBackPressed() {
+
+       PosiFragment f = (PosiFragment)getSupportFragmentManager().findFragmentByTag("PosiFragment");
+
+        if(f != null && f.isVisible()) {
+            moveTaskToBack(true);
+            finish();  //not sure that this is needed
+        }
+
         super.onBackPressed();
     }
 
