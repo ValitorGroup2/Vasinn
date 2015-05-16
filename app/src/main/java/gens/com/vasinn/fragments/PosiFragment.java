@@ -293,7 +293,12 @@ public class PosiFragment extends Fragment{
         float num;
         try {
             num = Float.parseFloat(Src.getText().toString());
+            float ceilNum = num;
+            num = (float) Math.ceil(num);
 
+            if (ceilNum != num) {
+                Toast.makeText(rootview.getContext(), "Upphæð var námunduð", Toast.LENGTH_SHORT).show();
+            }
         }
         catch(Exception e){
             Toast.makeText(rootview.getContext(), "Invalid number", Toast.LENGTH_SHORT).show();
@@ -317,7 +322,7 @@ public class PosiFragment extends Fragment{
         }
         else {
 
-            CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), num);
+            CardReaderFragment fragment = CardReaderFragment.newInstance(this.getClass().getName(), (int) num);
             ((MainActivity) this.getActivity()).FragmentReplace(fragment, "CardReaderFragment");
         }
     }

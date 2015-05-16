@@ -34,7 +34,7 @@ public class CardReaderFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private String mParam1;
-    private float  mParamAmount;
+    private int mParamAmount;
 
     private OnFragmentInteractionListener mListener;
 
@@ -47,11 +47,11 @@ public class CardReaderFragment extends Fragment {
      * @return A new instance of fragment CardReaderFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CardReaderFragment newInstance(String param1, float amount) {
+    public static CardReaderFragment newInstance(String param1, int amount) {
         CardReaderFragment fragment = new CardReaderFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putFloat(ARG_PARAM2, amount);
+        args.putInt(ARG_PARAM2, amount);
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,7 +65,7 @@ public class CardReaderFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParamAmount = getArguments().getFloat(ARG_PARAM2);
+            mParamAmount = getArguments().getInt(ARG_PARAM2);
         }
     }
 
@@ -126,7 +126,7 @@ public class CardReaderFragment extends Fragment {
         DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();
         symbols.setGroupingSeparator(' ');
 
-        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("is", "IS", "")));
+        DecimalFormat df = new DecimalFormat("#0", new DecimalFormatSymbols(new Locale("is", "IS", "")));
 
         return df.format(amount) + " kr.";
     }

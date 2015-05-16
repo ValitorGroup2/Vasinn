@@ -20,6 +20,7 @@
         android:text="Upphæð: 10020 kr."
         android:id="@+id/tViewReaderAmount"
         android:layout_gravity="center"
+        android:inputType="numberSigned"
         style="@style/BigAmount"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"

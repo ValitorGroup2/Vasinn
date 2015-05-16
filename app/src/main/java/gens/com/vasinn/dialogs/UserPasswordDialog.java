@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import gens.com.vasinn.R;
 import gens.com.vasinn.VasiApplication;
@@ -33,7 +32,7 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
     VasiApplication vasi;
     String mDialogTitle;
     int mActionConstants;
-    float mAmount;
+    int mAmount;
     VasiApplication vasinn;
 
     @Override
@@ -57,7 +56,7 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
         if (getArguments() != null) {
             mDialogTitle = getArguments().getString(ARG_PARAM_TITLE);
             mActionConstants = getArguments().getInt(ARG_PARAM_ACTION);
-            mAmount = getArguments().getFloat(ARG_PARAM_AMOUNT);
+            mAmount = getArguments().getInt(ARG_PARAM_AMOUNT);
         }
 
         getDialog().setTitle(mDialogTitle);

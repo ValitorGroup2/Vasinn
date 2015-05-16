@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -61,6 +62,9 @@ public class TransactionActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         super.onCreateOptionsMenu(menu);
         menu.add(0, 1, Menu.NONE, vasi.getLoggedInUsername()).setEnabled(false).setShowAsAction(MenuItem.SHOW_AS_ACTION_WITH_TEXT + MenuItem.SHOW_AS_ACTION_ALWAYS);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
         this.menu = menu;
         getMenuInflater().inflate(R.menu.menu_transaction, menu);
         return true;
@@ -79,6 +83,10 @@ public class TransactionActivity extends ActionBarActivity {
             /*case R.id.action_logout:
                 logoutConfirm();
                 return true;*/
+            case android.R.id.home:
+                // app icon in action bar clicked;
+                this.onBackPressed();
+                return true;
             case R.id.action_help:
                 FragmentManager manager = getFragmentManager();
                 HelpDialog helpDialog = new HelpDialog();
@@ -158,7 +166,6 @@ public class TransactionActivity extends ActionBarActivity {
 
     public void onBackClick(View view) {
         this.onBackPressed();
-
     }
 
     public void loadTransaction(Transaction newTransaction) {

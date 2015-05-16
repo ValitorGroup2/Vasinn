@@ -37,7 +37,7 @@ public class Transaction extends Object {
 
         DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();
         symbols.setGroupingSeparator(' ');
-        DecimalFormat df = new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("is", "IS", "")));
+        DecimalFormat df = new DecimalFormat("#0", new DecimalFormatSymbols(new Locale("is", "IS", "")));
         return df.format(amount) + " kr.";
     }
 
