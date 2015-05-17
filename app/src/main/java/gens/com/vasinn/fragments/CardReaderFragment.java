@@ -126,7 +126,7 @@ public class CardReaderFragment extends Fragment {
         DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();
         symbols.setGroupingSeparator(' ');
 
-        DecimalFormat df = new DecimalFormat("#0", new DecimalFormatSymbols(new Locale("is", "IS", "")));
+        DecimalFormat df = new DecimalFormat("#,##0", new DecimalFormatSymbols(new Locale("is", "IS", "")));
 
         return df.format(amount) + " kr.";
     }

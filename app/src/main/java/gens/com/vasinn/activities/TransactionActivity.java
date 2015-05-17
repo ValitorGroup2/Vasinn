@@ -99,8 +99,8 @@ public class TransactionActivity extends ActionBarActivity {
 
     public void charge() {
         if (transaction.getAmount() != 0 ){
-            Transaction oldTransaction = transaction;
-            transaction = transactionController.add(transaction.getAmount(),
+
+            transaction = transactionController.add(transaction.getCardNumber(), transaction.getAmount(),
                     ((VasiApplication) this.getApplication()).getLoggedInUsername(),
                     transaction.getCard(), transaction.getAmount() > 0);
 
@@ -112,7 +112,7 @@ public class TransactionActivity extends ActionBarActivity {
     {
         if (transaction.getAmount() != 0 ){
             Transaction oldTransaction = transaction;
-            transaction = transactionController.add(transaction.getAmount()* -1,
+            transaction = transactionController.add(transaction.getCardNumber(), transaction.getAmount()* -1,
             ((VasiApplication) this.getApplication()).getLoggedInUsername(),
             transaction.getCard(), false);
             oldTransaction.setIsRefundable(false);
