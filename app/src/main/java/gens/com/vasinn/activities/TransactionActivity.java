@@ -173,7 +173,7 @@ public class TransactionActivity extends ActionBarActivity {
 
         if (transaction != null)
         {
-            ((TextView)findViewById(R.id.tViewCardNumber)).setText(transaction.getIdString());
+            ((TextView)findViewById(R.id.tViewCardNumber)).setText(transaction.getCardNumberSafe());
             ((TextView)findViewById(R.id.tViewTransactionTime)).setText(transaction.getDateTimeString());
             ((TextView)findViewById(R.id.tViewTransactionCard)).setText(transaction.getCard());
             ((TextView)findViewById(R.id.tViewTransactionAmount)).setText(transaction.getAmountString());

@@ -55,9 +55,9 @@ public class TransactionsAdapter extends ArrayAdapter {
             LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(R.layout.row_layout_transaction, parent, false);
             handler = new DataHandler();
-            handler.tViewDate   = (TextView)row.findViewById(R.id.tViewTopRowDate);
-            handler.tViewUser   = (TextView)row.findViewById(R.id.tViewTopRowType);
-            handler.tViewAmount = (TextView)row.findViewById(R.id.tViewTopRowAmount);
+            handler.tViewDate       = (TextView)row.findViewById(R.id.tViewTopRowDate);
+            handler.tViewUser       = (TextView)row.findViewById(R.id.tViewTopRowType);
+            handler.tViewAmount     = (TextView)row.findViewById(R.id.tViewTopRowAmount);
 
             /*if ( (position % 2) == 0)
             {

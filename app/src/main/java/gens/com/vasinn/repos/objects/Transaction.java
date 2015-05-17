@@ -26,12 +26,12 @@ public class Transaction extends Object {
             return "";  //invalid card-number
 
         String ret = "";
-        for(int i = 0; i< cardNumber.length()-5; i++) {
+        for(int i = 1; i < cardNumber.length() - 3; i++) {
             ret += "*";
             if (i % 4 == 0)
                 ret += "-";
         }
-        ret+=cardNumber.substring(cardNumber.length()-5);
+        ret += cardNumber.substring(cardNumber.length() - 4);
         return ret;
     }
     public String getCardNumber() {
