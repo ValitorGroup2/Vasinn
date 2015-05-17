@@ -16,8 +16,8 @@
     <TextView
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:id="@+id/tViewIdDesc"
-        android:text="ID:"
+        android:id="@+id/tViewCardNumberLabel"
+        android:text="Kortanúmer:"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/tViewTransactionTitle"
         android:layout_alignParentStart="true" />
@@ -25,17 +25,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tViewTransactionID"
-        android:text="id færslu"
-        android:layout_alignTop="@+id/tViewIdDesc"
-        android:layout_toEndOf="@+id/tViewIdDesc" />
+        android:id="@+id/tViewCardNumber"
+        android:text="kortanúmer færslu"
+        android:layout_alignTop="@+id/tViewCardNumberLabel"
+        android:layout_toEndOf="@+id/tViewCardNumberLabel" />
 
     <TextView
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:id="@+id/tViewTransactionTimeDesc"
         android:text="@string/transaction_time"
-        android:layout_below="@+id/tViewIdDesc"
+        android:layout_below="@+id/tViewCardNumberLabel"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tViewTransactionTime"
         android:text="dagsetning hér"
-        android:layout_below="@+id/tViewIdDesc"
+        android:layout_below="@+id/tViewCardNumberLabel"
         android:layout_toEndOf="@+id/tViewTransactionTimeDesc" />
 
     <TextView

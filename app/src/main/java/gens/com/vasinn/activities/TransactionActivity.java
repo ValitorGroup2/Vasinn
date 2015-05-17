@@ -173,7 +173,7 @@ public class TransactionActivity extends ActionBarActivity {
 
         if (transaction != null)
         {
-            ((TextView)findViewById(R.id.tViewTransactionID)).setText(transaction.getIdString());
+            ((TextView)findViewById(R.id.tViewCardNumber)).setText(transaction.getIdString());
             ((TextView)findViewById(R.id.tViewTransactionTime)).setText(transaction.getDateTimeString());
             ((TextView)findViewById(R.id.tViewTransactionCard)).setText(transaction.getCard());
             ((TextView)findViewById(R.id.tViewTransactionAmount)).setText(transaction.getAmountString());
@@ -184,7 +184,7 @@ public class TransactionActivity extends ActionBarActivity {
 
         }
         else{
-            ((TextView)findViewById(R.id.tViewTransactionID)).setText("");
+            ((TextView)findViewById(R.id.tViewCardNumber)).setText("");
             ((TextView)findViewById(R.id.tViewTransactionTime)).setText("");
             ((TextView)findViewById(R.id.tViewTransactionCard)).setText("");
             ((TextView)findViewById(R.id.tViewTransactionAmount)).setText("");

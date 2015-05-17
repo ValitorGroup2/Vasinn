@@ -24,29 +24,19 @@
             android:id="@+id/tViewTopRow">
 
             <TextView
-                android:id="@+id/tViewTopRowId"
-                android:layout_width="20dp"
-                android:layout_height="45dp"
-                android:layout_alignParentLeft="true"
-                android:text="ID"
-                android:gravity="center"
-                android:textColor="@color/white" />
-
-            <TextView
                 android:id="@+id/tViewTopRowDate"
-                android:layout_width="160dp"
+                android:layout_width="180dp"
                 android:layout_height="45dp"
-                android:layout_toEndOf="@+id/tViewTopRowId"
                 android:text="Dagsetning"
                 android:gravity="center"
                 android:textColor="@color/white" />
 
             <TextView
-                android:id="@+id/tViewTopRowUser"
+                android:id="@+id/tViewTopRowType"
                 android:layout_width="100dp"
                 android:layout_height="45dp"
                 android:layout_toEndOf="@+id/tViewTopRowDate"
-                android:text="Sölumaður"
+                android:text="Kortagerð"
                 android:gravity="center"
                 android:textColor="@color/white" />
             <TextView
@@ -55,12 +45,12 @@
                 android:layout_height="45dp"
                 android:layout_alignParentRight="true"
                 android:text="@string/transaction_amount"
-                android:gravity="center"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:gravity="center" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@+id/tViewTopRowId">
+                android:layout_below="@+id/tViewTopRowDate">
             </View>
         </RelativeLayout>
     </LinearLayout>
