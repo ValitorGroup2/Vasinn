@@ -18,6 +18,7 @@ public class UserController {
     /* Checks if user can login, returns true if so, else false */
     public boolean loginUser(String username, String password) {
         List<User> users = userRepo.getUsers();
+        username = username.toLowerCase();
         return users.contains(new User(username, password));
     }
 

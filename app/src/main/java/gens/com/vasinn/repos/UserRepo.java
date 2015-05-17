@@ -13,14 +13,14 @@ public class UserRepo {
     private List<User> users = new ArrayList<>();
 
     public UserRepo() {
-        users.add(new User("aegir",   "123", "aegir13@ru.is", UserConstants.USER_LEVEL_NORMAL, "gens"));
-        users.add(new User("liljar",  "123", "liljar11@ru.is", UserConstants.USER_LEVEL_NORMAL, "gens"));
-        users.add(new User("gudjon",  "123", "gudjon02@ru.is", UserConstants.USER_LEVEL_NORMAL, "gens"));
-        users.add(new User("gudny",   "123", "gudnyoskg@gmail.com", UserConstants.USER_LEVEL_NORMAL, "gens"));
-        users.add(new User("karl",    "123", "karlb12@ru.is", UserConstants.USER_LEVEL_NORMAL, "gens"));
-        users.add(new User("trausti", "123", "traustie09@ru.is", UserConstants.USER_LEVEL_NORMAL, "gens"));
-        users.add(new User("gretar",  "123", "grellinn@gmail.com", UserConstants.USER_LEVEL_NORMAL, "gens"));
-        users.add(new User("gens",  "123", "vasigens@gmail.com", UserConstants.USER_LEVEL_NORMAL, "gens"));
+        users.add(new User("ægir",    "123", "aegir13@ru.is",       UserConstants.USER_LEVEL_NORMAL, "gens"));
+        users.add(new User("liljar",  "123", "liljar11@ru.is",      UserConstants.USER_LEVEL_NORMAL, "gens"));
+        users.add(new User("guðjón",  "123", "gudjon02@ru.is",      UserConstants.USER_LEVEL_NORMAL, "gens"));
+        users.add(new User("guðný",   "123", "gudnyoskg@gmail.com", UserConstants.USER_LEVEL_NORMAL, "gens"));
+        users.add(new User("karl",    "123", "karlb12@ru.is",       UserConstants.USER_LEVEL_NORMAL, "gens"));
+        users.add(new User("trausti", "123", "traustie09@ru.is",    UserConstants.USER_LEVEL_NORMAL, "gens"));
+        users.add(new User("grétar",  "123", "grellinn@gmail.com",  UserConstants.USER_LEVEL_NORMAL, "gens"));
+        users.add(new User("gens",    "123", "vasigens@gmail.com",  UserConstants.USER_LEVEL_ADMIN,  "gens"));
     }
 
     public List<User> getUsers() {

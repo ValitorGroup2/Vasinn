@@ -111,6 +111,7 @@ public class LoginActivity extends ActionBarActivity {
             SharedPreferences.Editor editor = mySharedPreferences.edit();
 
             // now store your primitive type values. In this case it is true, 1f and Hello! World
+            userName = userName.toLowerCase();
             editor.putString(getString(R.string.VASINN_PREFERENCE_USERNAME), userName);
 
 
