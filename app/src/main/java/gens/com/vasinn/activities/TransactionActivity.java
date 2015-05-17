@@ -123,7 +123,7 @@ public class TransactionActivity extends ActionBarActivity {
     }
     public void onRefundClick(View view) {
 
-        UserPasswordDialog dialog = UserPasswordDialog.newInstance(getString(R.string.get_user_password_title), ActionConstants.ACTION_MAIN_REFUND, (float) transaction.getAmount());
+        UserPasswordDialog dialog = UserPasswordDialog.newInstance(getString(R.string.get_user_password_title), ActionConstants.ACTION_MAIN_REFUND, (int) transaction.getAmount());
         dialog.show(getFragmentManager(), "UserPasswordDialog");
 
     }

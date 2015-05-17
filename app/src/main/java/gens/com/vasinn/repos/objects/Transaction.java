@@ -100,15 +100,15 @@ public class Transaction extends Object {
     //returns a string containging all information about a transaction
     public String toString(boolean includeRefundable){
 
-       String ret = " ID : " + getIdString() +
-                  "\nTími : " + getDateTimeString() +
-                  "\nStarfsmaður : " + getUserName();
+       String ret = "Kortanúmer: " + getCardNumberSafe() +
+                  "\nTími: " + getDateTimeString() +
+                  "\nStarfsmaður: " + getUserName();
         if (includeRefundable)
-            ret +="\nMá endurgreiða : " + (isRefundable() ? "Já" : "Nei");
+            ret +="\nMá endurgreiða: " + (isRefundable() ? "Já" : "Nei");
 
         ret +=
-                  "\nKort : " + getCard() +
-                  "\nUpphæð : " + getAmountString();
+                  "\nKort: " + getCard() +
+                  "\nUpphæð: " + getAmountString();
 
         return ret;
     }

@@ -55,8 +55,8 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
 
         if (getArguments() != null) {
             mDialogTitle = getArguments().getString(ARG_PARAM_TITLE);
-            mActionConstants = getArguments().getInt(ARG_PARAM_ACTION);
             mAmount = getArguments().getInt(ARG_PARAM_AMOUNT);
+            mActionConstants = getArguments().getInt(ARG_PARAM_ACTION);
         }
 
         getDialog().setTitle(mDialogTitle);
@@ -67,12 +67,12 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
         return view;
     }
 
-    public static UserPasswordDialog newInstance(String strDialogTitle, int inActionConstants, float amount) {
+    public static UserPasswordDialog newInstance(String strDialogTitle, int inActionConstants, int amount) {
         UserPasswordDialog fragment = new UserPasswordDialog();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM_TITLE, strDialogTitle);
         args.putInt(ARG_PARAM_ACTION, inActionConstants);
-        args.putFloat(ARG_PARAM_AMOUNT, amount);
+        args.putInt(ARG_PARAM_AMOUNT, amount);
         fragment.setArguments(args);
         return fragment;
     }
@@ -82,7 +82,7 @@ public class UserPasswordDialog extends DialogFragment implements View.OnClickLi
         if (view.getId() == R.id.btnConfirmPassword) {
             // Send button was clicked
             String passwordString = edtPassword.getText().toString();
-            UserController userController =vasi.getUserController();
+            UserController userController = vasi.getUserController();
             User user = userController.findByName(vasi.getLoggedInUsername());
 
             if (!passwordString.isEmpty() && user !=null && user.getPassword().equals(passwordString) ) {

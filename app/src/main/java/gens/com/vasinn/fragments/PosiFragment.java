@@ -300,7 +300,11 @@ public class PosiFragment extends Fragment{
         try {
             num = Float.parseFloat(Src.getText().toString());
             float ceilNum = num;
-            num = (float) Math.ceil(num);
+            if (num < 0) {
+                num = (float) Math.floor(num);
+            } else {
+                num = (float) Math.ceil(num);
+            }
 
             if (ceilNum != num) {
                 Toast.makeText(rootview.getContext(), "Upphæð var námunduð", Toast.LENGTH_SHORT).show();
@@ -323,7 +327,7 @@ public class PosiFragment extends Fragment{
 
         if(num < 0) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            UserPasswordDialog dialog = UserPasswordDialog.newInstance(getString(R.string.get_user_password_title), ActionConstants.ACTION_MAIN_CHARGE, num);
+            UserPasswordDialog dialog = UserPasswordDialog.newInstance(getString(R.string.get_user_password_title), ActionConstants.ACTION_MAIN_CHARGE, (int) num);
             dialog.show(getActivity().getFragmentManager(), "UserPasswordDialog");
         }
         else {
