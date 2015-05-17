@@ -24,7 +24,7 @@ public class TransactionsAdapter extends ArrayAdapter {
 
     static class DataHandler{
         TextView tViewDate;
-        TextView tViewUser;
+        TextView tViewType;
         TextView tViewAmount;
     }
 
@@ -56,7 +56,7 @@ public class TransactionsAdapter extends ArrayAdapter {
             row = inflater.inflate(R.layout.row_layout_transaction, parent, false);
             handler = new DataHandler();
             handler.tViewDate       = (TextView)row.findViewById(R.id.tViewTopRowDate);
-            handler.tViewUser       = (TextView)row.findViewById(R.id.tViewTopRowType);
+            handler.tViewType       = (TextView)row.findViewById(R.id.tViewTopRowType);
             handler.tViewAmount     = (TextView)row.findViewById(R.id.tViewTopRowAmount);
 
             /*if ( (position % 2) == 0)
@@ -76,7 +76,7 @@ public class TransactionsAdapter extends ArrayAdapter {
         Transaction transaction;
         transaction = (Transaction)this.getItem(position);
         handler.tViewDate.setText(transaction.getDateTimeString());
-        handler.tViewUser.setText(transaction.getUserName());
+        handler.tViewType.setText(transaction.getCard());
         handler.tViewAmount.setText(transaction.getAmountString());
 
         return row;
