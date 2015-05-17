@@ -13,9 +13,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import gens.com.vasinn.OnSwipeTouchListener;
 import gens.com.vasinn.R;
 import gens.com.vasinn.TransactionsAdapter;
 import gens.com.vasinn.VasiApplication;
+import gens.com.vasinn.activities.MainActivity;
 import gens.com.vasinn.activities.TransactionActivity;
 import gens.com.vasinn.controllers.TransactionController;
 import gens.com.vasinn.repos.objects.Transaction;
@@ -34,6 +36,12 @@ public class SalesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.sales_layout, container, false);
+        rootview.setOnTouchListener(new OnSwipeTouchListener( this.getActivity().getBaseContext()) {
+            @Override
+            public void onSwipeLeft() {
+                ((MainActivity)getActivity()).onNavigationDrawerItemSelected(0);
+            }
+        });
         listView = (ListView)rootview.findViewById(R.id.lViewTransactions);
         emptyText = (TextView)rootview.findViewById(R.id.tViewSalesEmpty);
         titleText = (TextView)rootview.findViewById(R.id.tViewSalesTitle);

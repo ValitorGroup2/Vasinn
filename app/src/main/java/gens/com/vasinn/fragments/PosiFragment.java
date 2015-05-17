@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import gens.com.vasinn.OnSwipeTouchListener;
 import gens.com.vasinn.R;
 import gens.com.vasinn.activities.MainActivity;
 import gens.com.vasinn.constants.ActionConstants;
@@ -51,7 +52,12 @@ public class PosiFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.posi_layout, container, false);
 
-
+        rootview.setOnTouchListener(new OnSwipeTouchListener( this.getActivity().getBaseContext()) {
+            @Override
+            public void onSwipeLeft() {
+                ((MainActivity)getActivity()).onNavigationDrawerItemSelected(1);
+            }
+        });
         Src = (EditText)rootview.findViewById(R.id.editCalc);
         Src.setEnabled(false);
 
