@@ -459,10 +459,10 @@ public class MainActivity extends /*FragmentActivity*/ ActionBarActivity
     }
 //expiresMonth 0 = january
     public boolean doTransaction(String strType, double amount, String strCardNumber, int sequrityNumber, int expiresYear, int expiresMonth){
-        //todo: shall we do anything with the card number, sequrityNumber,  expiresYear and expiresMonth
+        //todo: shall we do anything with the card sequrityNumber,  expiresYear and expiresMonth
         boolean isRefundable = (amount > 0);
 
-        Transaction item = vasi.getTransactionController().add(amount, vasi.getLoggedInUsername(), strType, isRefundable);
+        Transaction item = vasi.getTransactionController().add(strCardNumber, amount, vasi.getLoggedInUsername(), strType, isRefundable);
         Bundle bundle = new Bundle();
         bundle.putInt(getString(R.string.TRANSACTION_KEY_ID), item.getId());
         String str = this.getClass().getName();

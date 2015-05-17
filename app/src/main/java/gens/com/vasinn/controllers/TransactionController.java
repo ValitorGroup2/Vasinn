@@ -65,10 +65,10 @@ public class TransactionController {
     {
         return transRepo.add(new Transaction(0, addMe.getDate(), addMe.getAmount(), addMe.getUserName(), addMe.getCard()));
     }*/
-     public Transaction add(double amount, String userName, String card, boolean isRefundabble)
+     public Transaction add(String cardNumber, double amount, String userName, String card, boolean isRefundabble)
     {
         fakeDelay();
-        return transRepo.add(new Transaction(0, new Date(System.currentTimeMillis()), amount, userName, card, isRefundabble));
+        return transRepo.add(new Transaction(0, cardNumber, new Date(System.currentTimeMillis()), amount, userName, card, isRefundabble));
     }
 
     public int getSize() {

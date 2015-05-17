@@ -12,15 +12,38 @@ import java.util.Locale;
  */
 public class Transaction extends Object {
 
-
-
-
     private Date date;
     private int id;
     private String userName;
     private boolean isRefundable;
-    private String card;
+    private String card; //this is not needed, we could calc this from the card number.
     private double amount;
+
+    //returns the last 4 digits in a card number
+    public String getCardNumberSafe() {
+
+        if (cardNumber.length()<6)
+            return "";  //invalid card-number
+
+        String ret = "";
+        for(int i = 0; i< cardNumber.length()-5; i++) {
+            ret += "*";
+            if (i % 4 == 0)
+                ret += "-";
+        }
+        ret+=cardNumber.substring(cardNumber.length()-5);
+        return ret;
+    }
+    public String getCardNumber() {
+
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    private String cardNumber;
 
     public void setAmount(double amount) {this.amount = amount;}
     public void setCard(String card) {this.card = card;}
@@ -41,9 +64,10 @@ public class Transaction extends Object {
         return df.format(amount) + " kr.";
     }
 
-    public Transaction(int id, Date date, double amount, String userName, String card, boolean isRefundable) {
-        this.date = date;
+    public Transaction(int id, String cardNumber, Date date, double amount, String userName, String card, boolean isRefundable) {
         this.id = id;
+        this.cardNumber = cardNumber;
+        this.date = date;
         this.amount = amount;
         this.userName = userName;
         this.card = card;
