@@ -7,7 +7,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.regex.Pattern;
 
+import gens.com.vasinn.constants.CardConstants;
 import gens.com.vasinn.repos.objects.Transaction;
 
 /**
@@ -18,18 +20,18 @@ public class TransactionRepo {
 
     public TransactionRepo() {
 
-        transactions.add(new Transaction( 1,"4444444444444444", new Date((new GregorianCalendar(2013, 5,  6, 13, 24, 56)).getTimeInMillis()),   1540.10, "gudjon","Visa", true));
-        transactions.add(new Transaction( 2,"5555555555555555", new Date((new GregorianCalendar(2015, 5,  6, 12, 15,  0)).getTimeInMillis()),  23800.5, "gudny", "Mastercard", true));
-        transactions.add(new Transaction( 3,"4444444444444444", new Date((new GregorianCalendar(2015, 5,  5, 11, 35, 15)).getTimeInMillis()), 212844.51, "aegir", "Visa", true));
-        transactions.add(new Transaction( 4,"4444444444444444", new Date((new GregorianCalendar(2015, 5,  5, 10, 25,  0)).getTimeInMillis()),  28401, "karl",  "American express",true ));
-        transactions.add(new Transaction( 5,"4444444444444444", new Date((new GregorianCalendar(2015, 5,  3, 10, 25, 30)).getTimeInMillis()),    507, "aegir", "Mastercard",true ));
-        transactions.add(new Transaction( 6,"4444444444444444", new Date((new GregorianCalendar(2015, 5,  1, 14, 30, 21)).getTimeInMillis()),   1240, "aegir", "Visa",true ));
-        transactions.add(new Transaction( 7,"4444444444444444", new Date((new GregorianCalendar(2015, 4, 30, 15, 32, 11)).getTimeInMillis()),  74124, "gretar","Mastercard",false));
-        transactions.add(new Transaction( 8,"4444444444444444", new Date((new GregorianCalendar(2015, 4, 30, 15, 35, 10)).getTimeInMillis()), -74124, "gretar","Visa",false ));
-        transactions.add(new Transaction( 9,"4444444444444444", new Date((new GregorianCalendar(2015, 4, 10, 12, 15,  0)).getTimeInMillis()),   1234, "gudjon","Visa",true ));
-        transactions.add(new Transaction(10,"4444444444444444", new Date((new GregorianCalendar(2015, 4,  3, 12, 15,  0)).getTimeInMillis()),   8870, "gudjon","Mastercard",true ));
-        transactions.add(new Transaction(11,"4444444444444444", new Date((new GregorianCalendar(2015, 4,  3, 42, 15,  0)).getTimeInMillis()),   1520, "aegir", "Visa",true ));
-        transactions.add(new Transaction(12,"4444444444444444", new Date((new GregorianCalendar(2015, 4,  1, 16, 38,  1)).getTimeInMillis()),   1254, "aegir", "Visa",true ));
+        transactions.add(new Transaction( 1,"4444444444444444", new Date((new GregorianCalendar(2013, 5,  6, 13, 24, 56)).getTimeInMillis()),   1540.10, "gudjon", true));
+        transactions.add(new Transaction( 2,"5444444444444454", new Date((new GregorianCalendar(2015, 5,  6, 12, 15,  0)).getTimeInMillis()),  23800.5, "gudny",  true));
+        transactions.add(new Transaction( 3,"4444444444444444", new Date((new GregorianCalendar(2015, 5,  5, 11, 35, 15)).getTimeInMillis()), 212844.51, "aegir", true));
+        transactions.add(new Transaction( 4,"4444444444444444", new Date((new GregorianCalendar(2015, 5,  5, 10, 25,  0)).getTimeInMillis()),  28401, "karl",  true ));
+        transactions.add(new Transaction( 5,"4444444444444444", new Date((new GregorianCalendar(2015, 5,  3, 10, 25, 30)).getTimeInMillis()),    507, "aegir", true ));
+        transactions.add(new Transaction( 6,"4444444444444444", new Date((new GregorianCalendar(2015, 5,  1, 14, 30, 21)).getTimeInMillis()),   1240, "aegir", true ));
+        transactions.add(new Transaction( 7,"4444444444444444", new Date((new GregorianCalendar(2015, 4, 30, 15, 32, 11)).getTimeInMillis()),  74124, "gretar",false));
+        transactions.add(new Transaction( 8,"4444444444444444", new Date((new GregorianCalendar(2015, 4, 30, 15, 35, 10)).getTimeInMillis()), -74124, "gretar",false ));
+        transactions.add(new Transaction( 9,"4444444444444444", new Date((new GregorianCalendar(2015, 4, 10, 12, 15,  0)).getTimeInMillis()),   1234, "gudjon",true ));
+        transactions.add(new Transaction(10,"4444444444444444", new Date((new GregorianCalendar(2015, 4,  3, 12, 15,  0)).getTimeInMillis()),   8870, "gudjon",true ));
+        transactions.add(new Transaction(11,"4444444444444444", new Date((new GregorianCalendar(2015, 4,  3, 42, 15,  0)).getTimeInMillis()),   1520, "aegir", true ));
+        transactions.add(new Transaction(12,"4444444444444444", new Date((new GregorianCalendar(2015, 4,  1, 16, 38,  1)).getTimeInMillis()),   1254, "aegir", true ));
 
     }
 
@@ -66,7 +68,7 @@ public class TransactionRepo {
     {
         int id = transactions.size() + 1;
 
-        transactions.add(new Transaction(id, addMe.getCardNumber(), addMe.getDate(), addMe.getAmount(), addMe.getUserName(), addMe.getCard(), addMe.isRefundable()));
+        transactions.add(new Transaction(id, addMe.getCardNumber(), addMe.getDate(), addMe.getAmount(), addMe.getUserName(), addMe.isRefundable()));
         return get(transactions.size() - 1);
     }
 
@@ -109,4 +111,6 @@ public class TransactionRepo {
 
         return retTrans;
     }
+
+
 }

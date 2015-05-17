@@ -19,6 +19,7 @@ import gens.com.vasinn.R;
 import gens.com.vasinn.VasiApplication;
 import gens.com.vasinn.activities.MainActivity;
 import gens.com.vasinn.constants.CardConstants;
+import gens.com.vasinn.repos.objects.Transaction;
 
 
 /**
@@ -65,8 +66,9 @@ public class CardNumberDialog extends DialogFragment implements OnClickListener 
             double amount = vasi.getChargedAmount();
             vasi.setChargedAmount(0);
             String strNum = edtCardNumber.getText().toString();
-            String strType = vasi.cardTypeToString(vasi.getCardType(strNum));
-            ((MainActivity)getActivity()).doTransaction(strType, amount, strNum, safetyNumber, year, month);
+
+
+            ((MainActivity)getActivity()).doTransaction(amount, strNum, safetyNumber, year, month);
         }
         this.dismiss();
     }
@@ -92,20 +94,29 @@ public class CardNumberDialog extends DialogFragment implements OnClickListener 
         edtSaftyNumber = (EditText)view.findViewById(R.id.edtSafetyNumber);
 
         getDialog().setTitle(getString(R.string.skra_kortanumer_title));
+        edtSaftyNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                enableChargeButton();
+            }
+        });
         edtCardNumber.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
 
-                btnCharge.setEnabled(isValidCardNumber(edtCardNumber.getText().toString()));
+                enableChargeButton();
             }
         });
 
@@ -115,8 +126,9 @@ public class CardNumberDialog extends DialogFragment implements OnClickListener 
 
     public boolean isValidCardNumber(String number){
 
+        Transaction trans = new Transaction(0,"", new Date(), 0, "", false);
 
-        return vasi.getCardType(number) != CardConstants.UNKNOWN;
+        return trans.extractCardType(number) != CardConstants.UNKNOWN;
     }
 
     //year, the expiration year
@@ -164,6 +176,12 @@ public class CardNumberDialog extends DialogFragment implements OnClickListener 
             return safetyNumber; //apparently valid is 3 digits or 4 digits
 
         return -1;
+    }
+
+    public void enableChargeButton()
+    {
+        btnCharge.setEnabled(isValidCardNumber(edtCardNumber.getText().toString())
+            && getSafetyNumber() > -1);
     }
 
 }

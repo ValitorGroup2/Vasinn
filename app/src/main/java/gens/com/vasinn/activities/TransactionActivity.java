@@ -101,8 +101,7 @@ public class TransactionActivity extends ActionBarActivity {
         if (transaction.getAmount() != 0 ){
 
             transaction = transactionController.add(transaction.getCardNumber(), transaction.getAmount(),
-                    ((VasiApplication) this.getApplication()).getLoggedInUsername(),
-                    transaction.getCard(), transaction.getAmount() > 0);
+                    ((VasiApplication) this.getApplication()).getLoggedInUsername(), transaction.getAmount() > 0);
 
             loadTransaction(transaction);
         }
@@ -113,8 +112,7 @@ public class TransactionActivity extends ActionBarActivity {
         if (transaction.getAmount() != 0 ){
             Transaction oldTransaction = transaction;
             transaction = transactionController.add(transaction.getCardNumber(), transaction.getAmount()* -1,
-            ((VasiApplication) this.getApplication()).getLoggedInUsername(),
-            transaction.getCard(), false);
+            ((VasiApplication) this.getApplication()).getLoggedInUsername(), false);
             oldTransaction.setIsRefundable(false);
             transactionController.updateTransaction(oldTransaction); //make old transaction un-refundable to prevent double booking
 

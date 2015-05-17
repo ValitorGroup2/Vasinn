@@ -17,7 +17,8 @@
         android:id="@+id/edtCardNumber"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:maxLength="16"/>
 </RelativeLayout>
 
     <View
@@ -84,7 +85,8 @@
             android:hint="@string/hint_savety_number"
             android:ems="10"
             android:id="@+id/edtSafetyNumber"
-            android:gravity="center" />
+            android:gravity="center"
+            android:maxLength="4"/>
     </LinearLayout>
     <View
         android:layout_width="fill_parent"
