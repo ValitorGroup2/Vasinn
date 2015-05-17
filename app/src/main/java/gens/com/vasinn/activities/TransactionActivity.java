@@ -148,15 +148,14 @@ public class TransactionActivity extends ActionBarActivity {
 
             this.getIntent().putExtra(getString(R.string.VASINN_CALLING_CLASS), "");
             if ( callingClassName == null
-                 || callingClassName.equals("gens.com.vasinn.activities.MainActivity")
+                 || callingClassName.contains("gens.com.vasinn.activities.MainActivity")
                  || callingClassName.equals("")){
-
 
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return;
             }
-            else if (callingClassName != null && callingClassName.equals("gens.com.vasinn.fragments.SalesFragment$1")){
+            else if (callingClassName != null && callingClassName.contains("gens.com.vasinn.fragments.SalesFragment")){
                 super.onBackPressed();
             }
         }
