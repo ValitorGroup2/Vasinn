@@ -76,7 +76,7 @@ public class ReportDialog extends DialogFragment implements View.OnClickListener
             ((TextView)view.findViewById(R.id.tViewReportTransactionTime)).setText(mTransaction.getDateTimeString());
             ((TextView)view.findViewById(R.id.tViewReportTransactionCard)).setText(mTransaction.getCard());
             ((TextView)view.findViewById(R.id.tViewReportTransactionAmount)).setText(mTransaction.getAmountString());
-            ((TextView)view.findViewById(R.id.tViewReportTransactionUsername)).setText(mTransaction.getUserName());
+            ((TextView)view.findViewById(R.id.tViewReportTransactionUsername)).setText(mTransaction.getUsername());
 
         }
         else{

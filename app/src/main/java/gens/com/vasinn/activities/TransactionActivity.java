@@ -175,7 +175,7 @@ public class TransactionActivity extends ActionBarActivity {
             ((TextView)findViewById(R.id.tViewTransactionTime)).setText(transaction.getDateTimeString());
             ((TextView)findViewById(R.id.tViewTransactionCard)).setText(transaction.getCard());
             ((TextView)findViewById(R.id.tViewTransactionAmount)).setText(transaction.getAmountString());
-            ((TextView)findViewById(R.id.tViewTransactionUsername)).setText(transaction.getUserName());
+            ((TextView)findViewById(R.id.tViewTransactionUsername)).setText(transaction.getUsername());
 
             ((Button)findViewById(R.id.btnRefund)).setEnabled(transaction.isRefundable());
 

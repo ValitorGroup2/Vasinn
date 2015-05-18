@@ -22,12 +22,13 @@ public class User extends Object {
     public String getEmail()    {return email;}
     public int getAccessLevel() {return accessLevel;}
     public String getAdmin()    {return admin;}
+
     private void set(String usrn, String pswd, String email, int accessLevel, String admin) {
-        this.username   = usrn;
-        this.password   = pswd;
-        this.email      = email;
-        this.accessLevel= accessLevel;
-        this.admin= admin;
+        this.username    = usrn;
+        this.password    = pswd;
+        this.email       = email;
+        this.accessLevel = accessLevel;
+        this.admin       = admin;
     }
     /* Constructors */
     public User(String usrn, String pswd) {

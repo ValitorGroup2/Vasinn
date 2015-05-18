@@ -17,9 +17,10 @@ public class Transaction extends Object {
 
     private Date date;
     private int id;
-    private String userName;
+    private String username;
     private boolean isRefundable;
     private double amount;
+    private String cardNumber;
 
     //returns the last 4 digits in a card number
     public String getCardNumberSafe() {
@@ -45,7 +46,6 @@ public class Transaction extends Object {
         this.cardNumber = cardNumber;
     }
 
-    private String cardNumber;
 
     public void setAmount(double amount) {this.amount = amount;}
     public void setIsRefundable(boolean isRefundable) {this.isRefundable = isRefundable;}
@@ -55,7 +55,7 @@ public class Transaction extends Object {
     public String getCard() {return cardTypeToString(extractCardType(this.getCardNumber()));}
     public double getAmount() {return amount;}
     public int getId() {return id;}
-    public String getUserName() {return userName;}
+    public String getUsername() {return username;}
     public String getIdString() {return Integer.toString(id);}
     public String getAmountString() {
 
@@ -65,12 +65,12 @@ public class Transaction extends Object {
         return df.format(amount) + " kr.";
     }
 
-    public Transaction(int id, String cardNumber, Date date, double amount, String userName, boolean isRefundable) {
+    public Transaction(int id, String cardNumber, Date date, double amount, String username, boolean isRefundable) {
         this.id = id;
         this.cardNumber = cardNumber;
         this.date = date;
         this.amount = amount;
-        this.userName = userName;
+        this.username = username;
         this.isRefundable = isRefundable;
     }
 
@@ -92,7 +92,7 @@ public class Transaction extends Object {
         return this.amount == his.amount &&
                 this.date.equals(his.date) &&
                 this.id == his.id &&
-                this.userName.equals(his.userName);
+                this.username.equals(his.username);
     }
 
 
@@ -102,7 +102,7 @@ public class Transaction extends Object {
 
        String ret = "Kortanúmer: " + getCardNumberSafe() +
                   "\nTími: " + getDateTimeString() +
-                  "\nStarfsmaður: " + getUserName();
+                  "\nStarfsmaður: " + getUsername();
         if (includeRefundable)
             ret +="\nMá endurgreiða: " + (isRefundable() ? "Já" : "Nei");
 
